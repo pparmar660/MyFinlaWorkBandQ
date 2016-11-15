@@ -1,0 +1,183 @@
+
+<div class="login_wrapper">
+    <div class="login_container">
+            <div class="login_logo" onclick="gotoLoginPage()"><a href="#"><img src="images/logo.jpg" alt="App Logo"/></a></div>
+            <div class="login_logo" onclick="gotoLoginPage()"><a href="#"><img src="images/client_logo.png" alt="App Logo"/></a></div>
+        <div class="clr"></div>
+
+        <div class="login_inner"  style="display: block" id="header_login" ng-controller="LoginCntrl">
+            <div class="login_container">
+            <div class="login_profile_icon"><img src="images/login_profile.png" alt="profile image"/></div>
+            <div class="login_profile_heading"><h1>Login Profile</h1></div>
+
+            <form class="login_form-wrap" method="post" >
+                <div ng-show="loginError" class="error-msg">
+                   <div class="error-strip">
+                       <span class="error-icon"></span>
+                       <h4 >{{LoginErrorMessage}}</h4>					
+                   </div>
+               </div>
+                <div ng-show="noInternetLogin" class="error-msg close-parent">
+                   <div class="error-strip">
+                       <span class="no-internet-icon"></span>
+                       <h4 >No Internet Connection</h4>
+                       <div class="close" ng-click="closeInternetAlert()"><span class="fa fa-times"></span></div>
+                   </div>
+               </div>
+                <div class="input-style">
+                   
+                    <input type="text"  name="user-name" class="form-control"  placeholder="Username" id="username" ng-model="colorChangeUname" ng-trim='false'  autocapitalize="off" autocorrect="off" change-color-directive />
+                </div>
+                <div class="input-style">
+                    <input type="password"  name="password"  class="form-control" placeholder="Password"  id="password"  ng-model="colorChangePassword"/>
+                </div>
+                <div class="forgot_link" ng-click="forgotPasswordButton()"><a href="#">Forgot Password/Passcode</a></div>
+                <div class="login_btn_wrap">
+                    <input type="button" name="submit" id="button_login" class="btn radius" value="Login"
+                           ng-click="login()">
+                </div>
+            </form>
+                </div>
+
+        </div>
+
+        <div class="login_inner" style="display: none;" id="header_pin" ng-controller="AppLockPinCntrl">
+            <div class="login_container keypad_wrapper">
+
+                <div class="login_profile_heading"><h1 id="pin_header"> Enter Passcode</h1></div>
+            
+                <div class="login_form-wrap">
+                    <div ng-show="PinError" class="error-msg">
+                        <div class="error-strip">
+                            
+                            <span class="error-icon"></span>
+                             <h4 ng-bind-html="PincodeErrorMessage"></h4>                  
+                        </div>
+                    </div>
+                        
+                    <div ng-show="noInternetPin" class="error-msg close-parent">
+                       <div class="error-strip">
+                           <span class="no-internet-icon"></span>
+                           <h4 >No Internet Connection</h4> 
+                           <div class="close"  ng-click="closeInternetAlert()"><span class="fa fa-times"></span></div>
+                       </div>
+                   </div>
+               </div>
+                <div class="keyboard_wrap">
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(1)">1</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(2)">2</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(3)">3</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(4)">4</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(5)">5</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(6)">6</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(7)">7</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(8)">8</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(9)">9</a>
+                    <a href="javascript:void(0);" class="keypad_key" ng-click="keyTouch(0)">0</a>
+                    <a href="javascript:void(0);" class="key_cancel"
+                       ng-click="buttonCancel()">Cancel</a>
+                    <a href="javascript:void(0);" class="key_delete"
+                       ng-click="buttonDelete()">Delete</a>
+                </div>
+                <ul class="keypress">
+                    <li class="circle" id="numKey1"></li>
+                    <li class="circle" id="numKey2"></li>
+                    <li class="circle" id="numKey3"></li>
+                    <li class="circle" id="numKey4"></li>
+                    <li class="circle" id="numKey5"></li>
+                    <li class="circle" id="numKey6"></li>
+                </ul>
+                <div class="login_form-wrap">
+                    <div class="login_btn_wrap">
+                        <input id="loginPinBtn" type="button" name="submit" class="btn btn-login radius btn-deactive" value="Login"
+                               ng-click="buttonLoginWithPin()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login_inner" style="display: none" id="header_forgot_password" ng-controller="ForgetPasswordCntrl">
+            <div class="login_container forgot_wrapper">
+
+                <div class="login_profile_icon"><img src="images/forgot.png" alt="profile image"/></div>
+                <div class="login_profile_heading"><h1>Forgot Password:</h1></div>
+                <form class="login_form-wrap">
+                    
+                    <div ng-show="loginErrorForgotPassword" class="error-msg">
+                    <div class="error-strip">
+                        <span class="error-icon"></span>
+                        <h4 >{{ForgotPasswordErrorMessage}}</h4>					
+                    </div>
+                </div>
+                    
+                         <div ng-show="noInternetForgotPassword" class="error-msg close-parent">
+                   <div class="error-strip">
+                       <span class="no-internet-icon"></span>
+                       <h4 >No Internet Connection</h4>	
+                        <div class="close" ng-click="closeInternetAlert()"><span class="fa fa-times"></span></div>
+                   </div>
+               </div>
+                    <div class="input-style">
+                        <input type="email" name="user-name" class="form-control" placeholder="Email Address" id="forgot_email" ng-model="changebtncolor" autocapitalize="off"     autocorrect="off"  change-color-directive/>
+                    </div>
+                    <div class="forgot_link" ng-click="moveToLoginProfile()"><a href="#">Return to Login</a></div>
+                    <div class="login_btn_wrap">
+                        <input type="button" name="submit" class="btn btn-deactive radius" value="Reset My Password"
+                               ng-click="resetPassword()" id="button_forgot" >
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="login_inner" style="display: none" id="header_reset_password" ng-controller="ResetPasswordCntrl">
+            <div class="login_container forgot_wrapper">
+
+                <div class="login_profile_icon"><img src="images/forgot_active.png" alt="profile image"/></div>
+                <div class="login_profile_heading"><h1 class="forgot_green">Reset Password Sent</h1></div>
+                <div class="login_profile_heading"><h2 id="message_email">Please check joe@domain.com</h2></div>
+                <div class="login_ag">
+                    <div class="btn-group action-button action-nxt icon-btn">
+                        <div class="wrap-btn">
+                            <button class="button btn-action btn-block radius" type="button"
+                                    ng-click="buttonLoginFromReset()">
+                                <div class="v-flex">
+                                    <span class="btn-txt">Login</span>
+                                    <div class="circle-flex">
+                                        <span class="s-btn-icon"><i class="fa fa-chevron-right"></i></span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="login_token" id="exitNotification" style="display: none;">
+        <div class="notification info">
+            <div class="notify-txt">
+                    <p>Please press again to exit.</p>
+<!--                    <div class="close"><span class="fa fa-times"></span></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+if(Modernizr.touch){
+    $('.keypad_key').bind('touchstart touchend', function(e) {
+          e.preventDefault();
+          $(this).toggleClass('key_hover');
+      });
+  }
+  else{
+    $('.keypad_key').hover(function(){    
+          $(this).addClass("key_hover");
+          $(this).siblings().removeClass("key_hover");
+      },function(){
+          $(this).removeClass("key_hover");
+      });
+  }
+</script>

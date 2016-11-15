@@ -1,0 +1,334 @@
+<div ng-include="'views/sidePanels/sidePanelSecurity.html'"></div>
+<div class="incident_details_fix_wrap">
+    <i class="fa fa-bars"></i>
+    <p><a href="javascript:void(0)">Incident <br>Details</a></p>
+</div>
+<div id="content" class="security_wrappper">
+    <div class="layout">
+        <div ng-controller="IncidentReportContrl12" id="incidenctCreateMainId">
+
+            <div ng-hide="hideNextBack">
+
+                <div class="security_head">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon d-icon1"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <h1 class="drop_head"><span>Incident Report:</span></h1>
+
+
+                        <div class="incident_head_select_box">
+                            <div class="option_select">
+                                <p ng-show="incidentSubmittedShowHide" class="incident_submit_text">Incident Submitted</p>
+                                <ol ng-show="breadCrumDropdownShowHide"  class="nya-bs-select" ng-model="breadCrumDropDown.data" ng-change="chagefieldsByDropDown(breadCrumDropDown.data)"  data-live-search="false">
+                                    <li nya-bs-option="dropDownFieldSetData in breadCrumDropDownFielsSet" ng-show="dropDownFieldSetData.show">
+                                        <a>{{dropDownFieldSetData.fieldset_name}}<span class="glyphicon glyphicon-ok check-mark"></span></a>
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <!-- put the form here-->
+                <div class="clr"></div>
+
+
+
+                <ul class="security_breadcrumb" >
+                    <li ng-click="moveFieldSetByBreadCrum(tabData)" ng-repeat="tabData in tabDataArray" ><a class="{{tabData.class}} {{tabData.BoldClass}}" href="javascript:void(0)">{{tabData.display_title}}</a></li>
+
+                </ul>
+                <div ng-show="networkNotAvailable" class="error-msg close-parent">
+                    <div class="error-strip">
+                        <span class="no-internet-icon"></span>
+                        <h4>No Internet Connection</h4>
+                    </div>
+                </div>
+
+
+                <div ng-show="show == true" class="alertvalidate close-parent error">
+                    <span class="error-icon"></span>
+                    <h4>{{alertMsg}}</h4>
+                    <div class="close" ng-click="closeMsg()"><span class="fa fa-times"></span></div>
+                </div>
+                <div ng-show="infoShow == true" class="alertvalidate close-parent info">
+                    <span class="info-icon"></span>
+                    <h4>{{infoMessage}}</h4>
+                    <div class="close" ng-click="infoClose()"><span class="fa fa-times"></span></div>
+                </div>
+                <div ng-show="successShow == true" class="alertvalidate close-parent success">
+                    <span class="success-icon"></span>
+                    <h4>{{successMessage}}</h4>
+                    <div class="close" ng-click="successClose()"><span class="fa fa-times"></span></div>
+                </div>
+            </div>     
+            <div report-page ng-repeat="page in pageArray" page="page">
+                
+            </div>
+            <div class="incident_report_btn_wrapper">
+
+                <div class="inbtn_fr homeAddNewBtn" ng-if="showHomeButton == true">
+                    <div class="incident_btn_wrap ">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button id="homeButton" class="button btn-action btn-block radius" type="button" ng-click="goToHome()">	
+                                    <div class="v-flex">
+                                        <div class="circle-flex">
+                                            <span class="s-btn-icon"><img src="images/icons/home_icon.png" alt="save icon" /></span>	
+                                        </div>
+                                        <span class="btn-txt">Home</span>
+                                    </div>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                    <div class="incident_btn_wrap fr">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button id="addNewButton" class="button btn-action btn-block radius" type="button" ng-click="addIncidentMainCtrl()">	
+                                    <div class="v-flex">                                               
+                                        <span class="btn-txt add-new-text">Add New</span>
+                                        <div class="circle-flex">
+                                            <span class="s-btn-icon sub-next"><i class="fa fa-chevron-right"></i></span>	
+                                        </div>
+                                    </div>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <!--******************-start incident Alert Popup******************-->
+                <div class="modal-change" ng-if="showSavePopup == true">
+                    <div class="alert_pop_wrap saveIncident">
+                        <div class="saveIncidentPopupWrap">
+                            <div class="model_wrapper">
+                                <div class="model_area">
+                                    <div class="popup-heading">									
+                                        <div class="popup-icon">											
+                                            <span class="save-icon"></span>										
+                                        </div>
+                                        <p>Save Incident?</p>
+
+                                    </div>
+                                    <div class="model_content_text">
+                                        <p>Please note, if you exit without saving the Incident Report your entered information will be lost.</p>
+                                    </div>
+
+
+
+                                    <div class="model_button m-button incident-report-save">
+                                        <div class="model_button_right">													
+                                            <div class="btn-group action-button icon-btn">
+                                                <div class="wrap-btn">	
+                                                    <button type="button" class="button btn-action r-right radius" ng-click="saveBtn(page)">
+                                                        <div class="v-flex">
+                                                            <span class="btn-txt">Save</span>	
+                                                            <div class="circle-flex">
+                                                                <span class="s-btn-icon">
+                                                                    <span class="modal-save"></span>
+                                                                </span>	
+                                                            </div>										
+                                                        </div>
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="model_button_left fl">
+                                            <div class="btn-group action-button icon-btn">	
+                                                <div class="wrap-btn">
+                                                    <button class="button btn-action radius" type="button" ng-click="savePopup(false)">	
+                                                        <span class="v-flex">
+                                                            <span class="circle-flex">
+                                                                <span class="s-btn-icon"><i class="fa fa-chevron-down"></i></span>	
+                                                            </span>
+                                                            <span class="btn-txt">Cancel</span>
+                                                        </span>											
+                                                    </button>	
+                                                </div>							  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>	
+                    </div>
+                </div>
+                <!--******************-end incident Alert Popup******************-->
+
+                <!--******************start saved incident Alert Popup******************-->
+                <div class="modal-change close-parent" ng-if="showIncidentSavedPopus">
+                    <div class="alert_pop_wrap saveIncident">
+                        <div class="saveIncidentPopupWrap">
+                        <div class="model_wrapper">
+                            <div class="model_area">
+                                <div class="popup-heading green-head">									
+                                    <div class="popup-icon">											
+                                        <span class="save-icon"></span>										
+                                    </div>
+                                    <p>Incident Saved</p>
+
+                                </div>
+                                <div class="model_content_text">
+                                    <p>Your incident has been saved. You can access this Incident Report within the Incident Reports > View Incidents section by selecting the "Draft" tab.  </p>
+                                </div>
+
+                                <div class="model_button m-button">
+                                    <div class="model_button_right" ng-show="false">													
+                                        <div class="btn-group action-button icon-btn">
+                                            <div class="wrap-btn">	
+                                                <button type="button" class="button btn-action r-right radius" ng-click="savedPopup()">
+                                                    <div class="v-flex">
+                                                        <span class="btn-txt">Close</span>	
+                                                        <div class="circle-flex">
+                                                            <span class="s-btn-icon">
+                                                                <span class="modal-save"></span>
+                                                            </span>	
+                                                        </div>										
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="model_button_left wd-f fr">
+                                        <div class="btn-group action-button icon-btn close">	
+                                            <div class="wrap-btn align-right">							
+                                                <button class="button btn-action r-right radius" type="button" ng-click="openDashboard()">	
+                                                    <span class="v-flex">																
+                                                        <span class="btn-txt">Dashboard</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-chevron-right"></i></span>	
+                                                        </span>
+                                                    </span>											
+                                                </button>	
+                                            </div>							  
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>	
+                    </div>
+                </div>
+                <!-------------------------end incident Alert Popup---------------->
+
+                <!------------------------submit comfirmation popup on offline mode---------------->
+
+                <div class="alert_pop_wrap animation" ng-if="dataSaved">
+                    <div class="model_wrapper getHeight">
+                        <div class="model_area incident-report-popup">
+                            <div class="model_head">
+                                <div class="model_head_icon"><img src="images/icons/notification-success-color.png" alt="Success" /></div>
+                                <div class="model_head_text green">Success</div>
+                            </div>
+                            <div class="model_content_text">
+                                <p> Incident Report saved in Offline Mode. It will be submitted when you go on line. Tap on OK to access the dashboard. </p>
+                            </div>
+                            <div class="model_button">
+                                <div class="model_button_right">
+                                    <div class="btn-group action-button action-nxt icon-btn">	
+                                        <div class="wrap-btn">							
+                                            <button class="button btn-green btn-block radius" ng-click="goToDashboard();" type="button">	
+                                                <span class="v-flex">
+                                                    <span class="btn-txt">OK</span>
+                                                </span>											
+                                            </button>	
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <!------------------------submit comfirmation popup on offline mode---------------->
+
+<!--                <div class="alert_pop_wrap animation" ng-if="dataSaved">
+                    <div class="model_wrapper getHeight">
+                        <div class="model_area incident-report-popup">
+                            <div class="model_head">
+                                <div class="model_head_icon"><img src="images/icons/notification-success-color.png" alt="Success" /></div>
+                                <div class="model_head_text green">Success</div>
+                            </div>
+                            <div class="model_content_text">
+                                <p>The Incident Report you submitted while operating offline has been successfully submitted. To return to the dashboard please tap on the "OK" button below.</p>
+                            </div>
+                            <div class="model_button">
+                                <div class="model_button_right">
+                                    <div class="btn-group action-button action-nxt icon-btn">	
+                                        <div class="wrap-btn">							
+                                            <button class="button btn-green btn-block radius" ng-click="goToDashboard();" type="button">	
+                                                <span class="v-flex">
+                                                    <span class="btn-txt">OK</span>
+                                                </span>											
+                                            </button>	
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                  
+                <!------- Report Submit popup ------->
+
+
+
+                <!--              Incident is not saved. Getting Error when saving Report Message-->
+                <!---->
+
+                <div class="alert_pop_wrap animation" ng-if="showIncidentCanNotSubmitted">
+                    <div class="model_wrapper getHeight">
+                        <div class="model_area incident-report-popup">
+
+                            <div class="model_head">
+                                <div class="model_head_icon"><img src="images/icons/notification-alert-color.png" alt="Error"></div>
+                                <div class="model_head_text redColor">Server Error</div>
+                            </div>
+
+                            <div class="model_content_text">
+                                <p>Looks like something is wrong. Please check again after some time. Tap on close button to access dashboard.</p>
+                            </div>
+                            <div class="model_button">
+                                <div class="model_button_right">
+                                    <div class="btn-group action-button action-nxt icon-btn">	
+                                        <div class="wrap-btn">							
+                                            <button class="button btn-green btn-block radius" ng-click="goToDashboard();" type="button">	
+                                                <span class="v-flex">
+                                                    <span class="btn-txt">Close</span>
+                                                </span>											
+                                            </button>	
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-------------------------end incident Alert Popup---------------->
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+

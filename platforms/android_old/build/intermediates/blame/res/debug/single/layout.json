@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/layout/main.xml"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/layout/drawer_list_item.xml",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/layout/drawer_list_item.xml"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/layout/file_row.xml",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/layout/file_row.xml"
+    }
+]

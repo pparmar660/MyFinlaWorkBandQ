@@ -1,0 +1,184 @@
+<div ng-include="'views/sidePanels/sidePanelCommsTask.html'"></div>
+<div class="page-inner">
+    <div id="content">
+        <div id="commsTaskHome" ng-show="true">
+            <div class="layout">
+
+                <div class="comms_heading">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon calender"></span>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="text">
+                        <h1>Hi {{username}}. Welcome to the Comms & Tasks section.</h1>
+                        <h2>Please select from the resources below:</h2>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="security-sections padModelBtn equal-height setLeft">
+                    <div class="row">
+                        <div class="col-2 pull-left" ng-show="commsTaskMenu.inmail.access_permission == 1 && (modulePermission.inMail == 'Full Access' || modulePermission.inMail == 'Read Only')">
+                            <div class="security_head">
+                                <h3>{{commsTaskMenu.inmail.name}}<span class="ot_tip" ng-click="toolTipToggleCommstaskinmail = !toolTipToggleCommstaskinmail"><i class="newtip">?</i>
+                                        <span class="tooltip" ng-show="toolTipToggleCommstaskinmail">
+                                            <p>{{CommstaskinmailToolTipMessage}}</p>
+                                            <span class="close"><i class="fa fa-times"></i></span>
+                                        </span>
+
+                                    </span></h3>
+                            </div>
+                            <div class="row">
+                                <div class="button-left">
+                                    <div class="btn-group sl-icons icon-btn" >	
+                                        <div class="wrap-btn">	<a href="#/inboxView" custom-click="viewCommsTask()">						
+                                                <button class="button btn-orange btn-block radius" type="button">	
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>		
+                                                        </span>
+                                                    </span>										
+                                                </button>	</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-right" ng-show="modulePermission.inMail == 'Full Access'">
+                                    <div class="btn-group sl-icons icon-btn">	
+                                        <div class="wrap-btn">	<a href="#/inboxView" custom-click="AddNewMail()">							
+                                                <button class="button btn-orange btn-block radius" type="button">	
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">Add New</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon">
+                                                                <img src="images/icons/general-add.png" alt="add new">
+                                                            </span>		
+                                                        </span>
+                                                    </span>										
+                                                </button></a>	
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2 pull-left" ng-show="commsTaskMenu.alertNotification.access_permission == 1 && (modulePermission.alertNotification == 'Full Access' || modulePermission.alertNotification == 'Read Only')">
+                            <div class="security_head">
+                                <h3>{{commsTaskMenu.alertNotification.name}}
+                                    <span class="ot_tip" ng-click="toolTipToggleCommstaskalertNotification = !toolTipToggleCommstaskalertNotification"><i class="newtip">?</i>
+                                        <span class="tooltip" ng-show="toolTipToggleCommstaskalertNotification">
+                                            <p> {{CommstaskalertNotificationToolTipMessage}}</p>
+                                            <span class="close"><i class="fa fa-times"></i></span>
+                                        </span>
+
+                                    </span></h3>
+
+                            </div>
+                            <div class="row">
+                                <div class="button-left">
+                                    <div class="btn-group sl-icons icon-btn">	
+                                        <div class="wrap-btn">	<a href="#/inboxView" custom-click="viewCommsTaskAiert()">						
+                                                <button class="button btn-orange btn-block radius" type="button">	
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">Alerts</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>		
+                                                        </span>
+                                                    </span>										
+                                                </button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-right">
+                                    <div class="btn-group sl-icons icon-btn">	
+                                        <div class="wrap-btn"><a href="#/inboxView" custom-click="viewCommsTaskNotification()">						
+                                                <button class="button btn-orange btn-block radius" type="button">	
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">Notifications</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>		
+                                                        </span>
+                                                    </span>										
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                        <div class="col-2 pull-left" ng-show="commsTaskMenu.comms.access_permission == 1 && (modulePermission.comms == 'Full Access' || modulePermission.comms == 'Read Only')">
+                            <div class="security_head">
+                                <h3>{{commsTaskMenu.comms.name}} <span class="ot_tip" ng-click="toolTipToggleCommsComs = !toolTipToggleCommsComs"><i class="newtip">?</i>
+                                        <span class="tooltip" ng-show="toolTipToggleCommsComs">
+                                            <p>{{CommsComsToolTipMessage}}</p>
+                                            <span class="close"><i class="fa fa-times"></i></span>
+                                        </span>
+
+                                    </span></h3>
+
+                            </div>
+                            <div class="row">
+                                <div class="button-full">
+                                    <div class="btn-group sl-icons icon-btn">	
+                                        <div class="wrap-btn">	<a href="#/inboxView" custom-click="viewCommsTaskComms()">						
+                                                <button class="button btn-orange btn-block radius" type="button">	
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>		
+                                                        </span>
+                                                    </span>										
+                                                </button>	</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 pull-left" ng-show="commsTaskMenu.taskChecklist.access_permission == 1 && (modulePermission.taskChecklists == 'Full Access' || modulePermission.taskChecklists == 'Read Only')">
+                            <div class="security_head">
+                                <h3>{{commsTaskMenu.taskChecklist.name}}<span class="ot_tip" ng-click="toolTipToggleCommsTaskchecklist = !toolTipToggleCommsTaskchecklist"><i class="newtip">?</i>
+                                        <span class="tooltip" ng-show="toolTipToggleCommsTaskchecklist">
+                                            <p>{{CommsTaskchecklistToolTipMessage}}</p>
+                                            <span class="close"><i class="fa fa-times"></i></span>
+                                        </span>
+
+                                    </span></h3>
+
+                            </div>
+                            <div class="row">
+                                <div class="button-full">
+                                    <div class="btn-group sl-icons icon-btn">	
+                                        <div class="wrap-btn">							
+                                            <button class="button btn-orange btn-block radius" type="button">
+                                                <a href="#/taskAndCheckList">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>		
+                                                        </span>
+                                                    </span>	
+                                                </a>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,328 @@
+<div id="header" ng-controller="headerCntrl">
+    <div class="layout">
+        <div class="row-fluid">
+            <span class="month-date"></span>
+            <div class="logo mobile-logo">
+                <a href="#/dashboard"><img alt="logo" src="images/logo.jpg"></a>
+            </div>
+            <span ng-click="goBack()" class="header-back-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+
+            <span id="dt23" class="month-date" value=""></span>
+
+            <!--header right-->	
+            <div class="header-right">
+
+                <!--header button-->    
+                <div class="task-nbar">
+                    <div class="mobile-only mobile-trigger" custom-click="headerMessageToggle()">
+                        <a href="javascript:void(0)"><strong>Updates </strong><span class="notify-icon down-icon"><i class="fa fa-chevron-down"></i></span></a>
+                    </div>
+
+                    <div class="mobile-toggle" ng-show="messageHeaderShow">
+                        <div class="alert_tip" id="n"  ng-click="messNotiOne('1')" ng-show="header.inMail.access_permission == 1 && (modulePermission.inMail == 'Full Access' || modulePermission.inMail == 'Read Only')">
+                            <a class="inbox_msg" id="inbox_msg1" href="javascript:void(0)" ng-click="getNotificationEmails()"><strong><span class="alert-icon"></span> In-Mail </strong><span class="notify-icon">{{inComimgMsg.email_count}}</span></a>
+                            <div class="message-notification" ng-show="openInbox">
+                                <div class="notify-strip">You have {{inComimgMsg.email_count}} new messages</div>
+                                <ul class="n-content">
+                                    <li ng-repeat="email in emails" ng-click="messagingData(email)">
+                                        <span class="just-now">{{email.time}}</span>
+                                        <div class="user-img" > <img ng-src="{{email.icon}}"  onerror="images/icon/cross.png" alt="user image"></div>
+                                        <div class="n-msg">
+                                            <span class="m-name">{{email.name}}</span>
+                                            <p>{{email.description}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert_tip" ng-click="messNotiOne('2')" ng-show="header.alertNotification.access_permission == 1 && (modulePermission.alertNotification == 'Full Access' || modulePermission.alertNotification == 'Read Only')">
+                            <a class="inbox_msg" id="inbox_msg2"  href="javascript:void(0)" ng-click="getNotificationAlert()"><strong><span class="alert-icon alert"></span> Alerts </strong><span class="notify-icon">{{inComimgMsg.alert_count}}</span></a>
+
+                            <div class="message-notification" ng-show="openAlert">
+                                <div class="notify-strip">You have {{inComimgMsg.alert_count}} Alerts</div>
+                                <ul class="n-content">
+                                    <li class="notification_pop" ng-repeat="alert in alerts" ng-click="alertData(alert)">
+                                        <span class="just-now">{{alert.time}}</span>
+                                        <div class="user-img"><img ng-src="{{alert.icon}}" alt="user image"></div>
+                                        <div class="n-msg">
+                                            <span class="m-name">{{alert.title}}</span>
+                                            <p ng-bind-html="alert.description"></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert_tip" ng-click="messNotiOne('3')" ng-show="header.taskCheckLists.access_permission == 1 && (modulePermission.taskChecklists == 'Full Access' || modulePermission.taskChecklists == 'Read Only')">
+                            <a class="inbox_msg" id="inbox_msg3" href="javascript:void(0)"  ng-click="getNotificationTask()"><strong><span class="alert-icon task"></span> Tasks </strong><span class="notify-icon">{{inComimgMsg.task_count}}</span></a>
+
+                            <div class="message-notification" ng-show="openTask">
+                                <div class="notify-strip">You have {{inComimgMsg.task_count}} Tasks</div>
+                                <ul class="n-content">
+                                    <li class="over_due" ng-repeat="task in tasks" ng-click="checkListData(task)">
+                                        <div class="user-img"><img ng-src="{{task.icon}}" alt="user image"></div>
+
+                                        <div class="n-msg">
+                                            <span class="m-name">{{task.title}}</span>
+                                            <p>{{task.content}}</p>
+                                            <p>Date Required: {{task.date}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--header button end-->
+                                                                                   
+
+                <div class="prof_log">
+                    <div class="member-profile" ng-click ="viewStaffProfile()">
+                        <a ng-style="{'background-image': (profileImg.length>0) ? 'url(' + profileImg + ')' : 'url(images/icons/general-no-profile.png)' }" class="link-profile" href="javascript:void(0)"></a>
+                            
+                    </div>
+
+                    <!--logout profile-->
+                    <div  class="logout" ng-click="logOut()">
+                    </div>
+                    <a href="javascript:void(0)" class="more-link" custom-click="toggleManualSync();" ng-if="isNetWorkAvailable">
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        <span class="manualsyscWrap" ng-show="showSyncTab">
+                            <strong custom-click="manualSyncCall()">Sync Data</strong>
+                        </span>
+                    </a>
+                    <!--logout profile end-->
+                </div>
+            </div>
+            <!--header right-->	
+        </div>
+    </div>
+    <!--Breadcrumb-->
+    <div class="breadcrumb-outer">
+        <div class="layout">
+            <ul class="breadcrumb breadcrumb-list">
+                <li id="mainDashboaPage"><a href="{{dashboardLink}}">Dashboard</a></li>	
+                <li ng-if="menuTitle" ng-click="breadcrumbMenu(menuTitle)"><span class="fa fa-angle-right"></span><a href="javascript:void(0)">{{menuTitle}}</a></li>
+                <li ng-if="subMenuTitle" ng-click="breadcrumbMenu(subMenuTitle)"><span class="fa fa-angle-right"></span><a href="javascript:void(0)">{{subMenuTitle}}</a></li> 
+                <li ng-if="subMenuTitle1"><span class="fa fa-angle-right"></span><a href="javascript:void(0)">{{subMenuTitle1}}</a></li> 
+
+            </ul>
+        </div>
+    </div>
+    <div id="logout_timer" class="alert_pop_wrap saveIncident logOutWrap" style="display: none;">
+        <div class="saveIncidentPopupWrap">
+            <div class="model_wrapper">
+                <div class="model_area">
+                    <div class="model_alert">
+                        <div class="model_alert_icon">
+                            <div id="timerCircle" class="c100 med">
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                                <div class="alert_icon"><img src="images/icons/notification-alert-popup.png" alt="profile image"></div>
+                            </div>
+                        </div>
+                        <div class="model_alert_text">
+                            <h3>You will be logged out in: </h3>
+                            <h4><span id="timerCount"> </span>&nbsp;seconds</h4>
+                        </div>
+                    </div>
+                    <div class="model_button">
+                        <div class="model_button_left">
+                            <div class="btn-group action-button icon-btn">
+                                <div class="wrap-btn">
+                                    <button class="button btn-action 
+                                            btn-block radius" type="button" onclick="logOut();">
+                                        <span class="v-flex">
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon 
+                                                      radius"><i class="fa fa-chevron-left"></i></span>
+                                            </span>
+                                            <span class="btn-txt">Logout</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="model_button_right">
+                            <div class="btn-group action-button action-nxt 
+                                 icon-btn">
+                                <div class="wrap-btn">
+                                    <button class="button btn-green 
+                                            btn-block radius" type="button" onclick="resetCheckUserInteractionTimer(1)">
+                                        <span class="v-flex">
+                                            <span class="btn-txt">Close</span>
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon 
+                                                      radius"><i class="fa fa-chevron-right"></i></span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="all-notificatin-wrap">
+        <div ng-repeat="noti in localNotification track by $index">
+            <div class="notification close-parent {{noti.class}}">			
+                <span class="{{noti.iconClass}}"></span>
+                <div class="notify-txt">
+                    <h4>{{noti.title}}</h4>
+                    <p>{{noti.message}}</p>
+                    <div class="close" ng-click="closeNotification($index);"><span class="fa fa-times"></span></div>
+                </div>
+            </div>
+        </div>
+        <!--      <div class="notification close-parent info">
+                  <span ng-class="info-icon"></span>
+                  <div class="notify-txt">
+                      <h4>Info notification</h4>
+                      <p>Please select from below sections.</p>
+                      <div class="close"><span class="fa fa-times"></span></div>
+                  </div>
+              </div>-->
+        <!--      <div class="notification close-parent warning">
+                  <span class="warning-icon"></span>
+                  <div class="notify-txt">
+                      <h4>Info notification</h4>
+                      <p>Please select from below sections.</p>
+                      <div class="close"><span class="fa fa-times"></span></div>
+                  </div>
+              </div>
+              <div class="notification close-parent error">
+                  <span class="error-icon"></span>
+                  <div class="notify-txt">
+                      <h4>Info notification</h4>
+                      <p>Please select from below sections.</p>
+                      <div class="close"><span class="fa fa-times"></span></div>
+                  </div>
+              </div>-->
+    </div>
+
+    <div class="alert_pop_wrap animation" ng-show="isAlertPopUp">
+        <div class="model_wrapper getHeight" ng-repeat="alert in localAlerts track by $index">
+            <div class="model_area">
+                <div class="model_head">
+                    <div class="model_head_icon"><img src="images/icons/side-nav-comms-alerts-on.png" alt="alert" /></div>
+                    <div class="model_head_text">Alert</div>
+                </div>
+                <div class="model_content_text">
+                    <p>{{alert.alert}}</p>
+                </div>
+                <div class="model_button">
+
+
+                    <div class="model_button_right">
+                        <div class="btn-group action-button action-nxt icon-btn" ng-if="alert.alert_type != 0">
+                            <div class="wrap-btn">							
+                                <button class="button btn-green btn-block radius" type="button" ng-click="viewAlertDetail($index, alert)">
+                                    <span class="v-flex">
+                                        <span class="btn-txt">View</span>	
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-right"></i></span>	
+                                        </span>											
+                                    </span>
+                                </button>							                  
+                            </div>						
+                        </div>
+                    </div>
+
+
+                    <div class="model_button_left">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button class="button btn-action btn-block radius" ng-click="alertPopUpClose($index);" type="button">	
+                                    <span class="v-flex">
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+                                        </span>
+                                        <span class="btn-txt">Cancel</span>
+                                    </span>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    
+            Log out message-->
+
+    <div class="alert_pop_wrap animation" ng-if="offlineLogOutMessage">
+        <div class="model_wrapper getHeight" >
+            <div class="model_area">
+                <div class="model_head">
+                    <div class="model_head_icon"><img src="images/icons/side-nav-comms-alerts-on.png" alt="alert" /></div>
+                    <div class="model_head_text">Alert</div>
+                </div>
+                <div class="model_content_text">
+                    <p>You can not logout in offline mode. </p>
+                </div>
+                <div class="model_button">
+
+
+                    <div class="model_button_right">
+                        <div class="btn-group action-button action-nxt icon-btn" >
+                            <div class="wrap-btn">							
+                                <button class="button btn-green btn-block radius" type="button" ng-click="hideLogoutMessage()">
+                                    <span class="v-flex">
+                                        <span class="btn-txt">OK</span>	
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-right"></i></span>	
+                                        </span>											
+                                    </span>
+                                </button>							                  
+                            </div>						
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+          
+
+<!--    
+    showIncidentSubmitPopup-->
+
+    
+
+
+</div>
+    <div class="alert_pop_wrap animation" ng-if="showIncidentSubmitPopup">
+        <div class="model_wrapper getHeight">
+            <div class="model_area incident-report-popup">
+                <div class="model_head">
+                    <div class="model_head_icon"><img src="images/icons/notification-success-color.png" alt="Success" /></div>
+                    <div class="model_head_text green">Success</div>
+                </div>
+                <div class="model_content_text">
+                    <p>The Incident Report you saved while operating offline has been successfully submitted.</p>
+                </div>
+                <div class="model_button">
+                    <div class="model_button_right">
+                        <div class="btn-group action-button action-nxt icon-btn">	
+                            <div class="wrap-btn">							
+                                <button class="button btn-green btn-block radius" ng-click="closeSubmitPopup()" type="button">	
+                                    <span class="v-flex">
+                                        <span class="btn-txt">Close</span>
+                                    </span>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.getElementById("dt23").innerHTML = moment().format('dddd Do MMM YYYY');
+</script>
+

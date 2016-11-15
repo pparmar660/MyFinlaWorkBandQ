@@ -1,0 +1,443 @@
+<div id="venuedetail" ng-controller="venueDeatil">
+    <div class="employee_wrap">
+        <div class="layout">
+            <!-- employee heading start -->
+            <div class="employee_header staff_header">
+                <div class="icon">
+                    <div class="center-icon on-icons">
+                        <div class="circle-icon">
+                            <div class="v-m">
+                                <span class="d-icon d-icon2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text">
+                    <h1><strong>Venue:</strong> {{venueprofile[0].venue_name}} <span>({{venueprofile[0].venue_site_number}}/{{venueprofile[0].venue_code}})</span></h1>
+                    <div class="employee_head_btn" ng-show="employment.venuePermission.access_permission == 1 && moduleAccessInVenueDetail.venuesManager == 'Full Access'">
+                        <div class="btn-group sl-icons icon-btn">
+                            <div class="wrap-btn">							
+                                <button class="button btn-orange btn-block radius" type="button">	
+                                    <span class="v-flex">								  
+                                        <span class="btn-txt">Edit</span>
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon"><i class="fa fa-edit"></i></span>			
+                                        </span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clr"></div>
+            </div>
+
+            <!-- employee heading end -->
+            <div class="employee-sections">
+                <p>Last Updated: {{venueprofile[0].last_updated}}</p>
+                <!-- employee details start -->
+                <div class="employee_dteails_wrap">
+                    <div class="employee_img">
+                        <div id="venueDetailMap" alt="map" style="height: 200px;width:100%;"></div>
+                    </div>
+                    <div class="employee_details">
+                        <div class="parentHorizontalTab">
+                            <ul class="tabs hor_1">
+                                <li id="venueDetailId" class="resp-tab-active" ng-click="venueDetails()">Venue Details</li>
+                                <li id="imageMediaVenueId" ng-click="imageMedia()">Images &amp; Media</li>
+                            </ul>
+                            <div class="tab_container hor_1">
+                                <div class="tab_content">
+                                    <div class="row" ng-show="venueDetailTab">
+                                        <div class="left">
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Title:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5><span>{{venueprofile[0].venue_name}}</span>
+                                                        <span style="color:red" ng-show ="title"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>B&Q Site Code</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].venue_code}}
+                                                        <span style="color:red" ng-show ="venueCode"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>VSG Site Code:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5><span>{{venueprofile[0].venue_site_number}}</span>
+                                                        <span style="color:red" ng-show ="venueSite"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Category:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].category_venuectg}}
+                                                        <span style="color:red" ng-show ="catVenue"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Sector:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].sector_title}}
+                                                        <span style="color:red" ng-show ="sectorTitle"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Telephone:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5><span>{{venueprofile[0].telephone}}</span>
+                                                        <span style="color:red" ng-show ="telephoneNo"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <!--                                 <div class="data_row">
+                                                                                <div class="data_col">
+                                                                                   <h4>Email:</h4>
+                                                                                </div>
+                                                                                <div class="data_col2">
+                                                                                   <h5><span>{{venueprofile[0].venue_email}}</span>
+                                                                                   <span style="color:red" ng-show ="venueEmailuser"> Not Supplied</span></h5>
+                                                                                </div>
+                                                                             </div>-->
+                                        </div>
+                                        <div class="right">
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Address Line 1:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].address}}
+                                                        <span style="color:red" ng-show ="Adrress"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Address Line 2:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].address2}}
+                                                        <span style="color:red" ng-show ="Adrress2"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Address Line 3:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5><span>{{venueprofile[0].address3}}</span></h5>
+                                                    <span style="color:red" ng-show ="Address3"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Postcode:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5><span>{{venueprofile[0].postcode}}</span>
+                                                        <span style="color:red" ng-show ="postCode"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>County:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5><span>{{venueprofile[0].county}}</span>
+                                                        <span style="color:red" ng-show ="countyNo"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Region:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].name_rgs}}
+                                                        <span style="color:red" ng-show ="nameregion"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>City:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].city}}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Zone:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].zone_vns}}
+                                                        <span style="color:red" ng-show ="zoneVenue"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Country:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5>{{venueprofile[0].name_cnt}}
+                                                        <span style="color:red" ng-show ="countryName"> Not Supplied</span></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="employee_img" ng-show="Venueimagemedias" ng-repeat="imgs in imageAndMedia">
+                                        <img ng-src="{{imgs.imageurl}}" alt="profile">
+                                     </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- employee details ends -->
+                    </div>
+                    <!-- employee section security start -->
+                    <!--            <div class="employee_dashboard" ng-show="menu.security.access_permission == 1">
+                                    <div class="welcome-column">
+                                        <a href="#security">
+                                        <div class="col-box-left">
+                                            <div class="v-flex"><a href="#/security">
+                                                <div class="center">
+                                                    <div class="circle-icon">
+                                                        <div class="v-m">
+                                                            <span class="Aligner"><span class="security-icon1"></span></span>
+                                                        </div>
+                                                    </div>
+                                                    <p>Security</p>
+                                                </div></a>
+                                            </div>
+                                        </div>
+                                           </a>
+                                        <div class="user-column">
+                                            <ul>
+                                                <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInVenueDetail.incidentReport == 'Full Access' || moduleAccessInVenueDetail.incidentReport == 'Read Only')">
+                                                    <div class="user-dashboard">
+                                                        <div class="center-icon" custom-click="incidentViewInVenue('venue', venueId);">
+                                                            <span class="item-circle">{{count[0].incident[0].incident}}</span>
+                                                            <div class="circle-icon">
+                                                                <span class="d-icon d-icon1"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3>Incident Reports</h3>
+                                                        <div class="btn-group sl-icons icon-btn">
+                                                            <div class="wrap-btn">							
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="incidentAddInVenue();" ng-hide="moduleAccessInVenueDetail.incidentReport == 'Read Only'">	
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">Add New</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                                        </span>
+                                                                    </span>										
+                                                                </button>
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="incidentViewInVenue('venue', venueId);" ng-show="moduleAccessInVenueDetail.incidentReport == 'Read Only'">
+                                                                <a>
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">View</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                                        </span>
+                                                                    </span>
+                                                                </a>
+                                                            </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInVenueDetail.offender == 'Full Access' || moduleAccessInVenueDetail.offender == 'Read Only') && moduleAccessInVenueDetail.incidentReport == 'Full Access'">
+                                                    <div class="user-dashboard">
+                                                        <div class="center-icon" custom-click="showOffenderInVenue('list','venue', venueId);">
+                                                            <span class="item-circle">{{count[0].offender[0].offender}}</span>
+                                                            <div class="circle-icon">
+                                                                <span class="d-icon d-icon2"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3>Offenders &amp; OCG's</h3>
+                                                        <div class="btn-group sl-icons icon-btn">
+                                                            <div class="wrap-btn">							
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="showOffenderInVenue('add');">	
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">Add New</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                                        </span>
+                                                                    </span>										
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInVenueDetail.vehicle == 'Full Access' || moduleAccessInVenueDetail.vehicle == 'Read Only') && moduleAccessInVenueDetail.incidentReport == 'Full Access'">
+                                                    <div class="user-dashboard">
+                                                        <div class="center-icon" custom-click="showVehicleInVenue('list','venue', venueId);">
+                                                            <span class="item-circle">{{count[0].vehicle[0].vehicle}}</span>
+                                                            <div class="circle-icon">
+                                                                <span class="d-icon d-icon3"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3>Vehicles</h3>
+                                                        <div class="btn-group sl-icons icon-btn">
+                                                            <div class="wrap-btn">							
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="showVehicleInVenue('add');">	
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">Add New</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                                        </span>
+                                                                    </span>										
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li  ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInVenueDetail.victimWitness == 'Full Access' || moduleAccessInVenueDetail.victimWitness == 'Read Only') && moduleAccessInVenueDetail.incidentReport == 'Full Access'">
+                                                    <div class="user-dashboard">
+                                                        <div class="center-icon" custom-click="showVictimWitnessInVenue('list','venue', venueId);">
+                                                            <span class="item-circle">{{count[0].victims_and_witness[0].witness}}</span>
+                                                            <div class="circle-icon">
+                                                                <span class="d-icon d-icon4"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3>Victims &amp; Witnesses</h3>
+                                                        <div class="btn-group sl-icons icon-btn">
+                                                            <div class="wrap-btn">							
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="showVictimWitness('add');">	
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">Add New</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                                        </span>
+                                                                    </span>										
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="employee_dashboard second_board" ng-show="menu.commsTask.access_permission == 1">
+                                    <div class="welcome-column">
+                                         <a href="#/commsTasks">
+                                        <div class="col-box-left">
+                                            <div class="v-flex"><a href="#/commsTasks">
+                                                <div class="center">
+                                                    <div class="center-icon">
+                                                        <div class="circle-icon">
+                                                            <div class="v-m">
+                                                                <span class="Aligner"><span class="task-icon"></span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p>Comms &amp; Tasks</p>
+                                                </div></a>
+                                            </div>
+                                        </div>
+                                             </a>
+                                        <div class="user-column">
+                                            <ul>
+                                               
+                                                <li ng-show="employment.alertNotification.access_permission == 1 && (moduleAccessInVenueDetail.alertNotification == 'Full Access' || moduleAccessInVenueDetail.alertNotification == 'Read Only')">
+                                                    <div class="user-dashboard">
+                                                        <div class="center-icon">
+                                                            <span class="item-circle">{{count[0].tasks_alerts.alerts_count}}</span>
+                    
+                                                            <div class="circle-icon">
+                                                                <span class="d-icon d-icon6"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3>Alerts &amp; Notifications</h3>
+                                                        <div class="btn-group sl-icons icon-btn">
+                                                            <div class="wrap-btn">							
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="displayAlertList();">	
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">View</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                                        </span>
+                                                                    </span>										
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li ng-show="employment.taskCheckLists.access_permission == 1 && (moduleAccessInVenueDetail.taskChecklists == 'Full Access' || moduleAccessInVenueDetail.taskChecklists == 'Read Only')">
+                                                    <div class="user-dashboard">
+                                                        <div class="center-icon">
+                                                            <span class="item-circle">{{count[0].tasks_alerts.task_count}}</span>
+                                                            <div class="circle-icon">
+                                                                <span class="d-icon d-icon7"></span>
+                                                            </div>
+                                                        </div>
+                                                        <h3>Task &amp; Checklist</h3>
+                                                        <div class="btn-group sl-icons icon-btn">
+                                                            <div class="wrap-btn">							
+                                                                <button type="button" class="button btn-orange btn-block radius" custom-click="displayTaskList();">	
+                                                                    <span class="v-flex">								  
+                                                                        <span class="btn-txt">View</span>
+                                                                        <span class="circle-flex">
+                                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                                        </span>
+                                                                    </span>										
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                    
+                                </div>-->
+                    <!-- employement section button start -->
+                    <div class="incident_report_btn_wrapper">
+                        <div class="incident_btn_wrap last_btn" style="display: none">
+                            <div class="btn-group action-button action-nxt icon-btn">
+                                <div class="wrap-btn" ng-show="savebutton">
+                                    <button class="button btn-action btn-green btn-block radius" type="button">
+                                        <div class="v-flex">
+                                            <span class="btn-txt">Save</span>	
+                                            <div class="circle-flex">
+                                                <span class="s-btn-icon"><img src="images/icons/save_icon.png" alt="save icon"></span>	
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="incident_btn_wrap" ng-click="gotoVenue()">
+                            <div class="btn-group action-button icon-btn">
+                                <div class="wrap-btn" ng-click="gotoVenue()">
+                                    <button class="button btn-action btn-block radius" type="button">
+                                        <div class="v-flex">
+                                            <div class="circle-flex">
+                                                <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>	
+                                            </div>
+                                            <span class="btn-txt" >Back</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- employee section button start -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

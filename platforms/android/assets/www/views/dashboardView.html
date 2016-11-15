@@ -1,0 +1,563 @@
+<div id="mainDashboardSection"  style="display: block;">
+    <div ng-include="'views/sidePanels/sidePanelDashBord.html'"></div>
+    <div class="employee_wrap" id="content">
+
+        <div class="layout" >
+
+            <!-- employee heading start -->
+            <div class="global_Load_head dashboard_head">
+                <div class="text_wrap">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon d-icon2"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text_head">
+                        <h1>Welcome {{username}}.</h1>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="employee_dashboard" ng-show="menu.security.access_permission == 1">
+                <div class="welcome-column">
+                    <a href="#/security">
+                        <div class="col-box-left">
+                            <div class="v-flex">
+                                <div class="center">
+                                    <div class="circle-icon">
+                                        <div class="v-m">
+                                            <span class="Aligner"><span class="security-icon1"></span></span>
+                                        </div>
+                                    </div>
+
+                                    <p>{{menu.security.name}}</p>
+                                </div>  
+                            </div>
+
+                        </div>
+                    </a>
+                    <div class="user-column">
+                        <ul>
+                            <li ng-show="dashboardMenu.incidentReport.access_permission == 1 && (modulePermission.incidentReport == 'Full Access' || modulePermission.incidentReport == 'Read Only')">
+                                <div class="user-dashboard">
+
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.incidentReport.module_link_count > 0">{{dashboardMenu.incidentReport.module_link_count}}</span>
+                                        <a href="#incidentView">
+                                            <div class="circle-icon">
+                                                <span class="d-icon d-icon1"></span>
+                                            </div></a>
+                                    </div>
+                                    <h3>{{dashboardMenu.incidentReport.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn">
+                                            <button class="button btn-orange btn-block radius" type="button" ng-hide="modulePermission.incidentReport == 'Read Only'" custom-click="handleDashBoardMenu('incident');">
+                                                <a href="javascript:void(0)" custom-click="addIncidentMainCtrl()"> <span class="v-flex"><span class="btn-txt">Add New</span> 
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon">
+                                                                <img alt="" src= "images/icons/general-add.png">
+                                                            </span>
+                                                        </span>
+                                                </span></a>
+                                            </button>
+                                            <button type="button" class="button btn-orange btn-block radius" ng-show="modulePermission.incidentReport == 'Read Only'">
+                                                <a href="#incidentView">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.offender.access_permission == 1 && (modulePermission.offender == 'Full Access' || modulePermission.offender == 'Read Only') && modulePermission.incidentReport == 'Full Access'">
+                                <div class="user-dashboard">
+                                    <div class="center-icon" custom-click="offenderListView()">
+                                        <a href="#offenderView">
+                                            <span class="item-circle" ng-if="dashboardMenu.offender.module_link_count > 0">{{dashboardMenu.offender.module_link_count}}</span>
+                                            <div class="circle-icon">
+                                                <span class="d-icon d-icon2"></span>
+                                            </div></a>	
+                                    </div>
+
+                                    <h3>{{dashboardMenu.offender.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+
+                                        <div class="wrap-btn" custom-click="addNewOffender();" ng-hide="modulePermission.offender == 'Read Only'">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#offenderView">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">Add New</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </button>
+                                        </div>	
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.vehicle.access_permission == 1 && (modulePermission.vehicle == 'Full Access' || modulePermission.vehicle == 'Read Only') && modulePermission.incidentReport == 'Full Access'">
+                                <div class="user-dashboard">
+                                    <div class="center-icon" custom-click="viewVehicle();">
+                                        <a href="#vehicle">
+                                            <span class="item-circle" ng-if="dashboardMenu.vehicle.module_link_count > 0">{{dashboardMenu.vehicle.module_link_count}}</span>
+                                            <div class="circle-icon">
+                                                <span class="d-icon d-icon3"></span>
+                                            </div>	
+                                        </a>
+                                    </div>
+
+                                    <h3>{{dashboardMenu.vehicle.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="addNewVehicle();" ng-hide="modulePermission.vehicle == 'Read Only'">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#vehicle">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">Add New</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                        </span>
+                                                    </span>	
+                                                </a>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.victimWitness.access_permission == 1 && (modulePermission.victimWitness == 'Full Access' || modulePermission.victimWitness == 'Read Only') && modulePermission.incidentReport == 'Full Access'">
+                                <div class="user-dashboard">
+                                    <div class="center-icon" custom-click="viewVictimWitness();">
+                                        <a href="#securityVictimwitness">
+                                            <span class="item-circle" ng-if="dashboardMenu.victimWitness.module_link_count > 0">{{dashboardMenu.victimWitness.module_link_count}}</span>
+                                            <div class="circle-icon">
+                                                <span class="d-icon d-icon4"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <h3>{{dashboardMenu.victimWitness.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="addNewVictimWitness();" ng-hide="modulePermission.victimWitness == 'Read Only'">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#securityVictimwitness">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">Add New</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                        </span>
+                                                    </span>	
+                                                </a>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="employee_dashboard second_board" ng-show="menu.commsTask.access_permission == 1">
+                <div class="welcome-column">
+                    <a href="#commsTasks">
+                        <div class="col-box-left">
+
+                            <div class="v-flex">
+                                <div class="center">
+                                    <div class="center-icon">
+                                        <div class="circle-icon">
+                                            <div class="v-m">
+                                                <span class="Aligner"><span class="task-icon"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <p>{{menu.commsTask.name}}</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                    <div class="user-column">
+                        <ul>
+                            <li ng-show="dashboardMenu.inMail.access_permission == 1 && (modulePermission.inMail == 'Full Access' || modulePermission.inMail == 'Read Only')">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.inMail.module_link_count > 0">{{dashboardMenu.inMail.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon d-icon5"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>{{dashboardMenu.inMail.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="viewCommsTask();">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#inboxView">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.alertNotification.access_permission == 1 && (modulePermission.alertNotification == 'Full Access' || modulePermission.alertNotification == 'Read Only')">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.alertNotification.module_link_count > 0">{{dashboardMenu.alertNotification.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon d-icon6"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>{{dashboardMenu.alertNotification.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="viewCommsTaskNotification();">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#inboxView">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                        </span>
+                                                    </span>	
+                                                </a>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.comms.access_permission == 1 && (modulePermission.comms == 'Full Access' || modulePermission.comms == 'Read Only')">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.comms.module_link_count > 0">{{dashboardMenu.comms.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon d-icon6"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>{{dashboardMenu.comms.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="viewCommsTaskComms();">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#inboxView">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                        </span>
+                                                    </span>	
+                                                </a>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.taskCheckLists.access_permission == 1 && (modulePermission.taskChecklists == 'Full Access' || modulePermission.taskChecklists == 'Read Only')">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.taskCheckLists.module_link_count > 0">{{dashboardMenu.taskCheckLists.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon d-icon7"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>{{dashboardMenu.taskCheckLists.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="viewCommsTaskComms()">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <a href="#taskAndCheckList">
+                                                    <span class="v-flex">								  
+                                                        <span class="btn-txt">View</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="employee_dashboard second_board" ng-show="menu.employment.access_permission == 1">
+                <div class="welcome-column">
+
+                    <a href="dashboard.html#/employmentHome">
+                        <div class="col-box-left">
+
+
+                            <div class="v-flex">
+                                <div class="center">
+                                    <div class="center-icon">
+                                        <div class="circle-icon">
+                                            <div class="v-m">
+                                                <span class="Aligner"><span class="employment-icon1"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <p>{{menu.employment.name}}</p>
+                                </div>
+                            </div>
+
+                        </div> </a>
+
+                    <div class="user-column">
+                        <ul>
+                            <li ng-show="dashboardMenu.profile.access_permission == 1">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.profile.module_link_count > 0">{{dashboardMenu.profile.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon d-icon2"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>{{dashboardMenu.profile.name}}</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="employmentStaffProfile();">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.staff.access_permission == 1">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.staff.module_link_count > 0">{{dashboardMenu.staff.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon  icon icon6"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>Staff Directory</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="employmentStaffDirectory();">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li ng-show="dashboardMenu.venuesManager.access_permission == 1">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.venuesManager.module_link_count > 0">{{dashboardMenu.venuesManager.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon  icon icon19"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>Venue Directory</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn" custom-click="employmentVenueDirectory();">							
+                                            <button type="button" class="button btn-orange btn-block radius">
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="employee_dashboard second_board" ng-show="menu.resources.access_permission == 1">
+                <div class="welcome-column">
+                    <div class="col-box-left">
+                          <a href="#/resource">
+                        <div class="v-flex">
+                            <div class="center">
+                                <div class="center-icon">
+                                    <div class="circle-icon">
+                                        <div class="v-m">
+                                            <span class="Aligner"><span class="resource-icon1"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>Resources</p>
+                            </div>
+                        </div>
+                          </a>
+                    </div>
+
+                    <div class="user-column">
+                        <ul>
+                            <li ng-show="dashboardMenu.documentsLibrary.access_permission == 1">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.venuesManager.module_link_count > 0">{{dashboardMenu.venuesManager.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="d-icon d-icon10"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>Dcouments</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn">							
+                                            <button type="button" class="button btn-orange btn-block radius"  ng-click="callResourceModule('document')">	
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>										
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <li ng-show="dashboardMenu.linksManager.access_permission == 1" >
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle"  ng-if="dashboardMenu.linksManager.module_link_count > 0">{{dashboardMenu.linksManager.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="icon icon12"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>Useful Links</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn">							
+                                            <button type="button" class="button btn-orange btn-block radius" ng-click="callResourceModule('link')">	
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>										
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.videoGalleryManager.access_permission == 1"  >
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.videoGalleryManager.module_link_count > 0">{{dashboardMenu.videoGalleryManager.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="icon icon13"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>Videos</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn">							
+                                            <button type="button" class="button btn-orange btn-block radius" ng-click="callResourceModule('video')">	
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>										
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.faqManager.access_permission == 1" >
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.faqManager.module_link_count > 0">{{dashboardMenu.faqManager.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="icon icon14"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>FAQs</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn">							
+                                            <button type="button" class="button btn-orange btn-block radius" ng-click="callResourceModule('faq')">	
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>										
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                            <li ng-show="dashboardMenu.newsManager.access_permission == 1">
+                                <div class="user-dashboard">
+                                    <div class="center-icon">
+                                        <span class="item-circle" ng-if="dashboardMenu.newsManager.module_link_count > 0">{{dashboardMenu.newsManager.module_link_count}}</span>
+                                        <div class="circle-icon">
+                                            <span class="icon icon205"></span>
+                                        </div>	
+                                    </div>
+
+                                    <h3>News</h3>
+                                    <div class="btn-group sl-icons icon-btn">
+                                        <div class="wrap-btn">							
+                                            <button type="button" class="button btn-orange btn-block radius"  ng-click="callResourceModule('news')">	
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>										
+                                            </button>
+                                        </div>							  
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

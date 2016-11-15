@@ -1,0 +1,8 @@
+.task-nbar a{
+	border-radius:5px 25px 25px 5px;
+}
+
+.notify-icon,
+.link-profile img{
+	border-radius:100%;
+}

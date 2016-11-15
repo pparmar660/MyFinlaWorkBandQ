@@ -1,0 +1,396 @@
+<div class="global-v-o-w offenders" ng-show="offenderListShowStatus" id="202" ng-controller="OffendersCntrl">
+    <div class="staff_directory">
+        <div class="staff_heading_row">
+            <div class="heading_left">
+                <div class="icon">
+                    <div class="center-icon on-icons">
+                        <div class="circle-icon">
+                            <div class="v-m">
+                                <span class="d-icon d-icon2"></span>
+                            </div>
+                        </div>	
+                    </div>
+                </div>
+                <div class="text"><h1 class="orange-text">Offenders &amp; OCG's</h1></div>
+            </div>
+            <div class="heading_right">
+                <div class="left_text_box">
+                    <div class="srch-box">
+                        <input type="text" placeholder="Search Name/Incident Ref" class="search-btn" ng-model="searchText">
+                        <input type="button" value="submit" class="search-icon" ng-model="searchText" ng-click="searchBtnAction(searchText)">
+                    </div>
+                </div>
+                <div class="right_btn">
+                    <div class="btn-group sl-icons icon-btn">
+                        <div class="wrap-btn">							
+                            <button type="button" class="button btn-orange btn-block radius" ng-click="addNewOffenders($event)">	
+                                <span class="v-flex">								  
+                                    <span class="btn-txt">Add New</span>
+                                    <span class="circle-flex">
+                                        <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                    </span>
+                                </span>										
+                            </button>
+                        </div>							  
+                    </div>
+                </div>
+            </div>								
+        </div>
+        <ul class="staff_tabs offenderTab">
+            <li ng-repeat="cat in offenderCount track by $index">
+                <span>{{cat.count}}</span> <a href="javascript:void(0)" ng-click="allOffender(cat, $index)" ng-class="{active : activeMenu === cat.title_uct}">{{cat.title_uct}}</a>
+            </li>
+        </ul>
+        <div class="filterBtnWrappr" ng-click="showFilter = !showFilter">
+            <a href="javascript:void(0);" class="filterButton">Location Filter <i class="fa fa-filter"></i></a>
+        </div>
+        <div class="staff_select_wrapper" ng-show="showFilter">
+            <div class="col_select" id="ddS111" onclick="setDropDownDirection('ddS111');">
+                <div class="orange_select selectbtns" ng-class="{fadeBtnClr: countryDisable === true}">
+                    <ol class="nya-bs-select" ng-model="selectedCountry" actions-box="true" multiple title="All Countries" data-live-search="false" data-selected-text-format="count" ng-change="getCountry(selectedCountry)" disabled="countryDisable">      
+                        <li nya-bs-option="opt1 in Countries track by $index">
+                            <a>
+                                <span class="label" >{{ opt1.name_cnt}}</span>
+                                <span class="fa fa-check check-mark"></span>
+                            </a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col_select">
+                <div class="orange_select selectbtns" id="ddS112" onclick="setDropDownDirection('ddS112');" ng-class="{fadeBtnClr: regionDisable === true}">
+                    <ol class="nya-bs-select" ng-model="selectedRegion" actions-box="true" multiple title="All Regions" data-live-search="false" data-selected-text-format="count" ng-change="regionChange(selectedRegion)" disabled="regionDisable">      
+                        <li nya-bs-option="opt2 in Regions track by $index">
+                            <a>
+                                <span class="label" >{{ opt2.name_rgs}}</span>
+                                <span class="fa fa-check check-mark"></span>
+                            </a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col_select">
+                <div class="orange_select selectbtns" id="ddS113" onclick="setDropDownDirection('ddS113');" ng-class="{fadeBtnClr: zoneDisable === true}">
+                    <ol class="nya-bs-select" ng-model="selectedZone" actions-box="true" multiple title="All Zones" data-live-search="false" data-selected-text-format="count" ng-change="zoneChange(selectedZone)" disabled="zoneDisable">      
+                        <li nya-bs-option="opt3 in Zones track by $index">
+                            <a>
+
+                                <span class="label" >{{ opt3.zone_name}}</span>
+                                <span class="fa fa-check check-mark"></span>
+                            </a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col_select">
+                <div class="orange_select selectbtns" id="ddS114" onclick="setDropDownDirection('ddS114');" ng-class="{fadeBtnClr: disable === true}">
+                    <ol class="nya-bs-select" ng-model="selectedVenue" actions-box="true" multiple title="All Venues" data-live-search="false" data-selected-text-format="count" ng-change="getVenue(selectedVenue)" disabled="disable">      
+                        <li nya-bs-option="opt4 in Venues track by $index">
+                            <a>
+
+                                <span class="label" >{{ opt4.venue_name}}</span>
+                                <span class="fa fa-check check-mark"></span>
+                            </a></li>
+                    </ol>
+                </div>
+            </div>
+            <span class="filter-icon slide-t"><span class="fa fa-cog"></span></span>
+        </div>
+
+        <div class="o-filter-o toggle-d">
+            <div class="offenders-filter">
+                <div class="offenders-list">
+                    <ul>
+                        <li>
+                            <label>By Severity <span class="item-count" ng-hide="true">432</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="Severity nya-bs-select" totalcount="{{severityLen}}" ng-model="Offender_List_Advance_filter.severity" data-selected-text-format="count" multiple data-live-search="true" ng-change="severityChange(Offender_List_Advance_filter.severity)">      
+
+                                        <li nya-bs-option="report in severity">
+                                            <a>
+                                                <span class="label" >{{report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <label>Category<span class="item-count" ng-hide="true">236</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{categoryLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.category" multiple data-live-search="true" ng-change="categoryChange(Offender_List_Advance_filter.category)">      
+                                        <li nya-bs-option="report in category">
+                                            <a>
+                                                <span class="label" >{{report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <label>By Ethnicity <span class="item-count" ng-hide="true">19</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{ethnicityLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.ethnicity" multiple data-live-search="true" ng-change="ethnicityChange(Offender_List_Advance_filter.ethnicity)">      
+                                        <li nya-bs-option="report in ethnicity">
+                                            <a>
+                                                <span class="label" >{{report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                        </li>	
+
+                        <li>
+                            <label>By Gender <span class="item-count" ng-hide="true">22</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{genderLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.gender" multiple data-live-search="true" ng-change="genderChange(Offender_List_Advance_filter.gender)">      
+                                        <li nya-bs-option="report in gender">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <label>By Height <span class="item-count" ng-hide="true">200</span></label>
+
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{heightLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.height" multiple data-live-search="true" ng-change="heightChange(Offender_List_Advance_filter.height)">      
+                                        <li nya-bs-option="report in height ">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <label>By Build <span class="item-count" ng-hide="true">40</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{buildLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.build" multiple data-live-search="true" ng-change="buildChange(Offender_List_Advance_filter.build)">      
+                                        <li nya-bs-option="report in build ">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <label>Hair Colour<span class="item-count" ng-hide="true">16</span></label>
+                            <div class="linked_staff_select">  
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{haircolourLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.haircolor" multiple data-live-search="true" ng-change="haircolorChange(Offender_List_Advance_filter.haircolor)">      
+                                        <li nya-bs-option="report in haircolour ">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <label>Facial Hair<span class="item-count" ng-hide="true">220</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{facialhairLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.facialhair" multiple data-live-search="true" ng-change="facialhairChange(Offender_List_Advance_filter.facialhair)">      
+                                        <li nya-bs-option="report in facialhair ">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <label>Tattoos<span class="item-count" ng-hide="true">129</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{positionLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.tatoos" multiple data-live-search="true" ng-change="tatoosChange(Offender_List_Advance_filter.tatoos)">      
+                                        <li nya-bs-option="report in position">
+                                            <a>
+                                                <span class="label" >{{report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>	
+
+                        <li>
+                            <label>Piercings<span class="item-count" ng-hide="true">21</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{piercingsLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.piercing" multiple data-live-search="true" ng-change="piercingChange(Offender_List_Advance_filter.piercing)">      
+                                        <li nya-bs-option="report in piercings">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <label>Scars<span class="item-count" ng-hide="true">6</span></label>
+                            <div class="linked_staff_select">
+                                <div class="white_selectbox">
+                                    <ol class="nya-bs-select"  totalcount="{{positionLen}}" data-selected-text-format="count" ng-model="Offender_List_Advance_filter.scarification" multiple data-live-search="true" ng-change="scarificationChange(Offender_List_Advance_filter.scarification)">      
+                                        <li nya-bs-option="report in position">
+                                            <a>
+                                                <span class="label" >{{ report.val}}</span>
+                                                <span class="fa fa-check check-mark"></span>
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">							
+                                    <button class="button btn-orange btn-block radius" type="button" ng-click="adavanceFilterOffender()">	
+                                        <span class="v-flex">								  
+                                            <span class="btn-txt">Filter</span>
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon"><i class="fa fa-cog"></i></span>	
+                                            </span>
+                                        </span>										
+                                    </button>
+                                </div>							  
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <div class="alertvalidate close-parent info" ng-show="advanceFilterResultShow">
+                        <span class="info-icon"></span>
+                        <h4>{{responseData.count}} offenders (estimated based on the filters you have selected)</h4>
+                        <div class="close" ng-click="closeInfo()"><span class="fa fa-times"></span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--offenders pictute-->
+        <div class="view-pics offenders-view">
+            <div id="nooffenderfoundview" ng-show="infoShow1" class="alertvalidate close-parent info">
+                <span class="info-icon"></span>
+                <h4>No matching offenders found.</h4>
+                <div class="close" ng-click="infoClose()"><span class="fa fa-times"></span></div>
+            </div>
+            <ul ng-model="obj">
+
+                <!--<li ng-repeat="obj in offendersVal" mn-touch hold="longTapOffender(obj)" ng-click="longTapOffender(obj)">-->
+                <li ng-repeat="obj in offendersVal">
+                    <div class="offenders-pic" id="{{obj.id_usr}}">
+                        <div class="off-image">
+                            <img ng-src="{{obj.file_name}}" alt="images/offenders-pic/pic08.jpg" onError="this.src='images/offenders-pic/pic08.jpg';"/>
+                            <div class="off-hover">
+                                <div class="view-detail">
+                                    <a href="javascript:void(0)" ng-show="obj.isAddComm" class="off-edit" custom-click="showAddNotePopup(obj.id_usr)"></a>
+                                    <a href="javascript:void(0)" class="off-view" custom-click="clickOffender(obj)"></a>
+                                    <a href="javascript:void(0)" class="plus-view" custom-click="longTapOffender(obj, true)"></a>
+                                    <p>Last Updated:<span>{{obj.last_updated}}</span></p>
+                                </div>
+                            </div>	
+                        </div>
+                        <span class="off-name">{{obj.firstname_usr + " " + obj.lastname_usr}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul class="pagination">
+            <li ng-click="previousPageRequest()" ng-show="prevShowStatus"><a href="javascript:void(0)">Prev</a></li>
+            <li ng-click="nextPageRequest()" ng-show="nextShowStatus"><a href="javascript:void(0)">Next</a></li>
+        </ul>
+        <!--offenders pictute end-->
+    </div>
+    <div ng-include="'views/addCommPopup.html'"></div>
+    <div class="alert_pop_wrap animation confirmPopup" ng-show="alertshowstatus">
+        <div class="saveIncidentPopupWrap">
+            <div class="model_wrapper">
+                <div class="model_area">
+                    <div class="model_head">
+                        <div class="model_head_icon"><img src="images/icons/side-nav-comms-alerts-on.png" alt="alert" /></div>
+                        <div class="model_head_text">Confirm</div>
+                    </div>
+                    <div class="model_content_text">
+                        <p>{{alertMessage}}</p>
+                    </div>
+                    <div class="model_button">
+                        <div class="model_button_right">
+                            <div class="btn-group action-button action-nxt icon-btn">
+                                <div class="wrap-btn">							
+                                    <button class="button btn-green btn-block radius" type="button" ng-click="yesAction()">
+                                        <span class="v-flex">
+                                            <span class="btn-txt">{{canclebtntitle}}</span>	
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon radius"><i class="fa fa-chevron-right"></i></span>	
+                                            </span>											
+                                        </span>
+                                    </button>							                  
+                                </div>						
+                            </div>
+                        </div>
+
+
+                        <div class="model_button_left">
+                            <div class="btn-group action-button icon-btn">	
+                                <div class="wrap-btn">							
+                                    <button class="button btn-action btn-block radius" ng-click="noAction();" type="button">	
+                                        <span class="v-flex">
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+                                            </span>
+                                            <span class="btn-txt">Cancel</span>
+                                        </span>											
+                                    </button>	
+                                </div>							  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script type = "text/javascript-lazy" src = "scripts/custom.js" ></script>-->

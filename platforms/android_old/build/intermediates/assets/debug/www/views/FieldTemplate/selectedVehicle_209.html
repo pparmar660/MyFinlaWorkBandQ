@@ -1,0 +1,94 @@
+
+<div class="security_wrappper" id="209" ng-controller="SelectedVechiles">
+    <div class="offender_wrapper">
+        <h3>{{AllFieldLabelData[105].lable_name}}</h3>
+        <div class="row">
+            <div class="col_4" ng-repeat="vechile in Vechiles">
+                <div class="offender_person_wrapper">
+                    <div class="offender_image">
+                        <div class="vehicle_number">
+                            <h5>{{vechile.licence_plate_vtk| uppercase}}</h5>
+                        </div>
+                        <a href="javascript:void(0);" class="cross" ng-click="closeVechileItem(vechile);"><img src="images/cross.png" alt="close"></a>
+                        <div class="name"><p>{{vechile.make_vtk}} {{vechile.model_vtk}} {{vechile.colour_vtk}}</p></div>
+                    </div>
+<!--                    <div class="offender_btn_wrap">
+                        <button class="button btn-orange btn-block radius" type="button" ng-click="getImage(vechile.id_vtk);">		
+                            <span class="v-flex">										
+                                <span class="btn-txt">Upload <br>New Photo</span>
+                                <span class="circle-flex">
+                                    <span class="s-btn-icon"><i class="fa fa-upload"></i></span>	
+                                </span>										
+                            </span>
+                        </button>
+                    </div>-->
+                    <div class="offender_btn_wrap">
+                        <textarea ng-model="vechile.description_vtk" placeholder="Add description"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
+
+    </div>
+<!--    <div class="ngdialog ngdialog-theme-default" ng-show="isCameraOption">
+        <div class="ngdialog-overlay"></div>
+        <div class="ngdialog-content" role="document">
+            <div class="ngdialog-message">
+                <h3 id="ngdialog1-aria-labelledby">Upload Files</h3>
+                <ul class="camera_links">
+                    <li><button ng-click="openCamera();"><span class="camera_img"></span> Camera</button></li>
+                    <li><button ng-click="openGallery();"><span class="gallery_img"></span> Gallery</button></li>
+                    <li><button ng-click="closeCameraOption();"><span class="close_img"></span> Close</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+    <div class="alert_pop_wrap animation" ng-show="isRemoveVehicleModal">
+        <div class="model_wrapper getHeight">
+            <div class="model_area">
+                <div class="model_head">
+                    <div class="model_head_icon"><img src="images/icons/side-nav-comms-alerts-on.png" alt="alert" /></div>
+                    <div class="model_head_text">Confirm</div>
+                </div>
+                <div class="model_content_text">
+                    <p>{{vehicleAddRemoveMsg}}</p>
+                </div>
+                <div class="model_button">
+
+
+                    <div class="model_button_right">
+                        <div class="btn-group action-button action-nxt icon-btn">
+                            <div class="wrap-btn">							
+                                <button class="button btn-green btn-block radius" type="button" ng-click="removeVehicle()">
+                                    <span class="v-flex">
+                                        <span class="btn-txt">Remove</span>	
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-right"></i></span>	
+                                        </span>											
+                                    </span>
+                                </button>							                  
+                            </div>						
+                        </div>
+                    </div>
+
+
+                    <div class="model_button_left">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button class="button btn-action btn-block radius" ng-click="hidePopUp();" type="button">	
+                                    <span class="v-flex">
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+                                        </span>
+                                        <span class="btn-txt">Cancel</span>
+                                    </span>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

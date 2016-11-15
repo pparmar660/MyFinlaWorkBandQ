@@ -1,0 +1,205 @@
+<div class="global-v-o-w vechicle" id="207" ng-show="vehicleListShowStatus"  ng-controller="ViewVechiles" >
+    <div id="content" class="staff_directory">
+        <div class="layout">
+            <div class="staff_heading_row">
+                <div class="heading_left">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon d-icon3"></span>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                    <div class="text"><h1 class="orange-text">Vehicles</h1></div>
+                </div>
+                <div class="heading_right">
+                    <div class="left_text_box">
+                        <div class="srch-box">
+                            <input type="text" placeholder="Search" ng-model="search.name" class="search-btn">
+                            <input type="button" value="submit" class="search-icon" ng-click="getVechiles();">
+                        </div>
+                    </div>
+                    <div class="right_btn">
+                        <div class="btn-group sl-icons icon-btn">
+                            <div class="wrap-btn">							
+                                <button type="button" class="button btn-orange btn-block radius" ng-click="addNewVechile();">	
+                                    <span class="v-flex">								  
+                                        <span class="btn-txt">Add New</span>
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                        </span>
+                                    </span>										
+                                </button>
+                            </div>							  
+                        </div>
+                    </div>
+                </div>								
+            </div>
+
+
+            <div class="security-brdcrum">
+                <ul class="staff_tabs">
+                     <li ng-repeat="cat in vehicleCount">
+                            <span ng-if="showCount">{{cat.count}}</span>
+                             <span ng-if="!showCount">0</span><a href="javascript:void(0)" ng-click="searchVechileTab(cat.title_uct)" ng-class="{active : activeMenu === cat.title_uct}">{{cat.title_uct}}</a>
+                        </li>
+                    
+<!--                    <li><span>{{allVehicleCount}}</span> <a href="javascript:void(0)" id="tab_all" ng-click="searchVechileTab('tab_all');">All</a></li>
+                    <li><span>{{fullVehicleCount}}</span> <a id="tab_full" class="active" href="javascript:void(0)" ng-click="searchVechileTab('tab_full');">Full Plate</a></li>
+                    <li><span>{{partialVehicleCount}}</span> <a id="tab_partial" href="javascript:void(0)" ng-click="searchVechileTab('tab_partial');">Partial Plate</a></li>														-->
+                </ul>
+
+            </div>
+
+            <div class="staff_select_wrapper">
+
+                <div class="col_select">
+                    <div class="orange_select" id="ddS001" onclick="setDropDownDirection('ddS001');">
+                        <ol class="nya-bs-select" ng-model="selectedCountry" title="All Countries" multiple data-live-search="false" data-selected-text-format="count" ng-change="getCountry(selectedCountry)">      
+                            <li nya-bs-option="country in Countries track by $index">
+                                <a>
+                                    <span class="label" >{{ country.name_cnt}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>                       
+
+                </div>
+                <div class="col_select" id="ddS003" onclick="setDropDownDirection('ddS003');">
+
+                    <div class="orange_select ddDirection" id="ddS001" onclick="setDropDownDirection('ddS001');">
+                        <ol class="nya-bs-select" ng-model="selectedRegion"  title="All Regions" multiple data-live-search="false" data-selected-text-format="count" ng-change="regionChange(selectedRegion)">
+
+
+                            <!-- to enable search func data-live-search="true" -->
+                            <li nya-bs-option="region in Regions track by $index">
+                                <a>
+                                    <span class="label" >{{ region.name_rgs}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>  
+
+                </div>
+                <div class="col_select">
+
+                    <div class="orange_select" id="ddS004" onclick="setDropDownDirection('ddS004');">
+                        <ol class="nya-bs-select" ng-model="selectedZone" multiple title="All Zones" data-live-search="false" data-selected-text-format="count" ng-change="zoneChange(selectedZone)">
+                            <!-- to enable search func data-live-search="true" -->
+                            <li nya-bs-option="zone in Zones track by $index">
+                                <a>
+                                    <span class="label" >{{ zone.zone_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>  
+
+                </div>
+                <div class="col_select">
+                    <div class="orange_select" id="ddS005" onclick="setDropDownDirection('ddS005');">
+                        <ol class="nya-bs-select" ng-model="selectedVenue" multiple title="All Venues" data-live-search="false" data-selected-text-format="count" ng-change="getVenue(selectedVenue)">
+                            <!-- to enable search func data-live-search="true" -->
+                            <li nya-bs-option="venue in Venues track by $index">
+                                <a>
+                                    <span class="label" >{{ venue.venue_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div> 
+                </div>  
+                <div class="vws_btn" ng-click="getVechiles();">
+                    <input type="submit" value="Search" class="se_btn">
+                </div>
+
+                <div class="clr"></div>
+
+            </div>
+
+
+            <div class="vehicles-wrap" >
+                <div id="noVehicleFoundview" ng-show="infoShow2" class="alertvalidate close-parent info">
+                    <span class="info-icon"></span>
+                    <h4>No matching vehicles found.</h4>
+                    <div class="close" ng-click="infoClose()"><span class="fa fa-times"></span></div>
+                </div>
+                <ul>
+                    <li ng-repeat="vechile in Vechiles">
+                        <div class="vehicles-col" id='{{vechile.id_vtk}}'>
+                            <div class="vehicles-detail">
+                                <div class="v-number"><span>{{vechile.licence_plate_vtk| uppercase}}</span></div>
+                                <div class="off-hover">
+                                    <div class="view-detail">
+                                        <a class="off-edit" ng-show="vechile.isAddComm" href="javascript:void(0)" custom-click="showAddNotePopup(vechile.id_vtk);"></a>
+                                        <!--                                        <a class="off-edit" href="javascript:void(0)"></a>-->
+                                        <a class="off-view" href="javascript:void(0)" custom-click="getVechileDetail(vechile.id_vtk);"></a>
+                                        <!--                                        <a class="plus-view" href="javascript:void(0)" ng-click="addRemoveVechile(vechile, true);"></a>-->
+                                        <a class="plus-view" href="javascript:void(0)" custom-click="addRemoveVechile(vechile, true);"></a>
+                                        <p>Last Updated:<span>{{vechile.updated_time}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="v-name">{{vechile.make_vtk}} {{vechile.model_vtk}} {{vechile.colour_vtk}}</span>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+            </div>
+            <ul class="pagination">
+                <li ng-show="pagingPrev"><a href="javascript:void(0)" ng-click="prevPage()">Previous</a></li>
+                <li ng-show="pagingNext"><a href="javascript:void(0)" ng-click="nextPage()">Next</a></li>
+            </ul>
+        </div>
+        <div ng-include="'views/addCommPopup.html'"></div>
+    </div>
+    <div class="alert_pop_wrap animation" ng-show="isAddVehicleModal">
+        <div class="model_wrapper getHeight">
+            <div class="model_area">
+                <div class="model_head">
+                    <div class="model_head_icon"><img src="images/icons/side-nav-comms-alerts-on.png" alt="alert" /></div>
+                    <div class="model_head_text">Confirm</div>
+                </div>
+                <div class="model_content_text">
+                    <p>{{vehicleAddRemoveMsg}}</p>
+                </div>
+                <div class="model_button">
+
+
+                    <div class="model_button_right">
+                        <div class="btn-group action-button action-nxt icon-btn">
+                            <div class="wrap-btn">							
+                                <button class="button btn-green btn-block radius" type="button" ng-click="addVehicle(true)">
+                                    <span class="v-flex">
+                                        <span class="btn-txt">{{popButton}}</span>	
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-right"></i></span>	
+                                        </span>											
+                                    </span>
+                                </button>							                  
+                            </div>						
+                        </div>
+                    </div>
+
+
+                    <div class="model_button_left">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button class="button btn-action btn-block radius" ng-click="hidePopUp();" type="button">	
+                                    <span class="v-flex">
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+                                        </span>
+                                        <span class="btn-txt">Cancel</span>
+                                    </span>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

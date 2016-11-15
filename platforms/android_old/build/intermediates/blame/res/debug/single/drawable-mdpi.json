@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/aac.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/aac.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/ppt.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/ppt.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/zip.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/zip.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/gif.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/gif.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/txt.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/txt.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/mp3.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/mp3.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/icon.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/icon.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/back.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/back.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/odt.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/odt.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/png.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/png.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/ic_navigation_drawer.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/ic_navigation_drawer.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/jpg.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/jpg.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/odp.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/odp.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/avi.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/avi.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/rar.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/rar.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/ic_launcher.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/doc.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/doc.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/ods.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/ods.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/pdf.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/pdf.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/xls.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/xls.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/_blank.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/_blank.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/blank.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/blank.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/folder.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/folder.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/rtf.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/rtf.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/apk.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/apk.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-mdpi/mp4.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-mdpi/mp4.png"
+    }
+]

@@ -1,0 +1,26 @@
+<div class="type_wrapper">
+    <h3>{{question.question_title}} <sup ng-if="question.question_man">*</sup>
+        <span ng-show="question.question_hint" class="ot_tip" ng-click="question.showToolTip = !question.showToolTip"><i class="newtip">?</i>
+
+            <span ng-show="question.showToolTip" class="tooltip close-parent vehicle-tip">
+                <p>{{question.question_hint}}</p>
+                <span class="close"><i class="fa fa-times"></i></span>
+            </span>
+
+        </span>
+        <span class="field-error" ng-show="errorMsgShow == true">{{errorMsg}}</span></h3>
+    <div class="row tb_type">
+        <div class="col-1">
+            <div class="white_selectbox mrpa">
+                <ol class="nya-bs-select" ng-model="question.answer" ng-change="subQuestion(question, $index, '4')" data-live-search="false">
+                    <li nya-bs-option="option in OptionArray">
+                        <a><span class="label" >{{option}}</span>
+                        </a>
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+</div>

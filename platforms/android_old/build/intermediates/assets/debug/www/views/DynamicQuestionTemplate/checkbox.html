@@ -1,0 +1,24 @@
+<div class="type_wrapper">
+    <h3>{{question.question_title}}<sup ng-if="question.question_man">*</sup>
+        <span ng-show="question.question_hint" class="ot_tip" ng-click="question.showToolTip = !question.showToolTip"><i class="newtip">?</i>
+
+            <span ng-show="question.showToolTip" class="tooltip close-parent vehicle-tip">
+                <p>{{question.question_hint}}</p>
+                <span class="close"><i class="fa fa-times"></i></span>
+            </span>
+
+        </span>
+        <span class="field-error" ng-show="errorMsgShow == true">{{errorMsg}}</span></h3>
+    <div class="row cb_type">
+        <div class="col-4" ng-repeat="option in OptionArray">
+            <label class="dy_que">
+                <input type="checkbox" checklist-model="question.answer" name="{{question.question_id}}" checklist-value="option" custom-click="subQuestion(question , $index, '2')"/>
+                <span class="chk-txt">
+                    <span class="rd-txt">{{option}}</span>
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div child-question-fields ng-repeat ="question1 in childQusDetail" question="question1" ></div>
+</div>

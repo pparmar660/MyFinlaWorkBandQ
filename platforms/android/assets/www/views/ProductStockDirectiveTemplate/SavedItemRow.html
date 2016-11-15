@@ -1,0 +1,22 @@
+
+    <td> <p>{{item.incident_where}}</p> </td>
+    <td ng-if="!isStockLoad"> <p></p> {{item.incident_brand}}</td>
+    <td> <p >{{item.incident_code}}</p> </td>
+    <td> <p>{{item.incident_name}}</p> </td>
+    <td><p>{{item.incident_unitValue}}</p> </td>
+    <td> <p>{{item.incident_quantity}}</p> </td>
+    <td>
+        <div class="textbox_wrap" ng-if="item.incident_checkbox">
+            <div class="col_1">
+                <img src="images/tick_right.png" alt="tick">
+            </div>
+            <div class="right">
+                <p>Quantity: {{item.incident_recoverd_quantity}}</p>
+                <p>Damaged: {{item.incident_recoverd_damaged}}</p>
+            </div>
+        </div>
+    </td>
+    <td> <p ng-bind="item.subTotal"></p> </td>
+    <td>
+        <div class="action_wrap" ng-click="updateProduct(item)"><a href="javascript:void(0)"><img src="images/edit_table.png" alt="cross"></a></div>
+    </td>

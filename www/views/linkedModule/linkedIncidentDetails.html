@@ -1,0 +1,458 @@
+
+<div  ng-controller="linkedIncident">
+
+    <div class="global_Load_head">
+        <div class="text_wrap">
+            <div class="icon">
+                <div class="center-icon on-icons">
+                    <div class="circle-icon">
+                        <div class="v-m">
+                            <span class="d-icon d-icon2"></span>
+                        </div>
+                    </div>	
+                </div>
+            </div>
+            <div ng-show="networkNotAvailableIncidentList" class="error-msg close-parent">
+                <div class="error-strip">
+                    <span class="no-internet-icon"></span>
+                    <h4>No Internet Connection</h4>
+
+                </div>
+            </div>
+            <div class="text_head">
+                <h1><span>Incident Report:</span> {{incident.reference_no}} <strong>({{incident.statusName}})</strong> </h1>
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="clr"></div>
+    </div>
+    <div class="incident_report_tab">
+        <div class="ind_location">
+            <div class="col_1">
+                <div class="incident_wrap">
+                    <h3>Location:</h3>
+                    <div class="map_wrap addpadding">
+                        <div id="map" class="mapinside" alt="map" style="height: 200px;width:100%;"> </div>
+                    </div>
+                    <h4 ng-if="incident_details.name != '<b>Not Supplied</b>'">{{incident_details.name}}</h4>
+                    <h4 ng-if="addr != '<b>Not Supplied</b>'">{{addr}}</h4>
+                    <p ng-if="addr1add2add3 != '<b>Not Supplied</b>'">{{addr1add2add3}}</p>
+                    <p ng-if="countyPost != '<b>Not Supplied</b>'">{{countyPost}}</p>
+                    <h5 ng-if="incident_details.BQ_site_code != '<b>Not Supplied</b>'"><span>Site Code:</span> <strong ng-bind-html="incident_details.BQ_site_code"></strong></h5>
+                    <h5 ng-if="incident_details.VSG_site_code != '<b>Not Supplied</b>'"><span>Site Number:</span><strong ng-bind-html="incident_details.VSG_site_code"></strong> </h5>
+                    <h5 ng-if="incident_details.venue_telephone_number != '<b>Not Supplied</b>'"><span>Telephone:</span> <strong ng-bind-html="incident_details.venue_telephone_number"></strong></h5>
+                </div>
+            </div>
+        </div>
+        <div class="ind_rest">
+            <div class="angTabWrapper">
+                <tabs>
+                    <pane title="Incident Details">
+                        <div>
+                            <div class="tab_content">
+                                <div class="incident_report_details">
+
+                                    <div class="col_2">
+                                        <div class="incident_wrap">
+                                            <h3>Reported By:</h3>
+                                            <div class="profile_img_wrap">
+
+                                                <div class="left">
+                                                    <img ng-src="{{image}}" alt="profile" onError="this.src='images/offenders-pic/pic08.jpg';"/>
+                                                </div>
+                                                <div class="right">
+                                                    <h4 ng-bind-html="incident_details.reported_by"></h4>
+                                                    <p>Employee Ref: <span ng-bind-html="incident_details.reported_pin"></span></p>
+                                                    <p ng-bind-html="incident_details.reported_level"></p>
+                                                </div>
+                                            </div>
+                                            <a href="tel:{{incident_details.reported_telephone}}">Telephone: <span ng-bind-html="incident_details.reported_telephone"></span></a>
+                                            <a href="tel:{{incident_details.reported_mobile}}">Mobile: <span ng-bind-html="incident_details.reported_mobile"></span></a>
+                                            <a href="mailto:{{incident_details.reported_email}}">Email: <span ng-bind-html="incident_details.reported_email"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="col_3">
+                                        <div class="incident_wrap">
+                                            <h3>Overview:</h3>
+                                            <div class="incident_overview">
+                                                <p><span>Category:</span> <strong ng-bind-html="incident_details.incident_category"></strong></p>
+                                                <p><span>Outcome:</span> <strong ng-bind-html="incident_details.Outcome"></strong></p>
+                                                <p><span>Type:</span> <strong ng-bind-html="incident_details.Type"></strong></p>
+                                                <p><span>Status:</span> <strong ng-bind-html="incident_details.statusName"></strong></p>
+                                                <p><span>Priority:</span> <strong ng-bind-html="incident_details.incident_priority"></strong></p>
+                                                <p><span>Severity:</span> <strong ng-bind-html="incident_details.severityName"></strong></p>
+                                                <p><span>Offenders:</span> <strong ng-if="incident_data.linked_offenders.length > 0" ng-bind-html="incident_data.linked_offenders.length"></strong><strong ng-if="incident_data.linked_offenders.length <= 0"><b>0</b></strong></p>
+                                                <p><span>Vehicles:</span> <strong ng-if="incident_data.linked_vehicles.length > 0" ng-bind-html="incident_data.linked_vehicles.length"></strong><strong ng-if="incident_data.linked_vehicles.length <= 0"><b>0</b></strong></p>
+                                                <p><span>Victims:</span> <strong ng-if="incident_data.linked_victim.length > 0" ng-bind-html="incident_data.linked_victim.length"></strong><strong ng-if="incident_data.linked_victim.length <= 0"><b>0</b></strong></p>
+                                                <p><span>Witnesses:</span> <strong ng-if="incident_data.linked_witness.length > 0" ng-bind-html="incident_data.linked_witness.length"></strong><strong ng-if="incident_data.linked_witness.length <= 0"><b>0</b></strong></p>
+                                                <p><span>Date Added:</span> <strong ng-bind-html="incident_details.date"></strong></p>
+                                                <p><span>Last Updated:</span> <strong ng-bind-html="incident_details.last_updated"></strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pane>
+                    <pane title="What Has Happened?">
+                        <div>
+                            <div class="tab_content">
+                                <div class="incident_report_details">
+                                    <div class="col_4">
+                                        <div class="whh_wrap">
+                                            <h3>Incident Details:</h3>
+                                            <p ng-if="incident_data.dyn_question_answer.length == 0">No Incident Details.</p>
+                                            <div ng-if="incident_data.dyn_question_answer.length > 0" class="inc_wrap">
+
+                                                <div  class="inc_left">
+                                                    <ul>
+                                                        <li ng-repeat="que in incident_data.dyn_question_answer" ng-if="$even">
+                                                            <h3>{{que.question}}</h3>
+                                                            <h4>{{que.answer}}</h4>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="inc_right">
+                                                    <ul>
+                                                        <li ng-repeat="que in incident_data.dyn_question_answer" ng-if="$odd">
+                                                            <h3>{{que.question}}</h3>
+                                                            <h4>{{que.answer}}</h4>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+                                            <h3>Product Stock &amp; Value:</h3>
+                                            <p ng-if="incident_data.linked_products.products.length == 0">No Product Stock &amp; Value.</p>
+                                            <div ng-if="incident_data.linked_products.products.length > 0" class="inc_prodtbl_wrap">
+
+                                                <table class="incident_detail_product_stock">
+                                                    <tr >
+                                                        <th>Where?</th>
+                                                        <th>Brand, Code &amp; Name:</th>
+                                                        <th>Unit Value (&pound;)</th>
+                                                        <th>Qty</th>
+                                                        <th>Recovered</th>
+                                                        <th>Sub-Total (&pound;)</th>
+                                                    </tr>
+
+                                                    <tr ng-repeat="product in incident_data.linked_products.products">
+                                                        <td>{{product.product_type}}</td>
+                                                        <td ng-if="product.product_code.length > 0">{{product.product_brand}} ({{product.product_code}})<br/>{{product.product_name}}</td>
+                                                        <td ng-if="product.product_code.length == 0 || product.product_code.length == null">{{product.product_brand}} <br/>{{product.product_name}}</td>
+                                                        <td>{{product.unit_value}}</td>
+                                                        <td>{{product.quantity}}</td>
+                                                        <td ng-if="product.recovered_qty == 0"> No ({{product.recovered_qty}})</td>
+                                                        <td ng-if="product.recovered_qty > 0"> Yes ({{product.recovered_qty}})<br />Damaged ({{product.damaged_qty}})</td>
+                                                        <td>{{(product.unit_value * product.quantity).toFixed(2)}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div ng-if="incident_data.linked_products.products.length > 0" class="inc_prodtbl_wrap">
+                                                <p><span>Recovered Products:</span> {{incident_data.linked_products.recovered_products_quantity}}(&pound;{{incident_data.linked_products.recovered_products_value}})</p>
+                                                <p><span>Damaged Products:</span> {{incident_data.linked_products.damaged_products_quantity}} (&pound;{{incident_data.linked_products.damaged_products_value}})</p>
+                                                <p class="tbl_b"><span>Total Products &amp; Values:</span> {{incident_data.linked_products.total_products_quantity}} (&pound;{{incident_data.linked_products.total_products_value}})</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pane>
+                    <pane title="Who Was Involved?">
+                        <div>
+                            <div class="tab_content">
+                                <div class="incident_report_details">
+                                    <div class="col_4">
+                                        <div class="whh_wrap">
+                                            <h3>Offenders:</h3>
+                                            <div class="inc_wrap">
+                                                <p ng-if="incident_data.linked_offenders.length == 0">No Offender Involved.</p>
+                                                <div class="inc_left" ng-if="incident_data.linked_offenders.length > 0">
+                                                    <ul>
+                                                        <li ng-repeat="offender in incident_data.linked_offenders" ng-if="$even">
+                                                            <div class="inc_lwrap">
+                                                                <div class="inc_img_left">
+                                                                    <img ng-src="{{offenderImage}}/{{offender.ofndr_id}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+
+                                                                </div>
+                                                                <div class="inc_text_right">
+                                                                    <h4>{{offender.name}}</h4>
+                                                                    <p>Category: <span>{{offender.offender_category}}</span></p>
+                                                                    <p>Status: <span>Detained</span></p>
+                                                                    <p>Banned: 
+                                                                        <span ng-if="offender.is_currently_banned == 0">No</span>
+                                                                        <span ng-if="offender.is_currently_banned == 1">Yes</span>
+                                                                    </p>
+                                                                    <p ng-if="offender.is_currently_banned == 1" >From: <span>{{offender.offenders_ban_from_date}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="inc_right" ng-if="incident_data.linked_offenders.length > 0" >
+                                                    <ul>
+                                                        <li ng-repeat="offender in incident_data.linked_offenders" ng-if="$odd" >
+                                                            <div class="inc_lwrap" >
+                                                                <div class="inc_img_left">
+                                                                    <img ng-src="{{offenderImage}}/{{offender.ofndr_id}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+
+                                                                </div>
+                                                                <div class="inc_text_right">
+                                                                    <h4>{{offender.name}}</h4>
+                                                                    <p>Category: <span>{{offender.offender_category}}</span></p>
+                                                                    <p>Status: <span>Detained</span></p>
+                                                                    <p ng-if="offender.is_currently_banned == 1">Banned: 
+                                                                        <span ng-if="offender.is_currently_banned == 0">No</span>
+                                                                        <span ng-if="offender.is_currently_banned == 1">Yes</span>
+
+                                                                    </p>
+                                                                    <p>From: <span>{{offender.offenders_ban_from_date}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+                                            <h3>Victims:</h3>
+                                            <div class="inc_wrap">
+                                                <p ng-if="incident_data.linked_victim.length == 0">No Victim Involved.</p>
+                                                <div class="inc_left" ng-if="incident_data.linked_victim.length > 0">
+                                                    <ul>
+                                                        <li ng-repeat="victim in incident_data.linked_victim" ng-if="$even">
+                                                            <div class="inc_lwrap">
+                                                                <div class="inc_img_left">
+                                                                    <img ng-src="{{victimImageUrl}}/{{victim.id_victim}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+
+                                                                </div>
+                                                                <div class="inc_text_right">
+                                                                    <h4>{{victim.Name}}</h4>
+                                                                    <h5></h5>
+                                                                    <p>T: <span>{{victim.p_tel}}</span></p>
+                                                                    <p>M: <span>{{victim.p_phone}}</span></p>
+                                                                    <p>E: <span>{{victim.p_email}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="inc_right" ng-if="incident_data.linked_victim.length > 0">
+                                                    <ul>
+                                                        <li ng-repeat="victim in incident_data.linked_victim" ng-if="$odd">
+                                                            <div class="inc_lwrap">
+                                                                <div class="inc_img_left">
+                                                                    <img ng-src="{{victimImageUrl}}/{{victim.id_victim}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+                                                                </div>
+                                                                <div class="inc_text_right">
+                                                                    <h4>{{victim.Name}}</h4>
+                                                                    <h5></h5>
+                                                                    <p>T: <span>{{victim.p_tel}}</span></p>
+                                                                    <p>M: <span>{{victim.p_phone}}</span></p>
+                                                                    <p>E: <span>{{victim.p_email}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+                                            <h3>Witnesses:</h3>
+                                            <div class="inc_wrap">
+                                                <p ng-if="incident_data.linked_witness.length == 0">No Witness Involved.</p>
+                                                <div class="inc_left" ng-if="incident_data.linked_witness.length > 0">
+                                                    <ul>
+                                                        <li ng-repeat="witness in incident_data.linked_witness" ng-if="$even">
+
+                                                            <div class="inc_lwrap">
+                                                                <div class="inc_img_left">
+                                                                    <img ng-src="{{witnessImageUrl}}/{{witness.id_wit}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+
+                                                                </div>
+                                                                <div class="inc_text_right">
+                                                                    <h4>{{witness.Name}}</h4>
+                                                                    <h5></h5>
+                                                                    <p>T: <span>{{witness.p_tel}}</span></p>
+                                                                    <p>M: <span>{{witness.p_phone}}</span></p>
+                                                                    <p>E: <span>{{witness.p_email}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="inc_right" ng-if="incident_data.linked_witness.length > 0">
+                                                    <ul>
+                                                        <li ng-repeat="witness in incident_data.linked_witness"  ng-if="$odd" >
+
+                                                            <div class="inc_lwrap">
+                                                                <div class="inc_img_left">
+                                                                    <img ng-src="{{witnessImageUrl}}/{{witness.id_wit}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+
+                                                                </div>
+                                                                <div class="inc_text_right">
+                                                                    <h4>{{witness.Name}}</h4>
+                                                                    <h5></h5>
+                                                                    <p>T: <span>{{witness.p_tel}}</span></p>
+                                                                    <p>M: <span>{{witness.p_phone}}</span></p>
+                                                                    <p>E: <span>{{witness.p_email}}</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pane>
+                    <pane title="What Action Was Taken?">
+                        <div>
+                            <div class="tab_content">
+                                <div class="incident_report_details">
+                                    <div class="col_4">
+                                        <div class="whh_wrap">
+                                            <h3>Police &amp; Authorities:</h3>
+                                            <div class="inc_wrap">
+                                                <div class="inc_left">
+                                                    <ul>
+                                                        <li>
+                                                            <h3>Police Log Number:</h3>
+                                                            <h4 ng-bind-html="incident_details.police_log_number"></h4>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="inc_right">
+                                                    <ul>
+                                                        <li>
+                                                            <h3>Police/NFIB Crime Reference Number:</h3>
+                                                            <h4 ng-bind-html="incident_details.police_crime_reference_number"></h4>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+                                            <div class="inc_wrap">
+                                                <div class="inc_left">
+                                                    <h6>Responding Officer:</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="roff_wrap">
+                                                                <p><span >Name:</span><span ng-bind-html="incident_details.responding_officer_name"/></p>
+                                                                <p><span>Collar Number:</span><span ng-bind-html ="incident_details.responding_officer_collar_number"/></p>
+                                                                <p><span>Police Force:</span><span ng-bind-html ="incident_details.responding_officer_police_force"/></p>
+                                                                <p><span>Email:</span> <a href="mailto:{{incident_details.responding_officer_email}}"></a><span ng-bind-html="incident_details.responding_officer_email"/></p>
+                                                                <p><span>Telephone:</span><span ng-bind-html="incident_details.responding_officer_telephone"/></p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="inc_right">
+                                                    <h6>Officer In Charge:</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="roff_wrap">
+                                                                <p><span>Name:</span><span ng-bind-html="incident_details.incharge_officername"/></p>
+                                                                <p><span>Collar Number:</span><span ng-bind-html="incident_details.incharge_collar_number"/></p>
+                                                                <p><span>Police Force:</span><span ng-bind-html="incident_details.incharge_police_force"/></p>
+                                                                <p><span>Email:</span> <a href="mailto:{{incident_details.incharge_email}}"></a><span ng-bind-html="incident_details.incharge_email"/></p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+                                            <div class="inc_wrap">
+                                                <h6>Offender(s):</h6>
+                                                <p ng-if="incident_data.linked_offenders.length == 0">No Offender Involved.</p>
+                                                <div ng-if="incident_data.linked_offenders.length > 0" class="offend_wrap" ng-repeat="offender in incident_data.linked_offenders">
+                                                    <div class="inc_left">
+                                                        <div class="inc_lwrap">
+                                                            <div class="inc_img_left">
+                                                                <img ng-src="{{offenderImage}}/{{offender.ofndr_id}}/1" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+
+                                                            </div>
+                                                            <div class="inc_text_right">
+                                                                <h4>{{offender.name}}</h4>
+                                                                <h5>{{offender.offender_category}}</h5>
+                                                                <p>Gender: <span>{{offender.gender}}</span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inc_right">
+                                                        <div class="roff_wrap">
+                                                            <p><span>Action Taken:</span> <strong ng-bind-html="offender.police_action_taken"></strong></p>
+                                                            <p><span>Sentenced:</span> <strong ng-if="offender.sentenced == 0">No</strong><strong ng-if="offender.sentenced == 1">Yes</strong></p>
+                                                            <p><span>Term:</span> <strong>{{offender.term_year}} Year {{offender.term_month}} Months {{offender.term_days}} Days</strong></p>
+                                                            <p><span>Result:</span> <strong ng-if="offender.result_action_taken">{{offender.result_action_taken}}</strong><strong ng-if="!offender.result_action_taken" class="red-tagline">Not Supplied</strong></p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+                                            <div ng-if="incident_data.linked_offenders.length > 0" class="inc_wrap">
+                                                <h6>Civil Recovery: <span>Total Value: &pound;{{incident_data.linked_products.total_products_value}}</span></h6>
+                                                <div class="offend_wrap" ng-repeat="porduct in incident_data.Civil_recovery_offenders">
+                                                    <div class="inc_left">
+                                                        <div class="inc_lwrap">
+                                                            <div class="inc_img_left">
+                                                                <img ng-src="{{porduct.image}}" onError="this.src='images/inc_profile.jpg';" alt="incident profile" />
+                                                            </div>
+                                                            <div class="inc_text_right">
+                                                                <h4>{{porduct.name}}</h4>
+                                                                <!--<h5>Unknown</h5>-->
+                                                                <p>Gender: <span>{{porduct.gender}}</span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="inc_right">
+                                                        <div class="roff_wrap">
+                                                            <p> <span>Product- Stock &amp; Value:</span> <strong>&pound;{{porduct.civil_recovery_product_stock_value}}</strong></p>
+                                                            <p> <span>Civil Recovery Value:</span> <strong>&pound;{{porduct.civil_recovery_value}}</strong></p>
+                                                            <p> <span>Civil Recovery Status:</span> <strong>{{porduct.civil_recovery_status}}</strong></p>
+                                                            <p> <span>Civil Recovery Number:</span> <strong>{{porduct.civil_recovery_number}}</strong></p>
+                                                            <p> <span>Civil Recovery Note:</span> <strong>{{porduct.civil_recovery_note}}</strong></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pane>
+                    <pane title="Complete &amp; Submit">
+                        <div>
+                            <div class="tab_content">
+                                <div class="loading_content">
+                                    <!--                                <div class="loading-detail circlenew" data-percent="70"></div>-->
+                                    <h3>Images &amp; Media:</h3>
+                                    <div ng-if="incident_data.incident_files" ng-repeat="incidentFile in incident_data.incident_files">
+                                        <div class="image-block">
+                                            <img ng-src="{{incidentImage}}/{{incident_data.incident_details.inc_id}}/{{incidentFile.incident_file_id}}" alt="image" />						</div>
+                                        <span class="img-title">{{incidentFile.file_name}}</span>
+                                    </div>
+                                    <div class="administration-block">
+                                        <h3>Administration:</h3>
+                                        <div class="additonal-cooments">
+                                            <h5>Additional Comments:</h5>
+                                            <p ng-if="incident_data.incident_details.description != '<b>Not Supplied</b>'">{{incident_data.incident_details.description}}</p>
+                                            <p ng-if="incident_data.incident_details.description == '<b>Not Supplied</b>'">Not Supplied</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </pane>
+                </tabs>
+            </div>  
+        </div>
+    </div>
+
+</div>

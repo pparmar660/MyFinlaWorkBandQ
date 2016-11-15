@@ -1,0 +1,36 @@
+<div id="10" class="row" ng-controller="ReportCategoryCtrl"><!--  id="10" --> <!-- date / time id is 55  -->
+    <div class="category_btn_wrapper">
+        <h3>{{AllFieldLabelData[10].lable_name}}<sup>*</sup>
+
+
+            <span class="ot_tip" ng-show="AllFieldLabelData[10].question_hint" ng-click="toolTipToggleCategory = !toolTipToggleCategory"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleCategory">
+                    <p>{{AllFieldLabelData[10].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+            </span>
+
+            <span class="field-error" ng-if="req1">Required</span>
+
+        </h3>
+
+        <div class="category_btn_left" ng-repeat="cat in cats track by $index">
+            <label class="dy_que">
+                <input type="radio" name="{{cat.pk_incident_category}}" ng-model="selectedCategory" value="{{cat.name}}" ng-click="setCat(cat.pk_incident_category)"/>
+                <span class="chk-txt" ng-class="{active : cat.activeClass}">
+                    <span class="rd-txt">{{cat.name}}</span>
+                </span>
+            </label>
+        </div>
+        <!--        <div class="category_btn_left" ng-repeat="cat in cats" ng-click="selectCat(cat)">
+                    <div class="btn-group icon-btn">
+                        <div class="wrap-btn">
+                            <button ng-click="setCat({{cat.pk_incident_category}})" ng-class="{active : cat.activeClass}" class="button btn-orange btn-block radius" type="button">
+                                {{cat.name}}
+                            </button>
+                        </div>
+                    </div>
+                </div>-->
+        <div class="clr"></div>
+    </div>
+</div>

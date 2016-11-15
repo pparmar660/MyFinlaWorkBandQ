@@ -1,0 +1,49 @@
+<div id="98" ng-controller="isVictimInvolvedCntrl">
+    <div class="category_btn_wrapper">
+
+           <h3>{{AllFieldLabelData[98].lable_name}}<sup>*</sup>
+              <span class="ot_tip" ng-show="AllFieldLabelData[98].question_hint" ng-click="toolTipToggleAreVictimInvolved = !toolTipToggleAreVictimInvolved"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleAreVictimInvolved">
+                    <p>{{AllFieldLabelData[98].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+            </span>
+            <span class="field-error" ng-show="yesnorequired">Required</span>
+           </h3>
+         <div class="category_btn_left">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" id="vicyesBtn" type="button" ng-click="yesAction()">Yes</button>
+                </div>		
+            </div>
+        </div>
+        <div class="category_btn_left">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" id="vicnoBtn" type="button" ng-click="noAction()">No</button>
+                </div>		
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="victim_wrap" ng-show="whoIsthevictimshowstatus">
+        
+         <h3>{{AllFieldLabelData[15].lable_name}}<sup>*</sup>
+
+              <span class="ot_tip" ng-show="AllFieldLabelData[15].question_hint" ng-click="toolTipToggleVictim = !toolTipToggleVictim"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleVictim">
+                    <p>{{AllFieldLabelData[15].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+
+            </span>
+           <span class="field-error" ng-show="whorequired">Required</span>
+           </h3>
+        <div class="victim_btn_wrap" id="{{cat.id_uct}}" ng-repeat="cat in categorty">
+            <button class="button btn-orange btn-block radius"  ng-model="cat" type="button" ng-click="catagoryClick(cat)">{{cat.title_uct}}</button>
+        </div>
+        
+    </div>
+</div>
+
+

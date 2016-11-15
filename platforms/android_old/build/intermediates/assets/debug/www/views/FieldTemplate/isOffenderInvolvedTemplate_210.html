@@ -1,0 +1,48 @@
+<div class="security_wrappper" id="210" ng-controller="isOffenderInvolvedCnt">
+    <div class="category_btn_wrapper">
+        <h3>{{AllFieldLabelData[97].lable_name}}<sup>*</sup> <!--<span>?</span>-->
+
+
+            <span class="ot_tip" ng-click="toolTipToggleIsOffenderInvolved = !toolTipToggleIsOffenderInvolved"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleIsOffenderInvolved">
+                    <p>{{AllFieldLabelData[97].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+
+            </span>
+
+            <span class="field-error" ng-show="yesnorequired">Required</span></h3>
+        <div class="category_btn_left">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" id="yesBtn" type="button" ng-click="yesAction()">Yes</button>
+                </div>		
+            </div>
+        </div>
+        <div class="category_btn_left">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" id="noBtn" type="button" ng-click="noAction()">No</button>
+                </div>		
+            </div>
+        </div>
+        <div class="clr"></div>
+        <div class="why_not_wrap" ng-show="whyNotShowStatus">
+            <h3>{{AllFieldLabelData[69].lable_name}}<sup>*</sup> 
+
+                <span class="ot_tip" ng-click="toolTipToggleIWhyNotOffender = !toolTipToggleIWhyNotOffender"><i class="newtip">?</i>
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleIWhyNotOffender">
+                        <p>{{AllFieldLabelData[69].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+
+                <span class="field-error" ng-show="whyrequired">Required</span></h3>
+            <textarea name="whynottext" placeholder="" ng-init="offenderInvolvedNotes = ''"  ng-model="offenderInvolvedNotes" ng-focus="textFocus()"></textarea>
+            <div class="clr"></div>
+        </div>
+
+    </div>
+
+</div>

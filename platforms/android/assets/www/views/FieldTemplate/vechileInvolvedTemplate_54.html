@@ -1,0 +1,65 @@
+
+<div class="security_wrappper" ng-form="isVehicleInvolvedForm" id="54" ng-controller="VechileInvolvedStatus">
+    <div class="control-group" ng-class="{
+                                                            true
+                                                            : 'error'
+                                                            }
+            [nextclick && isVehicleInvolvedForm.plateSearchVal.$valid]">
+        <div class="category_btn_wrapper">
+
+            <h3>{{AllFieldLabelData[54].lable_name}} <sup>*</sup> 
+
+                <span class="ot_tip" ng-show="AllFieldLabelData[54].question_hint" ng-click="toolTipToggleVehicle = !toolTipToggleVehicle"><i class="newtip">?</i>
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleVehicle">
+                        <p>{{AllFieldLabelData[54].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+                <span class="field-error" ng-show="message == true">{{requiredMsg}}</span>
+            </h3>
+            <div class="category_btn_left">
+                <div class="btn-group icon-btn" ng-click="vechileInvolved('yes');">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-orange btn-block radius" type="button" id="vechileStatusYesBtn">Yes</button>
+                    </div>		
+                </div>
+            </div>
+            <div class="category_btn_left">
+                <div class="btn-group icon-btn" ng-click="vechileInvolved('no');">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-orange btn-block radius" type="button" id="vechileStatusNoBtn">No</button>
+                    </div>		
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="vehicle_reg" id="vechileRegSection" >
+            <h3>{{AllFieldLabelData[104].lable_name}}<sup>*</sup>
+               
+                
+                  <span class="ot_tip" ng-show="AllFieldLabelData[104].question_hint" ng-click="toolTipToggleVehicleRegistration = !toolTipToggleVehicleRegistration"><i class="newtip">?</i>
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleVehicleRegistration">
+                        <p>{{AllFieldLabelData[104].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+            </h3>
+            <div class="reg_number">
+
+                <input type="text" id="txtRegNum" name="numer_plate" ng-model="plateSearchVal"  input-restrictor uppercased class="form-control" required/>
+                <span class="help-inline" ng-show="show">{{errorMsg}}</span>
+                <!-- <h5>NA11 HTO</h5> -->
+            </div>
+            <div class="reg_btn">
+                <button class="button btn-orange btn-block radius" id="fullPlateBtn" type="button" ng-click="plateStatus(1);">Full Plate</button>
+            </div>
+            <div class="reg_btn">
+                <button class="button btn-orange btn-block radius active" id="partialPlateBtn" type="button" ng-click="plateStatus(2);">Partial Plate</button>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+

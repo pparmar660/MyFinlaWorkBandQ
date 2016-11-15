@@ -1,0 +1,319 @@
+    <div id="206" ng-form="addVehicleForm" ng-show="vehicleAddShowStatus" ng-controller="NewVehicle">
+        <div class="control-group" ng-class="{
+                                                            true
+                                                            : 'error'
+                                                            }
+            [nextclick && addVehicleForm.licence_plate_vtk.VechileDetails.$valid]">
+            <div class="layout">
+            <form>
+                <div class="offender_global_head">
+                    <div class="text_wrap">
+                        <div class="icon">
+                            <div class="center-icon on-icons">
+                                <div class="circle-icon">
+                                    <div class="v-m">
+                                        <span class="d-icon d-icon2"></span>
+                                    </div>
+                                </div>  
+                           </div>
+                        </div>
+                        <div class="text"><h1>{{title}}: </h1></div>
+                    </div>
+                    <div class="np_wrap">
+                        <div class="np_area">
+                            <div class="reg_number">
+                            <input type="text" class="form-control" id="newPlateTxt" placeholder="{{FormFieldLabelData.vehicle[22].lable_name}}" ng-model="VechileDetails.licence_plate_vtk" input-restrictor uppercased name="numer_plate" required>
+                            <span  class="help-inline" ng-show="nextclick && addVehicleForm.numer_plate.$error.required">{{alertMsg}}</span>
+                            <!-- <h5>NA11 HTO</h5> -->
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="incident_report_tab offender_add">
+                    <div class="off_image_wrap">
+                        <div class="p_image img-remove">  
+<!--                           <div id="outImage">-->
+                               <a href="javascript:void(0);" ng-if="showProfileCancel" class="cross" ng-click="removeProfileImage()"><img src="images/cross.png"></a>
+                               <img id="profileImage" src="images/car_img.jpg" />
+<!--                           </div>-->
+                            
+                            <div class="btn-group icon-btn file_type_btn">	
+                                <div class="wrap-btn" ng-click="uploadImage();">							
+                                    <!--											  <input type="file" class="hidden_file" data-file="param.file"> -->
+
+                                    <button class="button btn-orange btn-block radius" type="button"> <!--ng-click="getImage();" -->
+                                        <span class="v-flex">										
+                                            <span class="btn-txt">Upload Photo</span>
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon"><i class="fa fa-upload"></i></span>
+                                            </span>										
+                                        </span>
+                                    </button>
+                                </div>		
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offender_details">
+                        <div class="parentHorizontalTab">
+                            <ul class="tabs hor_1">
+                                <li class="active" rel="tab1">Vehicle Details</li>
+                                <li rel="tab2">Images &amp; Media</li>
+<!--                                <li rel="tab3">Linked Incident</li>
+                                <li rel="tab3">Linked Offenders</li>-->
+                            </ul>
+                            <div class="tab_container hor_1">											
+                                <div class="tab_content">
+                                    <div class="vd_wrap">
+                                        <div class="left">
+                                            <div class="rb_wrap">
+                                                <label>Plate: </label>
+                                                <div class="custom-radio">
+                                                    <input type="radio" ng-model="VechileDetails.licence_plate_type" ng-change="getPlateType(VechileDetails.licence_plate_type);" id="radio" value="1" name="check">
+                                                    <label for="radio">Full</label>
+                                                </div>
+
+                                                <div class="custom-radio">
+                                                    <input type="radio" id="radio1" ng-model="VechileDetails.licence_plate_type" ng-change="getPlateType(VechileDetails.licence_plate_type);" value="2" name="check">
+                                                    <label for="radio1">Partial</label>
+                                                </div>
+                                            </div>
+                                            <div class="rb_wrap">
+                                                <label>{{FormFieldLabelData.vehicle[25].lable_name}} </label>
+                                                <div class="custom-radio">
+                                                    <input type="radio" ng-model="VechileDetails.possible_false_plate" ng-change="getFalsePlate(VechileDetails.possible_false_plate);" id="radio2" name="f_p" value="1">
+                                                    <label for="radio2">Yes</label>
+                                                </div>
+
+                                                <div class="custom-radio">
+                                                    <input type="radio" ng-model="VechileDetails.possible_false_plate" ng-change="getFalsePlate(VechileDetails.possible_false_plate);" id="radio3"  name="f_p" value="0">
+                                                    <label for="radio3">No</label>
+                                                </div>
+                                            </div>
+                                            <div class="rb_wrap">
+                                                <textarea ng-model="VechileDetails.description_vtk" placeholder="{{FormFieldLabelData.vehicle[19].lable_name}}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="left">
+                                            <ul>
+                                                <li>
+                                                    <label>{{FormFieldLabelData.vehicle[1].lable_name}}</label>
+                                                    <div class="vd_text">
+                                                        <input ng-model="VechileDetails.make_vtk" type="text" class="form-control" maxlength="50" placeholder="Please Enter" />
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <label>{{FormFieldLabelData.vehicle[2].lable_name}}</label>
+                                                    <div class="vd_text">
+                                                        <input ng-model="VechileDetails.model_vtk" type="text" class="form-control" maxlength="50" placeholder="Please Enter" />
+                                                    </div>
+                                                </li>
+<!--                                                <li>
+                                                    <label>Year:</label>
+                                                    <div class="vd_text">
+                                                        <input ng-model="VechileDetails.year_of_manufacture_vtk" type="number" maxlength="4" class="form-control" placeholder="Please Enter" input-max-length-number/>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <label>MOT:</label>
+                                                    <div class="vd_text">
+                                                        <input ng-model="VechileDetails.mot_vtk" type="text" class="form-control" maxlength="50" placeholder="Please Enter" />
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <label>Taxed:</label>
+                                                    <div class="vd_text">
+                                                        <input ng-model="VechileDetails.taxed_vtk" type="text" class="form-control" maxlength="50" placeholder="Please Enter" />
+                                                    </div>
+                                                </li>-->
+                                                <li>
+                                                    <label>{{FormFieldLabelData.vehicle[11].lable_name}}</label>
+                                                    <div class="vd_text">
+                                                        <input ng-model="VechileDetails.colour_vtk" type="text" class="form-control" maxlength="50" placeholder="Please Enter" />
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab_content">
+                                    <div class="contact-info-detail">
+                                        <div class="upload-box">
+                                            <div class="wrap-btn">							
+                                                <button type="button" class="button btn-orange btn-block radius" ng-click="uploadExtraImages()">
+                                                    <span class="v-flex">		
+                                                        <span class="btn-txt">Upload Images &amp; Media</span>
+                                                        <span class="circle-flex">
+                                                            <span class="s-btn-icon"><i class="fa fa-upload"></i></span>
+                                                        </span>										
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <h3>Uploaded Images &amp; Media</h3>
+                                        <div class="up_img_wrap">
+                                            <div class="col_4" ng-repeat="img in images | startFrom : 0">
+                                                <div class="files_upload_wrap">
+                                                    <div class="image">
+                                                        <a href="javascript:void(0);" class="cross"  ng-click="deleteImage(img)"><img src="images/cross.png"></a>
+                                                        <img ng-src="{{img.url}}" alt="docs">
+                                                    </div>
+                                                    <p>{{img.name}}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="clr"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                                <div class="tab_content">
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scd_wrap" id="oneOfTheseOption" ng-show="isOneOfThese">
+                    <h3>Was it one of these?</h3>
+                    <ul class="np_btn">
+                        <li ng-repeat="plate in Plates">
+                            <button class="button btn-orange btn-block radius" type="button" ng-click="getVechileDetails(plate.id_vtk);">{{plate.licence_plate_vtk}}</button>
+                            										<p>{{plate.make_vtk}} {{plate.model_vtk}}</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </form>
+        </div>
+        </div>
+        <!-- Alert Save -->
+
+        <div class="modal-change" id="newVechileSaveAlert" ng-show="isNewVechileSaveAlert">
+            <div class="alert_pop_wrap">
+                <div class="model_wrapper">
+                    <div class="model_area">
+                        <div class="popup-heading">									
+                            <div class="popup-icon">											
+                                <span class="save-icon"></span>										
+                            </div>
+                            <p>Save Incident?</p>
+
+                        </div>
+                        <div class="model_content_text">
+                            <p>Please note, if you exit without saving the Incident Report your entered information will be lost.</p>
+                        </div>
+
+
+                        <div class="model_button m-button">
+                            <div class="model_button_right">													
+                                <div class="btn-group action-button icon-btn">
+                                    <div class="wrap-btn">	
+                                        <button type="button" class="button btn-action r-right radius" ng-click="saveAlert();">
+                                                <div class="v-flex">
+                                                    <span class="btn-txt">Save</span>	
+                                                    <div class="circle-flex">
+                                                        <span class="s-btn-icon">
+                                                            <span class="modal-save"></span>
+                                                        </span>	
+                                                    </div>										
+                                                </div>
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="model_button_left fl">
+                                <div class="btn-group action-button icon-btn">
+                                    <div class="wrap-btn">														 
+                                          <button class="button btn-action radius" type="button" ng-click="cancelSaveAlert();">	
+                                            <span class="v-flex">
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>	
+                                                </span>
+                                                <span class="btn-txt">Discard</span>
+                                            </span>											
+                                          </button>	
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="model_button_left model_button_margin wd-f fl">
+                                <div class="btn-group action-button icon-btn">	
+                                     <div class="wrap-btn">
+                                          <button class="button btn-action  radius" type="button" ng-click="cancelSaveAlert();">	
+                                            <span class="v-flex">
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><i class="fa fa-chevron-down"></i></span>	
+                                                </span>
+                                                <span class="btn-txt">Cancel</span>
+                                            </span>											
+                                          </button>	
+                                     </div>							  
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>	
+            </div>
+    </div>
+
+        <!-- Alert After Save Success-->
+
+    <div class="modal-change" ng-show="isSaveSuccess">
+            <div class="alert_pop_wrap">
+                <div class="model_wrapper">
+                    <div class="model_area">
+                        <div class="popup-heading green-head">									
+                            <div class="popup-icon">											
+                                <span class="save-icon"></span>										
+                            </div>
+                            <p>Incident Save</p>
+
+                        </div>
+                        <div class="model_content_text">
+                            <p>Your incident has been saved. You can access this Incident Report within the Incident Reports > View Incidents section by selecting the "Draft" tab.  </p>
+                        </div>
+                        <div class="model_button">													
+                                <div class="btn-group action-button icon-btn close" ng-click="cancelSaveSuccessAlert();">	
+                                 <div class="wrap-btn align-right">							
+                                      <button class="button btn-action r-right radius" type="button">	
+                                        <span class="v-flex">																
+                                            <span class="btn-txt">Close</span>
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon"><i class="fa fa-chevron-right"></i></span>	
+                                            </span>
+                                        </span>											
+                                      </button>	
+                                 </div>							  
+                            </div>
+
+                        </div>
+                    </div>
+                </div>	
+            </div>
+        </div>
+        
+       <div class="ngdialog ngdialog-theme-default" ng-show="isCameraOption">
+			<div class="ngdialog-overlay"></div>
+			<div class="ngdialog-content" role="document">
+		        <div class="ngdialog-message">
+		            <h3 id="ngdialog1-aria-labelledby">Upload Files</h3>
+		            <ul class="camera_links">
+		            	<li><button ng-click="openCamera();"><span class="camera_img"></span> Camera</button></li>
+		            	<li><button ng-click="openGallery();"><span class="gallery_img"></span> Gallery</button></li>
+		            	<li><button ng-click="closeCameraOption();"><span class="close_img"></span> Close</button></li>
+		             <li ng-hide="isEditVechile == true"><button ng-click="removeProfileImage();"><span class="close_img"></span> Remove Image</button></li>
+                            </ul>
+		        </div>
+	    	</div>
+	    </div>
+
+
+
+    </div>
+
+   

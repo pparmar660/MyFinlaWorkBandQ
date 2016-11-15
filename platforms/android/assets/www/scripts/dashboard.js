@@ -1,0 +1,27 @@
+BandQModule.config(['$routeProvider', function ($routeProvider) {
+
+        $routeProvider.
+                when('/dashboard', {templateUrl: 'views/dashboardView.html', controller: 'dashboardCtrl'}).
+                when('/incidentView', {templateUrl: 'incidentMainDiv.html', controller: 'incidentListMainCnt'}).
+                when('/createIncident', {templateUrl: 'main.html', controller: 'appMainController'}).
+                when('/security', {templateUrl: 'views/security.html', controller: 'securityCtrl'}).
+                when('/commsTasks', {templateUrl: 'views/commsTask/commsTaskHome.html', controller: 'commsTaskCtrl'}).
+                when('/employmentHome', {templateUrl: 'employmentHome.html',controller:"employmentHomeController"}).
+                when('/employmentMain', {templateUrl: 'views/Employment/employmentMain.html',controller:"employmentmainCtrl"}).
+                when('/offenderView', {templateUrl: 'views/security/offenderList.html'}).
+                when('/vehicle', {templateUrl: 'views/security/vehicle.html'}).
+                when('/securityVictimwitness', {templateUrl: 'views/security/victimWitness_security.html', controller: 'victimWitness_securityCtrl'}).
+                when('/inboxView', {templateUrl: 'views/commsTask/inboxView.html', controller: 'commsInboxCtrl'}).
+                when('/resource', {templateUrl: 'resource/index.html', controller:'resourceCtrl'}).
+                when('/taskAndCheckList', {templateUrl: 'views/commsTask/tasksAndChecklist.html', controller: 'taskAndCheckList'}).
+                otherwise({redirectTo: '/dashboard'});
+
+    }]);
+
+
+$(document).ready(function () {
+    webRequestObject = new WebRequestApi();
+    dataBaseObj = new LocalDataBase();
+  
+});
+

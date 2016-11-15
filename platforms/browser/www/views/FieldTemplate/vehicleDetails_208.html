@@ -1,0 +1,256 @@
+<div id="208" ng-controller="ViewVechileById" ng-show="vehicleDetailShowStatus">
+    <div class="layout" ng-hide="showLinkedModule">
+        <div class="vvheader_wrap">
+            <div class="text_wrap">
+                <div class="vvh_icon">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon d-icon3"></span>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="text_head">
+                        <h1><span>Vehicle:</span></h1>
+                    </div>              
+                </div>          
+                <div class="np_wrap vehicleNumberWrap">
+                    <div class="np_area">{{vechileData.licence_plate_vtk| uppercase}}</div>
+                </div>  
+            </div>
+            <div class="edit_btn_wrap">
+                <div class="btn-group sl-icons icon-btn">
+                    <div class="wrap-btn">                          
+                        <button class="button btn-orange btn-block radius" type="button" ng-click="editVechile(vechileData.id_vtk);"> 
+                            <span class="v-flex">                                 
+                                <span class="btn-txt">Edit</span>
+                                <span class="circle-flex">
+                                    <span class="s-btn-icon"><i class="fa fa-edit"></i></span>          
+                                </span>
+                            </span>
+                        </button>
+                    </div>                                
+                </div>
+            </div>  
+            <p>Last updated: {{vechileData.updated_time}}</p>                            
+        </div>
+        <div class="incident_report_tab of_detail_view">
+            <div class="offender_slider_wrap">
+
+                <div ng-if="images.length > 0" class="carousel-demo-fullscreen">
+                    <ul rn-carousel rn-carousel-controls rn-carousel-buffered class="carousel1" rn-carousel-index="imageIndex">
+
+                        <li id="tags-list" ng-repeat="image in images track by $index" ng-class="'id-' + {{$index}}">
+                            <img ng-src="{{image.imageurl}}" custom-click="imageLargeView(image);"/> 
+                        </li>
+                    </ul>
+                </div>
+                <div ng-if="images.length == 0" class="carousel-demo-fullscreen">
+                    <img src="images/car_img.jpg"/> 
+                </div>
+
+            </div>
+            <div class="offender_details">
+                <div class="parentHorizontalTab">
+                    <div class="angTabWrapper">
+                        <tabs>
+                            <pane title="Vehicle Details">
+                                <div>
+                                    <div class="tab_content">
+                                        <div class="vvl_wrap">
+                                            <div class="left">
+                                                <ul>
+                                                    <li><p><span>Plate:</span> <strong>{{vechileData.licence_plate_type === 1 ? "Full" : "Partial"}}</strong></p></li>
+                                                    <li><p><span>{{FormFieldLabelData.vehicle[25].lable_name}}</span> <strong>{{vechileData.possible_false_plate === 1 ? "Yes" : "No"}}</strong></p></li>
+                                                    <li><p>{{FormFieldLabelData.vehicle[19].lable_name}}</p></li>
+                                                    <li><p><span><strong ng-bind-html="vechileData.description_vtk"></strong></span></p></li>
+                                                </ul>
+                                            </div>
+                                            <div class="left">
+                                                <ul>
+                                                    <li><p><span>{{FormFieldLabelData.vehicle[1].lable_name}}</span> <strong ng-bind-html="vechileData.make_vtk"></strong></p></li>
+                                                    <li><p><span>{{FormFieldLabelData.vehicle[2].lable_name}}</span> <strong  ng-bind-html="vechileData.model_vtk"></strong></p></li>
+                                                    <li><p><span>{{FormFieldLabelData.vehicle[11].lable_name}}</span> <strong ng-bind-html="vechileData.colour_vtk"></strong></p></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </pane>
+                            <pane title="Images &amp; Media">
+                                <div>
+                                    <div class="tab_content">
+                                        <div class="up_img_wrap">
+                                            <div class="col_4" ng-repeat="image in images| startFrom : 0">
+                                                <div class="files_upload_wrap">
+                                                    <div class="image">
+                                                        <a href="javascript:void(0);"></a>
+                                                        <img ng-src="{{image.imageurl}}" alt="docs">
+                                                    </div>
+                                                    <!--                                <p>{{img.name}}</p>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </pane>
+                        </tabs>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="incident_details">
+            <div class="incident_victims_details incident-victim-tabs" ng-show="showVehLinkedDetailsTab1">
+                <div class="parentHorizontalTab">
+                    <div class="angTabWrapper orangeTabs">
+                        <tabs >
+                            <pane title="Incidents" id="vehIncidentTab1">
+                                <div class="tab_content">
+                                    <div class="vertical-scroll">
+                                        <div class="o_d_t_wrap">
+                                            <div class="left" ng-repeat="incident in incidents" ng-click="openIncidentDetail(incident)">
+                                                <ul>
+                                                    <li><p><span>Reference:</span> <strong>{{incident.reference_no}}</strong></p></li>
+                                                    <li><p><span>Category:</span> <strong>{{incident.category}}</strong></p></li>
+                                                    <li><p><span>Outcome/Type:</span> <strong ng-if="incident.outcome != null">{{incident.outcome}}/{{incident.type}}</strong></p></li>
+                                                    <li><p><span>Date:</span> <strong>{{incident.date}}</strong></p></li>
+                                                    <li><p><span>Status:</span> <strong>{{incident.status}}</strong></p></li>	
+                                                </ul>
+                                            </div>
+                                            <div ng-if="(incidents.length <= 0 || !incidents)"> No linked Incidents </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </pane>
+
+                            <pane title="Locations" id="vehLocationTab1">
+                                <div class="tab_content" >
+                                    <div ng-show="showMapInVehicle"><div id="linkedMapVehicleDetail" alt="map" style="width:100%; height:300px;"></div></div>
+                                    <div ng-hide="showMapInVehicle">No Location available</div>
+                                </div>
+                            </pane>
+                            <pane title="Linked Offenders" id="vehLinkedOffenderTab1">
+                                <div class="tab_content">
+                                    <div class="vertical-scroll" ng-show="(data.linked_offender.length > 0)">
+                                        <div class="left-col1" ng-repeat="offender in data.linked_offender track by $index" ng-click="openOffenderDetail(offender)">
+                                            <div class="image-block">
+                                                <img ng-src="{{offender.image}}" alt="thumb-img" /> 
+                                            </div>
+                                            <div class="content-block">
+                                                <p><span>{{offender.status}}</span></p>
+                                                <p>Incidents:&nbsp;{{offender.linked_incident}}</p>
+                                                <p>Vehicles:&nbsp;{{offender.linked_vehicle}}</p>
+                                            </div>
+                                            <div class="title-name">
+                                                <span>{{offender.fullName}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-show="(data.linked_offender.length <= 0 || !data.linked_offender)" > No linked Offenders 
+                                    </div>
+                                </div>
+                            </pane>
+                        </tabs>
+                    </div> 
+                </div>        
+            </div>
+            
+             <div class="incident_notes_wrap"  ng-hide="(!isCommAllowed && vechileData.has_task == 0)">
+                <div class="parentHorizontalTab">
+                    <div class="angTabWrapper orangeTabs">
+                        <tabs>
+                            <pane title="Notes &amp; Comms" id="vehCommsTab1">
+                                <div class="tab_content">
+                                    <div class="comms_notes_wrap">
+                                        <div ng-if="commsNote" ng-repeat="comm in commsNote track by $index">
+                                            <div class="notes_wrap" ng-class-even="'next_line'">
+                                                <div class="notes_wrap_img">
+                                                    <img ng-src="{{staffImage}}" alt="news" /> <!--images/news_1.png-->
+                                                </div>
+                                                <div class="notes_wrap_content">
+                                                    <div class="notes_wrap_text">
+                                                        <h3>{{comm.note_title}}</h3> <!--Derek Gent at Nov 11, 2015 11:09--> 
+                                                        <p>{{comm.message}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="!commsNote">{{commsNote}}</div>
+                                    </div>
+                                </div>
+                            </pane>
+                            <pane title="Tasks &amp; Checklists" id="vehTasksTab1">
+                                <div class="tab_content">
+                                    <div class="comms_notes_wrap">
+                                        <div class="AOC_ContentDiv">
+                                            <div class="AOC_Content o_d_t_wrap displayBLock">
+                                                <ul>
+                                                    <li ng-if="showChecklist" ng-repeat="task in taskAndCheckList track by $index">
+                                                        <div class="asignList" >
+                                                            <label class="msgstatus_icon"><span><img ng-src="{{task.image}}" alt="{{task.image}}"></span></label>
+                                                            <div class="asignDivContent">
+                                                                <p class="text">{{task.task_refernce}}: {{task.content}}</p>
+                                                                <p><span>Assigned to: {{task.assigned_to}}</span></p>
+                                                                <p><span>Date Required: {{task.date}}</span></p>
+                                                             </div>
+                                                        </div> 
+                                                    </li>
+                                                    <li>{{taskAndCheckList}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </pane>
+                        </tabs>
+                        <span ng-if="vechileData.add_comm != 0" class="comms" custom-click="showAddNotePopup();"></span>
+                    </div> 
+                </div>
+            </div>
+           
+
+        </div>
+        <div ng-include="'views/addCommPopup.html'"></div> 
+        <div class="sp_wrap" ng-show="isLargeImageView">
+
+            <div class="slider_wrap">
+                <div class="slider_content">
+
+                    <div class="slider_img_wrap">
+                        <div class="carousel-demo-fullscreen">
+
+                            <ul rn-carousel rn-carousel-controls rn-carousel-buffered class="carousel1" rn-carousel-index="imageIndex">
+
+                                <li id="tags-list" ng-model="imageIndex" ng-if="images" ng-repeat="image in images track by $index">
+
+
+                                    <div class="slider_head">
+                                        <h2><span class="close_btn" ng-click="closeLargeImageView();"><i class="fa fa-times"></i></span></h2>
+                                    </div>
+                                    <h2><strong>Image:</strong> <span>(</span>{{image.imagename}} <span ng-if="image.updateddate != null">- {{image.updateddate}}</span> <span ng-if="image.owner != null">by {{image.owner}}</span><span>)</span></h2>
+                                    <img ng-src="{{image.imageurl}}" alt="banner{{image.imagename}}"/> 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <linked-module ng-if="showLinkedModule"> </linked-module>
+    <div id="backSelector" class="btn-group action-button icon-btn" ng-click="closeDetail()" ng-if="showLinkedModule">	
+        <div class="wrap-btn">							
+            <button class="button btn-action radius margin-top" type="button" >	
+                <div class="v-flex">
+                    <div class="circle-flex">
+                        <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>
+                    </div>
+                    <span class="btn-txt">Back</span>
+                </div>											
+            </button>							                  
+        </div>						
+    </div>
+</div>

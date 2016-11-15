@@ -1,0 +1,111 @@
+
+<link rel="icon" type="image/png" href="resource/images/favicon-16x16.png" />
+<link rel="icon" type="image/png" href="resource/images/icons_ffffff_256x240.png" />
+
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/jquery-ui.css" />	
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/style.css" />	
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/plugins.css" />
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/employee.css" />		
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/media.css" />	
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/security.css" />
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/jquery.multiselect.css" />	
+<link rel="stylesheet" type="text/css" media="all" href="resource/css/login.css" />
+
+<link rel="stylesheet" type="text/css" media="(max-width: 479px)" href="resource/css/mobile-potrait-320-479.css" />
+<link rel="stylesheet" type="text/css" media="(min-width: 480px) and (max-width: 667px)" href="resource/css/mobile-landscape1-480-667.css" />
+<link rel="stylesheet" type="text/css" media="(min-width: 668px) and (max-width: 767px)" href="resource/css/mobile-landscape2-668x767.css" />
+<link rel="stylesheet" type="text/css" media="(min-width: 768px) and (max-width: 1023px)" href="resource/css/tablet-potrait-768-1023.css" />
+<link rel="stylesheet" type="text/css" media="(min-width: 1024px)" href="resource/css/tablet-landscape-1024.css" />
+
+<script type="text/javascript" src="resource/js/jquery-ui.min.js"></script>	
+
+<script type="text/javascript" src="resource/js/fancySelect.js"></script>	
+<script type="text/javascript" src="resource/js/select2.min.js"></script>
+<script type="text/javascript" src="resource/js/jquery.multiselect.min.js"></script>
+<script type="text/javascript" src="resource/js/jquery.jscroll.min.js"></script>
+
+	
+
+<div>
+    <div style="display: none;" id="overlay_loader_holder">
+        <div class="overlay_loader"></div>
+        <div class="overlay_loader_content"></div>
+    </div>
+    <div style="display: none;" id="no_internet_overlay_holder">
+        <div class="no_internet_overlay_bg"></div>
+        <div class="no_internet_overlay_block">
+            <div class="overlay_loader"></div>
+            <div class="overlay_loader_content">No Internet Connection.</div>
+        </div>
+    </div>
+    <div style="display: none;" id="no_internet_holder">
+        <div class="no_internet_block">
+            <div class="loaderr"></div>
+            <div class="loaderr_content">No Internet Connection.</div>
+        </div>
+    </div>
+    <div >
+        <div class="side-panel" data-include="includes/side_panel.html"></div>
+        <div class="page-inner">
+            <!-- Header removed <div id="header" data-include="includes/header.html" data-callback="headerinit"></div>-->
+            <div id="content" class="staff_directory">
+                <div class="layout" id="home_tab_list" data-include="includes/dashboard.html" data-callback="dashboardCallback"></div>
+
+                <div class="layout empty_container" style="display: none;" id="document_tab_list"></div>
+                <div class="layout empty_container" style="display: none;" id="news_tab_list"></div>
+                <div class="layout empty_container" style="display: none;" id="video_tab_list"></div>
+                <div class="layout empty_container" style="display: none;" id="faq_tab_list"></div>
+                <div class="layout empty_container" style="display: none;" id="link_tab_list"></div>
+
+                <div class="layout empty_container" style="display: none;" id="document_tab_add"></div>
+                <div class="layout empty_container" style="display: none;" id="news_tab_add"></div>
+                <div class="layout empty_container" style="display: none;" id="video_tab_add"></div>
+                <div class="layout empty_container" style="display: none;" id="faq_tab_add"></div>
+                <div class="layout empty_container" style="display: none;" id="link_tab_add"></div>
+
+                <div class="layout empty_container" style="display: none;" id="news_tab_view"></div>
+                <div class="layout empty_container" style="display: none;" id="video_tab_view"></div>
+                <div class="layout empty_container" style="display: none;" id="faq_tab_view"></div>
+                <div class="layout empty_container" style="display: none;" id="link_tab_view"></div>
+
+            </div>
+            <!-- Footer removed <div id="footer" data-include="includes/footer.html"></div> -->
+        </div>
+    </div>
+</div>
+<script>
+    function initialise() {
+        $('#no_internet_holder').hide();
+
+
+        // Now safe to use device APIs
+        appObj.init();
+        videoObj.init();
+        documentObj.init();
+        faqObj.init();
+        linkObj.init();
+        newsObj.init();
+
+    }
+
+    initialise();
+    function onLoad() {
+        document.addEventListener("deviceready", function () {
+            if (appObj.checkConnection() == 'No network connection') {
+                $('#no_internet_holder').show();
+            } else {
+
+            }
+            document.addEventListener("offline", appObj.onOffline, false);
+            document.addEventListener("online", appObj.onOnline, false);
+        }, false);
+    }
+    var delay = (function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+</script>

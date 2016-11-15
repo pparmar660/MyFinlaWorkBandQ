@@ -1,0 +1,70 @@
+<div ng-show="page.showStatus">
+    <div class="incident_report_wrapper" >
+        <div fields-directive ng-repeat="fieldId in page.fields"></div>
+    </div>
+    <div class="incident_report_btn_wrapper">
+        <div class="inbtn_fr" ng-hide="hideButton == true || showHomeButton == true">
+            <div class="incident_btn_wrap last_btn n-top-m" ng-click="nextclick = 1; nextPage(page)">
+                <div class="btn-group action-button action-nxt icon-btn">
+                    <div class="wrap-btn">							
+                        <button class="button btn-action btn-block radius {{enableBtn}}" type="button" >
+                            <div class="v-flex">
+                                <span class="btn-txt">Next</span>	
+                                <div class="circle-flex">
+                                    <span class="s-btn-icon"><i class="fa fa-chevron-right"></i></span>	
+                                </div>											
+                            </div>
+                        </button>	
+                    </div>							  
+                </div>						
+            </div>
+        </div>
+        <div class="inbtn_fl" ng-if="showHomeButton == false">
+            <div class="incident_btn_wrap fr">
+                <div class="btn-group action-button icon-btn">	
+                    <div class="wrap-btn">							
+
+                        <button class="button btn-action btn-block radius" type="button" ng-click="savePopup(true)">	
+                            <div class="v-flex">
+                                <div class="circle-flex">
+                                    <span class="s-btn-icon"><img src="images/icons/save_icon.png" alt="save icon" /></span>	
+                                </div>
+                                <span class="btn-txt">Save</span>
+                            </div>											
+                        </button>	
+                    </div>	
+                </div>
+            </div>											
+            <div class="incident_btn_wrap fl" ng-if="showBackbutton">
+                <div class="btn-group action-button icon-btn">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-action btn-block radius" type="button" ng-click="backPage(page)">	
+                            <div class="v-flex">
+                                <div class="circle-flex">
+                                    <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>
+                                </div>
+                                <span class="btn-txt">Back</span>
+                            </div>											
+                        </button>							                  
+                    </div>						
+                </div>							  
+            </div>
+        </div>
+        <div class="inbtn_fr" ng-if="showHomeButton == false">
+            <div class="incident_btn_wrap fr">
+                <div class="btn-group action-button icon-btn">	
+                    <div class="wrap-btn">								
+                        <button ng-show="hideButton == true" class="button btn-action btn-block radius" type="button" ng-click="submitBtn(page)">	
+                            <div class="v-flex">
+                                <span class="btn-txt">Submit</span>	
+                                <div class="circle-flex">
+                                    <span class="s-btn-icon submit-icon"><i class="fa fa-chevron-right"></i></span>	
+                                </div>											
+                            </div>
+																
+                        </button>
+                    </div>	
+                </div>
+            </div>											
+        </div> </div>
+</div>

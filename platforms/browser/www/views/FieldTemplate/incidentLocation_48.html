@@ -1,0 +1,118 @@
+<div id="48" ng-controller="incidentLocationCtrl">
+    <div class="incident-report">
+        <div class="indicent-lft">
+            
+            <h3>{{AllFieldLabelData[48].lable_name}}<sup>*</sup>
+                
+                <span class="ot_tip" ng-show="AllFieldLabelData[48].question_hint" ng-click="toolTipToggleLocation = !toolTipToggleLocation"><i class="newtip">?</i>
+                    <span class="tooltip close-parent vehicle-tip"  style= "display:block" ng-show="toolTipToggleLocation">
+                        <p>{{AllFieldLabelData[48].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+            </h3>
+
+            <div class="incident-btn">
+                <a id="id_store" class="button btn-orange btn-block radius" href="javascript:void(0)" ng-click="myStore()" ng-bind-html="AllFieldLabelData[49].lable_name"></a>
+                <a id="id_locateme" class="button btn-orange btn-block radius" href="javascript:void(0)" ng-click="locateMe()" ng-bind-html="AllFieldLabelData[50].lable_name"></a>
+                <a id="id_letmeshoose" class="button btn-orange btn-block radius" href="javascript:void(0)" ng-click="letMeChoose()" ng-bind-html="AllFieldLabelData[51].lable_name"></a>
+            </div>
+        </div>
+
+        <div class="incident-right">
+            <div class="indicent-map">
+                <div class="indicate-map">
+                    <div id="map" alt="map" style="height: 200px;width:100%;"></div>
+                </div>
+                <div id="div_store">
+                    <div class="linked_staff_select" ng-show="showMyStore">
+                        <div class="col_select" id="ddS0" onclick="setDropDownDirection('ddS0');">
+                            <div class="white_selectbox">
+                                <ol class="nya-bs-select" ng-model="staticModel1" data-live-search="true"  ng-change="fillSwasArea(1); changeStoreVenue(this);">
+                                    <li nya-bs-option="dv in derivedVenues track by $index">
+                                        <a>
+                                            <span class="label">{{ dv.venue_name}} ( {{dv.venue_code}} / {{dv.venue_site_number}})</span>
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="linked_staff_select" ng-show="showLocateMe">
+                        <div class="col_select" id="ddS1" onclick="setDropDownDirection('ddS1');">
+                            <div class="white_selectbox">
+                                <ol class="nya-bs-select" ng-model="staticModel1" data-live-search="true"  ng-change="fillSwasArea(3); changeStoreVenue(this);">
+                                    <!-- to enable search func data-live-search="true" -->
+                                    <li nya-bs-option="dv in derivedVenues track by $index"><a>{{dv.venue_name}} ( {{dv.venue_code}} / {{dv.venue_site_number}}) ({{dv.d}} Miles) <span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="linked_staff_select" ng-show="showSwas">
+                        <div class="col_select" id="ddS2" onclick="setDropDownDirection('ddS2');">
+                            <div class="white_selectbox">
+                                <ol class="nya-bs-select" ng-model="staticModel2" data-live-search="true" title="General SWAS Area Affected" ng-change="changeSwasArea(this)">
+                                    <!-- to enable search func data-live-search="true" -->
+                                    <li class="nya-bs-option" value="{{sa.id_vna}}" ng-repeat="sa in derivedSwasArea track by $index"><a>{{sa.title_vna}}<span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vsg indicent-map" id="div_letMeChoose" style="display:none; margin-top: 0px !important;">
+
+                    <div class="input-style" ng-if="showLetMeChoose">
+
+                        <div class="row">
+                            <div class="left_box">
+
+                                <input type="text" class="form-control input-lg" placeholder="{{AllFieldLabelData[95].lable_name}}" ng-model="derivedVenues.selectedVenueSiteNumber" ng-change="setSiteNumber(derivedVenues.selectedVenueSiteNumber)"/>
+                                <span class="field-error ng-scope" ng-if="siteNoIsNotValid">You have entered an invalid Site Number. Please check and try again.</span>
+                            </div>
+                            <div class="right_box">
+                                <input type="text" class="form-control input-lg" placeholder="{{AllFieldLabelData[96].lable_name}}"  ng-model="derivedVenues.selectedVenueStoreCode" ng-change="setVenueStoreCode(derivedVenues.selectedVenueStoreCode)">
+                                <span class="field-error ng-scope" ng-if="venueNoIsNotValid">You have entered an invalid Site Code. Please check and try again.</span>
+
+                            </div>
+                        </div>
+
+                        <div class="linked_staff_select">
+                            <div class="col_select" id="ddS3" onclick="setDropDownDirection('ddS3');">
+                                <div class="white_selectbox">
+
+                                    <ol class="nya-bs-select" ng-model="derivedVenues.myChooseV"  data-live-search="true" ng-change="changeMyChooseV(this); fillSwasArea(2);">
+                                        <li nya-bs-option="av in derivedVenues track by $index"><a>{{av.venue_name}} ( {{av.venue_code}} / {{av.venue_site_number}})<span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="linked_staff_select" ng-if="showSwas">
+                        <div class="col_select" id="ddS4" onclick="setDropDownDirection('ddS4');">
+                            <div class="white_selectbox" id="fillOl">
+                                <ol class="nya-bs-select" ng-model="staticModel2" title="General SWAS Area Affected" data-live-search="true" ng-change="changeSwasArea(this)">
+                                    <li class="nya-bs-option" value="{{sa.id_vna}}" ng-repeat="sa in derivedSwasArea track by $index">
+                                        <a>{{sa.title_vna}}
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
+                            <!-- fillOl ends here -->
+                        </div>
+                    </div>
+
+
+                </div>
+                <span class="field-error" ng-if="req1">Required</span>
+                <span class="field-error" ng-if="req2">No Locations Available</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

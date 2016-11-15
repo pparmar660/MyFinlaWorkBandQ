@@ -1,0 +1,171 @@
+<div  id="venueDirectory" ng-controller="venueDirectory">
+	<div class="staff_directory">
+       <div class="layout">
+          <div class="staff_heading_row">
+             <div class="heading_left">
+                <div class="icon">
+                   <div class="center-icon on-icons">
+                      <div class="circle-icon">
+                         <div class="v-m">
+                            <span class="d-icon d-icon19"></span>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="text">
+                   <h1>Venue Directory</h1>
+                </div>
+             </div>
+             <div class="heading_right">
+                <div class="left_text_box">
+                   <div class="srch-box no-style">
+                      <input type="text" class="search-btn" ng-model="search.name"  placeholder="Search">
+                      <input type="button" class="search-icon" ng-click="venueFilter()" value="submit">
+                   </div>
+                </div>
+                 <div class="right_btn" ng-show="employment.venuePermission.access_permission==1 && moduleAccessInVenue.venuesManager=='Full Access'">
+                   <div class="btn-group sl-icons icon-btn">
+                      <div class="wrap-btn">
+                         <button type="button" class="button btn-orange btn-block radius">	
+                         <span class="v-flex">								  
+                         <span class="btn-txt">Add New</span>
+                         <span class="circle-flex">
+                         <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                         </span>
+                         </span>										
+                         </button>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <ul class="staff_tabs">
+             <li ng-repeat="venueCat in venueListCategory"><span>{{venueCat.venue_count}}</span>
+                <a href="javascript:void(0)" ng-click="select(venueCat.id_venuectg); ListVenuesByCategory(venueCat.id_venuectg)" ng-class="{active: isActive(venueCat.id_venuectg)}">{{venueCat.category_venuectg}}</a>
+             </li>
+          </ul>
+          <div class="staff_select_wrapper">
+             <div class="col_select">
+                <div class="orange_select">
+                  <ol class="nya-bs-select" ng-model="selectedOrganisation"  multiple title="All Organisation" data-live-search="false" data-selected-text-format="count" ng-change="getOrganisation(selectedOrganisation)">
+                      <li nya-bs-option="organisation in Organisations track by $index">
+                         <a><span class="label">{{ organisation.name }}</span>
+                         <span class="fa fa-check check-mark"></span></a>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+             <div class="col_select">
+                <div class="orange_select">
+                  <ol class="nya-bs-select" ng-model="selectedCountry" multiple multiple title="All Countries" data-live-search="false"  data-selected-text-format="count" ng-change="getCountry(selectedCountry)">
+                      <li nya-bs-option="country in Countries track by $index">
+                         <a><span class="label">{{ country.name_cnt }}</span>
+                         <span class="fa fa-check check-mark"></span></a>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+             <div class="col_select">
+                <div class="orange_select">
+                  <ol class="nya-bs-select" ng-model="selectedRegion" multiple multiple title="All Regions" data-live-search="false" data-selected-text-format="count"  ng-change="getRegion(selectedRegion)">
+                      <li nya-bs-option="region in Regions track by $index">
+                         <a><span class="label">{{ region.name_rgs }}</span>
+                         <span class="fa fa-check check-mark"></span></a>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+             <div class="col_select">
+                <div class="orange_select">
+                  <ol class="nya-bs-select" ng-model="selectedZone"  multiple title="All Zones" data-live-search="false"  data-selected-text-format="count" ng-change="getZone(selectedZone)">
+                      <li nya-bs-option="zone in Zones track by $index">
+                         <a><span class="label">{{ zone.zone_name }}</span>
+                         <span class="fa fa-check check-mark"></span></a>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+             <div class="vws_btn">
+                <input type="submit" value="Search" class="se_btn" custom-click="venueFilter()">
+             </div>
+             <div class="clr"></div>
+          </div>
+          <div class="staff_details_wrap">
+             <div class="staff_cols">
+                <div class="access_level_wrap">
+                   <h3>Sector</h3>
+                   <ul>
+                   <li ng-repeat="accesslevel in venueAcesslevel">
+                         <div class="custom-checkbox">
+                            <input type="checkbox" ng-checked="true" id="{{accesslevel.sector_title}}"  ng-model="active" ng-change="change(accesslevel, active)"  custom-click="filterByLevel(accesslevel.sector_title)">
+                            <label for="{{accesslevel.sector_title}}" >{{accesslevel.sector_title}}</label>
+                         </div>
+                      </li>
+                   
+                   </ul>
+                </div>
+             </div>
+             <div class="staff_cols">
+                <div class="left_name">
+                <ul ng-show="isVenueNotFound" style="background-color:red"><li>{{venueNotFound}}</li></ul>
+                <ul>
+
+                      <li ng-repeat="venue in DerivedVenue  | filter:accessFilter  | filter:search.name "><a href="javascript:void(0)" 
+                      ng-click="getVenueDetail(venue.id,venue.gLat,venue.gLng);" ng-class="venue.class">{{venue.venue_name}}  
+                       </a></li>
+                   </ul>
+                </div>
+                <div class="right_initial">
+                <ul>
+
+                   <li><a href="javascript:void(0)" custom-click="searchAllVenue(venuecatIdforAllSearch)" ng-class="classOfAllStaff">ALL</a></li>
+                </ul>
+                  <ul>
+                       <li ng-repeat ="aplha in alphabet"><a href="javascript:void(0)" custom-click="searchStaff(aplha)" ng-class="aplha.class">{{aplha.value}}</a></li>
+                   </ul>
+                </div>
+             </div>
+             <div class="staff_cols">
+                <div class="staff_details" ng-show="venueminiprofile">
+                   <div class="venue_map">
+                       <div id="map1" alt="map1" style="height: 200px;width:100%;"></div>
+                   </div>
+                   <div class="staff_text_detail">
+                      <h4>{{staffvenueMiniProfile.venue_name}}</h4>
+                      <h6>VSG Code: {{staffvenueMiniProfile.venue_site_number}}</h6>
+                      <h6>B&Q Code: {{staffvenueMiniProfile.venue_code}}</h6>
+                      <p>{{staffvenueMiniProfile.address}}</p>
+                      <p>{{staffvenueMiniProfile.address2}}</p>
+                      <p>{{staffvenueMiniProfile.address3}}</p>
+                      
+                      
+                      <p>{{staffvenueMiniProfile.postcode}}</p>
+                      <p>{{staffvenueMiniProfile.city}}</p>
+                      <p>{{staffvenueMiniProfile.name_cnt}}</p>
+                      <h5><span>T:</span> {{staffvenueMiniProfile.telephone}}
+                       <span style="color:red" ng-show ="telephoneUser"> Not Supplied</span></h5>
+<!--                      <h5><span>E:</span> {{staffvenueMiniProfile.email_venue}}
+                      <span style="color:red" ng-show ="venuEmail"> Not Supplied</span></h5>-->
+                      <div class="staff_btn">
+                         <div class="btn-group sl-icons icon-btn">
+                            <div class="wrap-btn" custom-click="venueProfile()">
+                               <button type="button" class="button btn-orange btn-block radius">	
+                               <span class="v-flex">								  
+                               <span class="btn-txt" >View Venue</span>
+                               <span class="circle-flex">
+                               <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                               </span>
+                               </span>										
+                               </button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+</div>
+<script src="scripts/custom.js" type="text/javascript">
+            </script>

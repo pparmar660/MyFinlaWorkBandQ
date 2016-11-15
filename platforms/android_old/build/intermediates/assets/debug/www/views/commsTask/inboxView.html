@@ -1,0 +1,521 @@
+<div ng-include="'views/sidePanels/sidePanelCommsTask.html'"></div>
+<div class="page-inner">
+    <div id="content" class="staff_directory" ng-if="!internetConnection">
+        <div class="layout" id="commsAndTask_34" ng-controller="inboxCtrl">
+            <div class="staff_heading_row">
+                <div class="heading_left commLeft">
+                    <div class="icon">
+                        <div class="center-icon on-icons smallIcons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon {{messageTitleClass}} height"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text"><h1 class="themeColor">{{messageTitle}}</h1></div>
+                </div>
+                <div class="heading_right" ng-if="!showCompose">
+                    <div class="left_text_box">
+                        <div class="srch-box">
+                            <input type="text" placeholder="Search" class="search-btn" ng-model="searchMailText">
+                            <input type="button" value="submit" class="search-icon" ng-model="searchMailText" ng-click="searchBtn(searchMailText)">
+                        </div>
+                    </div>
+                    <div class="right_btn" ng-show="menu.inMail.access_permission == 1">
+                        <div class="btn-group sl-icons icon-btn" ng-show="modulePermission.inMail == 'Full Access' && showAddNew == true">
+                            <div class="wrap-btn" ng-click="addNew()" >							
+                                <button type="button" class="button btn-orange btn-block radius">	
+                                    <span class="v-flex">								  
+                                        <span class="btn-txt">Add New</span>
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                        </span>
+                                    </span>										
+                                </button>
+                            </div>							  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="noInternetAvailable" class="error-msg close-parent">
+                <div class="error-strip">
+                    <span class="no-internet-icon"></span>
+                    <h4>No Internet Connection</h4>
+
+                </div>
+            </div>
+            <!-------------------send message popup----------------->
+
+            <div class="alertvalidate close-parent success" ng-show="isMessageSend" ng-click="closePopUp()">
+                <span class="success-icon"></span>
+                <h4>{{sentMessage}}</h4>
+                <div class="close"><span class="fa fa-times"></span></div>
+            </div>
+            <div class="alertvalidate close-parent success" ng-show="isMessageDeleted" ng-click="closeDeletePopUp()">
+                <span class="success-icon"></span>
+                <h4>{{messageDeleted}}</h4>
+                <div class="close"><span class="fa fa-times"></span></div>
+            </div>
+            <div class="security-sections padModelBtn">
+                <div class="welcome-column pad10px bottomMar">
+                    <div class="row widGetAuto">
+                        <div class="col_01 mail-box-mes">
+                            <p class="active" ng-class="{selected: btnFilter === 'all'}" id="all" ng-click="myFilterFunc($event, 'all')"> All <span ng-show="unreadMessageCount">{{unreadMessageCount}}</span><span ng-hide="unreadMessageCount">0</span></p>
+
+                            <ul ng-show="menu.inMail.access_permission == 1 && (modulePermission.inMail == 'Full Access' || modulePermission.inMail == 'Read Only')">
+                                <li class="mailIco" ng-class="{selected: btnFilter === 'inbox'}"><a href="javascript:void(0)"  id="inbox" ng-click="myFilterFunc($event, 'inbox')">{{menu.inMail.name}}</a></li>
+                                <li ng-class="{selected: 'sent' === btnFilter}"><a href="javascript:void(0)" id="sent" ng-click="myFilterFunc($event, 'sent')">Sent</a></li>
+                                <li ng-class="{selected: 'drafts' === btnFilter}"><a href="javascript:void(0)" id="drafts" ng-click="myFilterFunc($event, 'drafts')">Drafts</a></li>
+                                <li ng-class="{selected: btnFilter === 'trash'}"  ><a href="javascript:void(0)" id="trash" ng-click="myFilterFunc($event, 'trash')">Trash</a></li>
+                            </ul>
+
+                            <ul ng-show="menu.alertNotification.access_permission == 1 && (modulePermission.alertNotification == 'Full Access' || modulePermission.alertNotification == 'Read Only')">
+                                <li class="alertIco" ng-class="{selected: 'alert' === btnFilter}" ><a href="javascript:void(0)"  id="alert" ng-click="myFilterFunc($event, 'alert')">Alerts</a></li>
+                            </ul>
+
+                            <ul ng-show="menu.alertNotification.access_permission == 1 && (modulePermission.alertNotification == 'Full Access' || modulePermission.alertNotification == 'Read Only')">
+                                <li class="notifiIco" ng-class="{selected: 'notification' === btnFilter}" ><a href="javascript:void(0)"  id="notification" ng-click="myFilterFunc($event, 'notification')">Notifications</a></li>
+                            </ul> 
+
+                            <ul ng-show="menu.comms.access_permission == 1 && (modulePermission.comms == 'Full Access' || modulePermission.comms == 'Read Only')">
+                                <li class="commsIco" ng-class="{selected: 'comms' === btnFilter}"><a href="javascript:void(0)"  id="comms" ng-click="myFilterFunc($event, 'comms')">{{menu.comms.name}}</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div ng-show="!showCompose">
+                        <div class="mail_main_container inbox-container mail-box-table" ng-hide="showMessageview">
+                            <div class="table-reponsive">
+
+
+                                <div class="panel panel-default inbox" id="inboxPanel">
+                                    <!--message list-->
+                                    <div class="table-responsive" ng-show="!isMessageSelected()">
+                                        <table class="table table-striped table-hover refresh-container pull-down last-td">
+                                            <thead class="hidden-xs">
+                                                <tr>
+                                                    <th><input type="checkbox" ng-show="showCheckbox" ng-model="selectedAll" ng-change="checkAll(selectedAll)" title="Mark all"/></th>
+                                                    <th ng-show="false"></th>
+                                                    <th ng-hide="msgType =='drafts' || msgType =='sent'"><a href="javascript:void(0)" ng-click="sort('message_from')"><strong>From</strong>
+                                                            <span ng-if="reverse != null"><span ng-show="sortingOrder == 'message_type' && !reverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortingOrder == 'message_from' && reverse" class="fa fa-caret-up"></span></span>
+                                                        </a></th>
+                                                         <th ng-show="msgType =='drafts' || msgType == 'sent'"><a href="javascript:void(0)" ng-click="sort('message_to')"><strong>Recipient</strong>
+                                                            <span ng-if="reverse != null"><span ng-show="sortingOrder == 'message_to' && !reverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortingOrder == 'message_to' && reverse" class="fa fa-caret-up"></span></span>
+                                                        </a></th>
+                                                    <th><a href="javascript:void(0)" ng-click="sort('message_type')"><strong>Type</strong>
+                                                            <span ng-if="reverse != null"> <span ng-show="sortingOrder == 'message_type' && !reverse" class="fa fa-caret-down"></span>
+                                                                <span ng-show="sortingOrder == 'message_type' && reverse" class="fa fa-caret-up"></span></span>
+                                                        </a></th>
+                                                    <th><a href="javascript:void(0)"><strong>Message</strong></a></th>
+                                                    <th></th>
+                                                    <th></th>
+
+                                                    <th colspan="3">
+                                                        <span ng-show="filteredItems" class="text-muted"><b>{{filteredItems.from}}</b>–<b>{{filteredItems.to}}</b> of <b>{{filteredItems.total - deletedMessageCount}}</b></span>
+                                                        <a class="btnWhite" ng-show="nextShowStatus" ng-click="nextPageRequest()"><i class="fa fa-angle-right"></i></a>
+                                                        <a class="btnWhite" ng-show="prevShowStatus" ng-click="previousPageRequest()"><i class="fa fa-angle-left"></i></a>
+                                                    </th>
+                                                </tr></thead>
+                                            <tbody ng-show="messageNotExist === false" ng-repeat="item in items| orderBy:sortingOrder:reverse">
+                                                <tr id="commsTaskMessages" ng-class = "{unread: item.message_readstatus === 0}">
+                                                    <td class="smallCell"><input type="checkbox" ng-model="item.Selected" title="Mark this item here" ng-if="item.message_type == 'inmail'"/></td>
+                                                    <td class="smallCell" ng-show="false"><a title="star" href="javascript:void(0)"><i class="fa fa-star-o icon-star"></i></a></td>
+                                                    <td ng-hide="msgType =='drafts' || msgType =='sent'" ng-click="viewMessageDetail(item)"><span>{{item.message_from| strLimit: 15}}</span></td>
+                                                    <td ng-show="msgType =='drafts' || msgType =='sent'" ng-click="viewMessageDetail(item)"><span>{{item.message_to| strLimit: 15}}</span></td>
+                                                   <td ng-click="viewMessageDetail(item)"><span>{{item.message_type| strLimit: 15}}</span></td>
+                                                    <td ng-click="viewMessageDetail(item)"><span>{{item.message_subject| strLimit: 30}}</span></td>
+                                                    <td class="smallCell" ng-click="viewMessageDetail(item)"><a title="star" href="javascript:void(0);" ng-if="item.message_attachement"><i class="fa fa-paperclip"></i></a></td>
+                                                    <td class="smallCell" ng-click="viewMessageDetail(item)">
+                                                        <a title="star" ng-if="item.message_type == 'inmail'" href="javascript:void(0);"><i class="messageIcon"></i></a>
+                                                        <a title="star" ng-if="item.message_type == 'alert'" href="javascript:void(0);"><i class="warningIcon"></i></a>
+                                                        <a title="star" ng-if="item.message_type == 'notification'" href="javascript:void(0);"><i class="disIcon"></i></a>
+                                                        <a title="star" ng-if="item.message_type == 'comms'" href="javascript:void(0);"><i class="commsIcon"></i></a>
+                                                    </td>
+                                                    <td ng-click="viewMessageDetail(item)"><span>{{item.message_date}}</span></td>
+                                                </tr>
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+                                    <div class="view-pics offenders-view">
+                                        <div id="nooffenderfoundview" ng-show="messageNotExist === true" class="alertvalidate close-parent info">
+                                            <span class="info-icon"></span>
+                                            <h4>No messages found.</h4>
+                                            <div class="close" ng-click="infoClose()"><span class="fa fa-times"></span></div>
+                                        </div>                              
+
+                                    </div>
+
+                                </div><!--/inbox panel-->
+
+
+
+                            </div>
+                            <div ng-show="!messageNotExist"class="replyBtnDiv MoreBtn downmenu" ng-if="showCheckbox">
+                                <button class="btnOrange beforeNone">More <i class="fa fa-angle-down"></i></button>
+                                <ul class="options">
+                                    <!--                                    <li><a href="javascript:void(0)"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+                                                                            <li><a href="javascript:void(0)"><i class="fa fa-ban"></i> Spam</a></li>-->
+                                    <li><a href="javascript:void(0)" ng-click="deleteItem()" disabled="disabled"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                </ul>
+                            </div>			
+                        </div>
+
+                        <div ng-show="showMessageview">
+                            <div class="mail_main_container mail-box-table">
+                                <div class="messageDiv">
+                                    <h2 class="{{messageIconDisplay}}"><span>{{messageData[0].message_subject}}</span><span class="greyinfo">{{messageData[0].message_type}}</span></h2>
+                                    <div class="senderDetails" ng-if="messageData[0].message_type == 'inmail'">
+                                        <div class="replyBtnDiv" ng-show="modulePermission.inMail == 'Full Access'">
+                                            <button ng-show="showReply" class="btnOrange" ng-click="messageReply(messageData)">Reply</button>
+                                            <div class="btnOrange downmenu" ng-show="showForword">
+                                                <i class="fa fa-angle-down"></i>
+                                                <ul class="options">
+                                                    <li><a href="javascript:void(0)" ng-click="messageForward(messageData)"><i class="fa fa-arrow-right"></i> Forward</a></li>
+                                                    <li ng-show="replyAll"><a href="javascript:void(0)" ng-click="messageReplyAll(messageData)"><i class="fa fa-arrow-right"></i> Reply All</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="senderInfo">
+                                            <div class="profImg">
+                                                <img ng-src="{{profileImage}}" alt="profile image" />
+                                            </div>
+                                            <p ng-if="message == 'inmail'">{{messageData[0].message_from}} <span>to me on {{messageData[0].message_date}}</span></p>
+                                            <p ng-if="message == 'sent'">{{messageData[0].message_from}}<span>to {{messageData[0].message_to}} on {{messageData[0].message_date}}</span></p>
+                                            <p ng-if="message == 'drafts'">{{messageData[0].message_from}} <span>on {{messageData[0].message_date}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="cc-link" ng-if="messageData[0].message_cc">
+                                        <span class="cc-mail">Cc:</span><span> {{messageData[0].message_cc}}</span>
+                                    </div>
+                                    <div class="msgContant" ng-bind-html="messageData[0].message_content"></div>
+                                   <div class="attachmentDiv" ng-if="messageData[0].message_attachment.length>0">
+                                        <p><i class="fa fa-paperclip"></i></p>
+                                        <div class="attachedFiles" ng-repeat="img in messageData[0].message_attachment">
+                                            <span class="atchmt" ng-click="downloadFile(img.attachment_url)"><img ng-src="{{img.attachment_url}}" alt="attacment files" /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="compose-mail mail_main_container inbox-container mail-box-table" ng-show="showCompose">
+                        <div class="table-reponsive">
+                            <h3 class="compose-title">compose</h3>								
+
+                            <div ng-form="composeMailForm">
+                                <div class="control-group input-field">
+
+                                    <h6>To:</h6> <div style="float: right;position: relative;right: 0;margin-top: -15px;"><span ng-click="showCC=!showCC">Cc</span>  &nbsp;&nbsp; <span ng-click="showBcc=!showBcc">Bcc</span></div>
+
+                                    <ui-select multiple required ng-model="composeMail.ToStaffIds" theme="select2" ng-disabled="disabled" style="width: 800px;">
+                                        <ui-select-match placeholder="">{{$item.firstname_usr}} {{$item.lastname_usr}} &lt;{{$item.email_usr}}&gt;</ui-select-match>
+                                        <ui-select-choices repeat="staff in staffList | emailValidation: {firstname_usr: $select.search, lastname_usr : $select.search}">
+                                            <div ng-bind-html=" staff.firstname_usr +' '+ staff.lastname_usr | highlight: $select.search"></div>
+                                            <small>
+                                                {{staff.email_usr}}
+
+                                            </small>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+
+                                <div class="control-group input-field" ng-show="showCC">
+                                    <h6>Cc:</h6>
+                                    <ui-select multiple required ng-model="composeMail.ccStaffIds" theme="select2" ng-disabled="disabled" style="width: 800px;">
+                                        <ui-select-match placeholder="">{{$item.firstname_usr}} {{$item.lastname_usr}} &lt;{{$item.email_usr}}&gt;</ui-select-match>
+                                        <ui-select-choices repeat="staff in staffList | emailValidation: {firstname_usr: $select.search, lastname_usr : $select.search}">
+                                            <div ng-bind-html=" staff.firstname_usr +' '+ staff.lastname_usr | highlight: $select.search"></div>
+                                            <small>
+                                                {{staff.email_usr}}
+
+                                            </small>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+
+                                <div class="control-group input-field" ng-show="showBcc">
+                                    <h6>Bcc:</h6>
+
+                                    <ui-select multiple required ng-model="composeMail.bccStaffIds" theme="select2" ng-disabled="disabled" style="width: 800px;">
+                                        <ui-select-match placeholder="">{{$item.firstname_usr}} {{$item.lastname_usr}} &lt;{{$item.email_usr}}&gt;</ui-select-match>
+                                        <ui-select-choices repeat="staff in staffList | emailValidation: {firstname_usr: $select.search, lastname_usr : $select.search}">
+                                            <div ng-bind-html=" staff.firstname_usr +' '+ staff.lastname_usr | highlight: $select.search"></div>
+                                            <small>
+                                                {{staff.email_usr}}
+
+                                            </small>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>subject:</label>
+                                    <input name="mailSubject" ng-model="composeMail.emailSubject" type="text" class="form-control"/>
+
+                                </div>
+
+
+                                <div id="trixDemoId" ng-controller="trixDemoCtrl" class="text_editer">
+                                    <trix-editor ng-model-options="{ updateOn: 'blur' }" spellcheck="false" class="trix-content" ng-model="trix" angular-trix trix-initialize="trixInitialize(e, editor);" trix-change="trixChange(e, editor);" trix-selection-change="trixSelectionChange(e, editor);" trix-focus="trixFocus(e, editor);" trix-blur="trixBlur(e, editor);" trix-file-accept="trixFileAccept(e, editor);" trix-attachment-add="trixAttachmentAdd(e, editor);" trix-attachment-remove="trixAttachmentRemove(e, editor);" placeholder="Write something.."></trix-editor>
+
+                                </div>	
+
+
+
+
+                                <div class="input-field textarea-field">
+                                    <!-- <textarea></textarea> -->
+                                    <button class="button btn-white btn-block radius white-btn-bg" type="button" ng-click="showUloadPopUp()">
+                                        <span class="v-flex">
+                                            <span class="circle-flex">
+                                                <span class="s-btn-icon"><i class="fa fa-camera" aria-hidden="true"></i></span>
+                                            </span>   
+                                            <span class="btn-txt">Upload Photo</span>            
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="why_not_wrap up_img_wrap" ng-if="attachments.length > 0">
+                                    <h3>Uploaded Files? <span>?</span></h3>
+
+                                    <div class="col_4" ng-click="spliceItem(attachment.id, $event)" ng-repeat="attachment in attachments" itemid="{{attachment.id}}" upload-image-preview src="{{attachment.dSrc}}" title="{{attachment.title}}">
+                                    </div>
+                                    <div class="clr"></div>
+                                </div>
+                                <div class="msg_btn compose-btns">
+                                    <div class="cancel_btn" >
+                                        <div class="btn-group action-button icon-btn">  
+                                            <div class="wrap-btn" ng-click="cancelComposeMail()">                         
+                                                <button class="button btn-red btn-block radius" type="button"> 
+                                                    <div class="v-flex">
+                                                        <div class="circle-flex">
+                                                            <span class="s-btn-icon radius"><img src="images/icons/general-close-x.png" alt="cross" /></span>  
+                                                        </div>
+                                                        <span class="btn-txt radius">Cancel</span>
+                                                    </div>                                          
+                                                </button> 
+                                            </div>                           
+                                        </div>
+                                    </div>
+                                    <div class="yes_btn" ng-click="sendMail()">
+                                        <div class="btn-group square-icons icon-btn">   
+                                            <div class="wrap-btn">                          
+                                                <button class="button btn-orange active btn-block radius" type="button">       
+                                                    <div class="v-flex">                                        
+                                                        <span class="btn-txt">Send</span>
+                                                        <div class="circle-flex">
+                                                            <span class="s-btn-icon radius">
+                                                                <img src="images/icons/tick-white.png" alt="images" />
+                                                            </span>    
+                                                        </div>                                      
+                                                    </div>
+                                                </button>
+                                            </div>          
+                                        </div>
+                                    </div>
+                                    <div class="progress_btn" ng-click="saveMail()">
+                                        <div class="btn-group square-icons icon-btn">   
+                                            <div class="wrap-btn"> 
+                                                <button class="button btn-action btn-block radius" type="button"> 
+                                                    <div class="v-flex">
+                                                        <span class="btn-txt">Save</span>
+                                                        <div class="circle-flex">
+                                                            <span class="s-btn-icon"><img src="images/icons/save_icon.png" alt="save icon" /></span> 
+                                                        </div>
+                                                    </div>           
+                                                </button> 
+                                            </div>          
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> 
+                    <!--                    <div class="backSendDiv" ng-click="backToMessageListingpage()">
+                                            <div class="model_button">
+                                                <div class="model_button_left">
+                                                    <div class="btn-group action-button icon-btn">	
+                                                        <div class="wrap-btn">							
+                                                            <button class="button btn-action btn-block radius" type="button">	
+                                                                <span class="v-flex">
+                                                                    <span class="circle-flex">
+                                                                        <span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+                                                                    </span>
+                                                                    <span class="btn-txt">Back</span>
+                                                                </span>											
+                                                            </button>	
+                                                        </div>							  
+                                                    </div>
+                                                </div>                                           
+                                            </div>
+                                        </div>-->
+                </div>  
+				<div class="backSendDiv" ng-click="backToMessageListingpage()">
+					<div class="model_button">
+						<div class="model_button_left">
+							<div class="btn-group action-button icon-btn">	
+								<div class="wrap-btn">							
+									<button class="button btn-action btn-block radius" type="button">	
+										<span class="v-flex">
+											<span class="circle-flex">
+												<span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+											</span>
+											<span class="btn-txt">Back</span>
+										</span>											
+									</button>	
+								</div>							  
+							</div>
+						</div>                                           
+					</div>
+				</div>
+		   </div>
+            <!----------File Upload popup------------->
+
+            <div class="ngdialog ngdialog-theme-default" ng-show="showUploadAction" role="alertdialog">
+                <div class="ngdialog-overlay"></div>
+                <div class="ngdialog-content" role="document">
+                    <div class="ngdialog-message">
+                        <h3 id="ngdialog1-aria-labelledby">Upload Files</h3>
+                        <ul class="camera_links">
+                            <li ng-click="action(1)">
+                                <button><span class="camera_img"></span> Gallery</button>
+                            </li>
+                            <li ng-click="action(2)">
+                                <button><span class="gallery_img"></span> Camera</button>
+                            </li>
+                            <li ng-click="action(3)">
+                                <button><span class="video_img"></span> Video</button>
+                            </li>
+                            <li ng-click="action(4)">
+                                <button><span class="close_img"></span> Close</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!----------Notification popup When recipient not entered ------------->
+            <div class="alert_pop_wrap animation" ng-show="isError">
+                <div class="model_wrapper getHeight">
+                    <div class="model_area">
+                        <div class="model_head">
+                            <div class="model_head_icon"><img src="images/icons/notification-alert-color.png" alt="Error"/></div>
+                            <div class="model_head_text redColor">Error</div>
+                        </div>
+                        <div class="model_content_text">
+                            <p>{{errorMsg}}</p>
+                        </div>
+                        <div class="model_button">
+                            <div class="model_button_right">
+                                <div class="btn-group action-button action-nxt icon-btn">	
+                                    <div class="wrap-btn">							
+                                        <button class="button btn-green btn-block radius" ng-click="closeErrorMsg();" type="button">	
+                                            <span class="v-flex">
+                                                <span class="btn-txt">OK</span>
+                                            </span>											
+                                        </button>	
+                                    </div>							  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-----------message notification---------------->
+            <div class="alert_pop_wrap animation" ng-show="isReminder">
+                <div class="model_wrapper getHeight">
+                    <div class="model_area">
+                        <div class="model_head">
+                            <div class="model_head_icon"><img src="images/icons/notification-information-color.png" alt="Notification" /></div>
+                            <div class="model_head_text blueColor">Reminder</div>
+                        </div>
+                        <div class="model_content_text">
+                            <p>{{reminderMsg}}</p>
+                        </div>
+                        <div class="model_button">
+                            <div class="model_button_left">
+                                <div class="btn-group action-button action-nxt icon-btn" ng-click="cancelMessage()">
+                                    <div class="wrap-btn">							
+                                        <button class="button btn-green btn-block radius" type="button">
+                                            <span class="v-flex">
+                                                <span class="btn-txt">Cancel</span>	
+                                            </span>
+                                        </button>							                  
+                                    </div>						
+                                </div>
+                            </div>
+                            <div class="model_button_right">
+                                <div class="btn-group action-button action-nxt icon-btn" ng-click="closeMessage();">	
+                                    <div class="wrap-btn">							
+                                        <button class="button btn-green btn-block radius" type="button">	
+                                            <span class="v-flex">
+                                                <span class="btn-txt">OK</span>
+                                            </span>											
+                                        </button>	
+                                    </div>							  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-----------Message Cancel Popup--------------->
+            <div class="alert_pop_wrap animation" ng-show="showMessageCancelPopup">
+                <div class="model_wrapper getHeight">
+                    <div class="model_area">
+                        <div class="model_head">
+                            <div class="model_head_icon"><img src="images/icons/notification-information-color.png" alt="Notification" /></div>
+                            <div class="model_head_text blueColor">Reminder</div>
+                        </div>
+                        <div class="model_content_text">
+                            <p>Message has not been sent. Do you want to save the message in your drafts folder.</p>
+                        </div>
+                        <div class="model_button">
+                            <div class="model_button_left">
+                                <div class="btn-group action-button action-nxt icon-btn" ng-click="saveMessage('no')">
+                                    <div class="wrap-btn">							
+                                        <button class="button btn-green btn-block radius" type="button">
+                                            <span class="v-flex">
+                                                <span class="btn-txt">Close</span>	
+                                            </span>
+                                        </button>							                  
+                                    </div>						
+                                </div>
+                            </div>
+                            <div class="model_button_right">
+                                <div class="btn-group action-button action-nxt icon-btn" ng-click="saveMessage('yes');">	
+                                    <div class="wrap-btn">							
+                                        <button class="button btn-green btn-block radius" type="button">	
+                                            <span class="v-flex">
+                                                <span class="btn-txt">Save</span>
+                                            </span>											
+                                        </button>	
+                                    </div>							  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                          
+    </div>
+</div>
+
+<div ng-if="internetConnection" ng-controller="noInternetConnection">
+    <div class="layout">
+        <div class="loading_details">
+            <div class="no_connection">
+                <div class="no_internet"><img src="images/no_internet.gif" alt="no internet"></div>
+                <h1>No Internet <br> Connection</h1>
+            </div>
+        </div>
+    </div>
+</div>

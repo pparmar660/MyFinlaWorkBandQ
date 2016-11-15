@@ -1,0 +1,67 @@
+<div id="57" class="security_wrappper" ng-controller="ProductStockController">
+    <div class="layout">
+
+
+        <div class="incident_report_wrapper product_table_wrap" >
+            <h1 style="padding: 10px">Products/Stock & Value </h1>
+            <div ng-hide="isCheked">
+                <div ng-form="productForm">
+                    <div class="control-group" ng-class="{true: 'error'}[submitted && productForm.item.$valid]">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th class="tr_1">Where? <span>*</span></th>
+                                    <th ng-if="!isStockLoad" class="tr_2">Brand <span>*</span></th>
+                                    <th class="tr_3">Barcode</th>
+                                    <th ng-if="!isStockLoad"class="tr_4">Name</th>
+                                    <th ng-if="isStockLoad"class="tr_4">Type</th>
+                                    <th class="tr_5">Unit Value (&pound;) <span>*</span></th>
+                                    <th class="tr_6">Qty <span>*</span></th>
+                                    <th class="tr_7">Recovered?</th>
+                                    <th class="tr_8">Sub-Total (&pound;)</th>
+                                    <th class="tr_9">Actions</th>
+                                </tr>
+
+                                <tr product-stock-row ng-repeat="item in inputs" item="item" ></tr> 
+
+                            </tbody>
+                        </table>
+                    </div> </div> 
+
+                <div class="clr"></div>
+                <div class="tbl_footer_wrap">
+                    <div class="left">
+                        <div class="tbl_btn_wrap" ng-click="addNewProduct()">
+                            <button class="button btn-orange btn-block radius" type="button">	
+                                <span class="v-flex">								  
+                                    <span class="btn-txt">{{AllFieldLabelData[57].lable_name}}</span>
+                                    <span class="circle-flex">
+                                        <span class="s-btn-icon"><img src="images/icons/general-add.png" alt=""></span>	
+                                    </span>
+                                </span>										
+                            </button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="tbl_text_wrap">
+                            <p>Recovered Products: <span>{{getRecoverProductsItem()}} (&pound;{{getRecoverProductsvalue()}})</span></p>
+
+                            <p>Damaged Products: <span>{{getDamagedProductsItem()}} (&pound;{{getDamagedProductsvalue()}})</span></p>
+
+                            <h6>Total Products &amp; Value: <span>{{getTotalProductItem()}} (&pound;{{getTotalProductValue()}})</span></h6>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+
+            <div class="custom-checkbox" style="padding-top: 5px;padding-left: 5px">
+                <input type="checkbox" ng-checked="{{isCheked}}"  ng-model="active" ng-change="change(active)" custom-click="filterByLevel(accesslevel.sector_title)" id="productCheck">
+                <label for="productCheck">No products/stock & value to log </label>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

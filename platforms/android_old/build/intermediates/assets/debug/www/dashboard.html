@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>B&amp;Q</title>
+
+        <!--------------css ------------------>
+
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/plugins.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/ui.css" rel="stylesheet" type="text/css" />
+        <link href="css/globalinterface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/employee.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/commterms.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/security.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/media.css" rel="stylesheet" type="text/css" />
+        <link href="css/circle.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/override.css">
+        <link href="css/angucomplete-ie8.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="css/trix.css">
+
+
+    </head>
+
+    <body id="dashboardBody" ng-app="BandQModule">
+
+        <div class="page">
+            <div class="page-inner">
+
+                <div ng-include="'views/header.html'"></div>
+                <div  id="content" >
+                    <ng-view> </ng-view>
+                </div>
+                <div ng-include="'views/footer.html'"></div>
+
+            </div>
+
+
+
+        </div>
+
+        <!-----------jQuery----------------->
+
+        <script src="scripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="scripts/easyResponsiveTabs.js" type="text/javascript"></script>
+        <script src="scripts/jquery.circlechart.js" type="text/javascript"></script>
+        <script src="scripts/powerange.min.js" type="text/javascript"></script>
+        <script src="scripts/modernizr.min.js" type="text/javascript"></script>
+        <script src="scripts/pikaday.js" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMH7Ga1KLIsc3gm-UNe0h1fuqjzVkNVlU"></script>
+
+
+
+
+        <!--       Angular     -->
+        <script src="scripts/Angular/angular.js" type="text/javascript"></script>
+        <script type="text/javascript" src="scripts/Angular/angular-route.js"></script>
+        <script type="text/javascript" src="scripts/Angular/angular-animate.js"></script>
+        <script type="text/javascript" src="scripts/Angular/angular-datepicker.js"></script>
+        <script type="text/javascript" src="scripts/Angular/angular-touch.min.js"></script>
+        <script type="text/javascript" src="scripts/Angular/angular-sanitize.js"></script>
+        <script src="scripts/Angular/angular-carousel.min.js" type="text/javascript"></script>
+        <script src="scripts/mn-touch.js" type="text/javascript"></script>
+        <script src="scripts/dropDownSingleAndMultiSelect.js" type="text/javascript"></script>
+        <script src="scripts/angucomplete-ie8.js" type="text/javascript"></script>
+        <script src="scripts/Angular/angular.rangeSlider.js" type="text/javascript"></script>
+        <script src="scripts/Angular/dropdownMultiSelect.js" type="text/javascript"></script>
+        <!--new range slider-->
+        <script type="text/javascript" src="scripts/Angular/angular-range-slider.min.js"></script>
+        <!--select nya-select-->
+        <script type="text/javascript" src="scripts/Angular/nya-bs-public.js"></script>
+
+        <script type="text/javascript" src="scripts/Angular/nya-bs-config.js"></script>
+        <script type="text/javascript" src="scripts/Angular/nya-bs-option.js"></script>
+        <script type="text/javascript" src="scripts/Angular/nya-bs-select.js"></script>
+        <script type="text/javascript" src="scripts/Angular/nya-bs-select-ctrl.js"></script>
+        <script src="scripts/PushNotification.js" type="text/javascript"></script>
+
+        <!-- Select2 theme -->
+        <link href="css/select2.css" rel="stylesheet" type="text/css"/>
+        <link href="css/select.css" rel="stylesheet" type="text/css"/>
+        <link href="css/selectize.default.css" rel="stylesheet" type="text/css"/>
+
+
+        <!--       Cordova     -->
+
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/app.js"></script>
+        <script src="scripts/Global/Constant.js" type="text/javascript"></script>
+
+        <!--        Local Database     -->
+        <script src="scripts/LocalDataBase.js" type="text/javascript"></script>
+        <script src="scripts/main.js" type="text/javascript"></script>
+        <!--       Web Request     -->
+        <script type="text/javascript" charset="utf-8" src="scripts/webrequest.js"></script>
+
+        <!--        Service     -->
+
+        <script src="scripts/Service/toolTipDownload.js" type="text/javascript"></script>
+        <!-- service for witness and victim dependency -->
+        <script src="scripts/Service/getUserConfig.js" type="text/javascript"></script>
+        <script src="scripts/Service/commsAndTask.js" type="text/javascript"></script>
+        <!-------------Create Incident service------------>
+        <script src="scripts/Service/venue.js" type="text/javascript"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Service/incedentReportConfig.js"></script>   
+        <script type="text/javascript" charset="utf-8" src="scripts/Service/checkInterNetConnection.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Service/globalService.js"></script>
+        <script src="scripts/Service/OffenderServices.js" type="text/javascript"></script>
+        <script src="scripts/Service/CategoryOutcomeTypeService.js" type="text/javascript"></script>
+        <script src="scripts/Service/victimServices.js" type="text/javascript"></script>
+        <script src="scripts/Service/TaskAndCheckList.js" type="text/javascript"></script>
+        <script src="scripts/Service/IncidentReportService.js" type="text/javascript"></script>
+        <script src="scripts/Service/dynamicQuestion.js" type="text/javascript"></script>
+        <script src="scripts/Service/imageService.js" type="text/javascript"></script>
+        <script src="scripts/Service/witnessService.js" type="text/javascript"></script>
+        <script src="scripts/Service/permissionService.js" type="text/javascript"></script>
+        <script src="scripts/Service/getUniqueId.js" type="text/javascript"></script>
+        <script src="scripts/Service/timerService.js" type="text/javascript"></script>
+        <script src="scripts/Service/vehicleService.js" type="text/javascript"></script>
+        <script src="scripts/Service/createIncidentReport.js" type="text/javascript"></script>
+        <script src="scripts/Service/sendFilesToSever.js" type="text/javascript"></script>
+        <script src="scripts/Service/breadCrum.js" type="text/javascript"></script>
+        <script src="scripts/Service/loadDynamicQuestionAndIncidentConfig.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/incidentReportHamburger.js" type="text/javascript"></script>
+        <script src="scripts/Service/checkInterNetConnection.js" type="text/javascript"></script>
+        <script src="scripts/Service/getVenueList.js" type="text/javascript"></script>
+        <script src="scripts/Service/getAdvanceFilter.js" type="text/javascript"></script>
+        <script src="scripts/Service/getCaoutryStateRegion.js" type="text/javascript"></script>
+        <script src="scripts/Service/getLinkedStaffList.js" type="text/javascript"></script>
+        <script src="scripts/Service/getCategoryOutcomeType.js" type="text/javascript"></script>
+        <script src="scripts/Service/getAppMenuConfig.js" type="text/javascript"></script>
+        <script src="scripts/Service/setModuleAccessPermission.js" type="text/javascript"></script>
+        <script src="scripts/Service/setAppMenuConfig.js" type="text/javascript"></script>
+        <script src="scripts/Service/manageDropDownFieldSet.js" type="text/javascript"></script>
+        <script src="scripts/Service/compossMail.js" type="text/javascript"></script>
+        <script src="scripts/Service/getListIncidentReportFieldLabels.js" type="text/javascript"></script>
+        <script src="scripts/Service/getAllFieldLabel.js" type="text/javascript"></script>
+        <script src="scripts/Service/getVictimWitnessCategory.js" type="text/javascript"></script>
+        <!--------------Directives----------->
+
+        <script src="scripts/Directives/lazyload.js" type="text/javascript"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/productStock.js"></script>  
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/incidentConfig.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/dynamicQusTemp.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/uppercased.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/inputRestricter.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/inputNumberMaxLength.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Directives/checklist.js"></script>
+        <script src="scripts/Directives/customTouch.js" type="text/javascript"></script>
+        <script src="scripts/Directives/customChange.js" type="text/javascript"></script>
+        <script src="scripts/Directives/offenderConfig.js" type="text/javascript"></script>
+        <script src="scripts/Directives/vehicleConfig.js" type="text/javascript"></script>
+        <script src="scripts/Directives/victimConfig.js" type="text/javascript"></script>
+        <script src="scripts/Directives/witnessConfig.js" type="text/javascript"></script>
+
+        <!--        Filter-->
+        <script src="scripts/Filter/emailValidation.js" type="text/javascript"></script>
+        <script src="scripts/Filter/imageSlider.js" type="text/javascript"></script>
+        <!--     Controller     -->
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/securityIncidentReport.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/incidentReportRootScope.js"></script>
+
+        <script src="scripts/Controllers/Security/offenderListView.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/incidentListMainCnt.js" type="text/javascript"></script>
+        <!-- Security Section VictimWitness dependency controllers.  -->
+        <script src="scripts/Controllers/Security/victimWitness_securityCtrl.js"></script>
+        <script src="scripts/Controllers/Security/AddNew_VictimWitnessCtrl.js"></script>
+        <script src="scripts/Controllers/Security/Details_VictimWitnessCtrl.js"></script>
+        <script src="scripts/Controllers/Security/List_VictimWitnessCtrl.js"></script>
+        <script src="scripts/fastclick.js" type="text/javascript"></script>
+
+
+
+
+        <!-- service for witness and victim dependency -->
+        <script src="scripts/Service/witnessService.js"></script>
+        <script src="scripts/Service/victimServices.js"></script>
+        <script src="scripts/Service/getUserConfig.js" type="text/javascript"></script>
+        <script src="scripts/Service/getAppMenuConfig.js" type="text/javascript"></script>
+        <script src="scripts/Service/setModuleAccessPermission.js" type="text/javascript"></script>
+        <script src="scripts/Service/setAppMenuConfig.js" type="text/javascript"></script>
+        <script src="scripts/Service/getLinkedStaffList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/newVehicle.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/vehicleDetails.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/vehicleList.js" type="text/javascript"></script>
+
+
+
+        <script src="scripts/Controllers/Security/offenderDetail.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/addEditOffender.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/internetConnection.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/sidePannel.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/incidentReportHamburger.js" type="text/javascript"></script>
+        <script src="scripts/CommsAndTaskControllers/inboxCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/dashboardRouting.js" type="text/javascript"></script>
+        <script src="scripts/CommsAndTaskControllers/inboxCtrl.js" type="text/javascript"></script>
+        <script src="scripts/CommsAndTaskControllers/taskAndCheckList.js" type="text/javascript"></script>
+        <script src="scripts/CommsAndTaskControllers/commsTaskSidePanel.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/footerController.js" type="text/javascript"></script>
+        <!-------------Employement controller ------------->
+        <script src="scripts/Employement/Controller/staffDetail.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/sidePanelEmployment.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/staffDirectory.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/venueDetail.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/venueDirectory.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/changepassword.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/employmentHomeController.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/employmentmainCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Employement/Controller/addStaffDirectory.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/incidentList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/incidentDetail.js" type="text/javascript"></script>
+        <script src="scripts/CommsAndTaskControllers/taskAndCheckList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/header.js" type="text/javascript"></script>
+        <!-------------------createIncident controller------------------->
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/appMainController.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/incedentReportConfig.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/security_incident_report.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/civil_recovery.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/AddNewoffenders.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/ProductStockController.js"></script>
+        <script type="text/javascript" charset="utf-8" src="scripts/Controllers/incidentLocation.js"></script>
+        <script src="scripts/Controllers/OffenderDetail.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/OffendersList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/selectedOffenderList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/areVehicleInvolved.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/addNewVechile.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/vehicleList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/vehicleDetails.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/selectedVechile.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/isOffenderInvolved.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/isVictimInvolved.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/victimList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/SelectedVictim.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/VictimDetail.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/AddNewVictime.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/doYouHaveAnyFileController.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/linkedStaffCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/reportCategoryCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/outcomeCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/reporterController.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/dynamicQusCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/reportTypeCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/selectedWitness.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/isWitnessInvolved.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/witnessDetails.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/witnessList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/addNewWitness.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/incidentList.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/sidePannel.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/Security/incidentReportHamburger.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/offenderMainController.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/vehicleMainController.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/victimMainController.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/witnessMainController.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/dateTimeCtrl.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/additionalComment.js" type="text/javascript"></script>
+        <script src="scripts/Controllers/thankyouPage.js" type="text/javascript"></script>
+        <script>
+                    var header = $('#header').outerHeight() + 30; //get header height and gave same amount of padding from top of content section
+                    $("#content").css("padding-top", header);
+        </script>
+        <script src="scripts/Global/Global.js" type="text/javascript"></script>
+        <script src="scripts/dashboard.js" type="text/javascript"></script>
+        <script type = "text/javascript" src = "scripts/Angular/select.js" ></script>
+
+        <script src="scripts/securityDashboard.js" type="text/javascript">
+        </script>
+        <script type="text/javascript" src="scripts/moment.min.js"></script>
+        <script src="scripts/trix.js"></script>
+        <script src="scripts/angular-trix.min.js"></script> 
+        <script src="scripts/demoController.js"></script>
+        <script>
+
+
+                    // app lock start---
+                    var isPinscreenVisible = false;
+                    resetCheckUserInteractionTimer(1);
+                    // app lock end-------
+
+                    var inter = setInterval(action, 3000);
+                    function action() {
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'scripts/ui.js';
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'scripts/custom.js';
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                        clearInterval(inter);
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'scripts/owl.carousel.min.js';
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                        clearInterval(inter);
+                    }
+                    $(document).ready(function () {
+                        $("#securityTab").removeClass("active");
+                        $("#dashboardTab").addClass("active");
+                        angular.bootstrap(document, ['BandQModule']);
+
+                    });
+        </script>
+
+
+    </body>
+
+</html>

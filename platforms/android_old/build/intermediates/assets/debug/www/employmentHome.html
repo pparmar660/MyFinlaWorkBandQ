@@ -1,0 +1,138 @@
+
+   <div ng-include="'views/sidePanels/sidePanelEmployment.html'"></div> 
+   <div class="employee_wrap ">
+        <div class="layout">
+            <div class="staff_header">
+                <div class="icon">
+                    <div class="center-icon on-icons">
+                        <div class="circle-icon">
+                            <div class="v-m">
+                                <span class="d-icon d-icon2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text">
+                    <h1>Hi {{firstname_usr}}. Welcome to the Employment section.</h1>
+                    <h2>Please select resources from the below:</h2>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="security-sections setLeft">
+                <div class="row">
+                    <div class="col-2 pull-left" ng-show="employment.myProfile.access_permission==1">
+                        <h3>{{employment.myProfile.name}} 
+                            <span class="ot_tip" ng-click="toolTipToggleMyProfile = !toolTipToggleMyProfile"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleMyProfile">
+                                    <p> {{MyProfileToolTipMessage}}</p>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span>
+                        </h3>
+                        <div class="row">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">							
+                                    <button class="button btn-orange btn-block radius"  ng-click="showProfile()" type="button">	
+                                        <span class="v-flex">								  
+                                            <span class="btn-txt">{{fullName}}</span>
+                                            <span class="circle-flex">
+                                                <!--<span class="s-btn-icon"><img src="images/icons/general-search.png" alt=""></span>-->	
+                                                <span class="s-btn-icon"><i class="fa fa-eye"></i></span>
+                                            </span>
+                                        </span>										
+                                    </button>	
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- here staff and venue directory is hided -->
+                   <div class="col-2 pull-left" ng-show="employment.staff.access_permission==1 && (modulePermission.staff=='Full Access' || modulePermission.staff=='Read Only')">
+                       <h3>{{employment.staff.name}} 
+                        <span class="ot_tip" ng-click="toolTipToggleStaffDirectory = !toolTipToggleStaffDirectory"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleStaffDirectory">
+                                    <p> {{StaffDirectoryToolTipMessage}}</p>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span></h3>
+                       <div class="row">
+                          <div  >
+                             <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">							
+                                   <button class="button btn-orange btn-block radius" ng-click="showStaffDirectory()" type="button">	
+                                   <span class="v-flex">
+                                   <span class="btn-txt">View</span>
+                                   <span class="circle-flex">
+                                   <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                   </span>								  
+                                   </span>										
+                                   </button>
+                                </div>
+                             </div>
+                          </div>
+                           <div class="button-left" style="display: none">
+                             <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">							
+                                   <button type="button" class="button btn-orange btn-block radius">	
+                                   <span class="v-flex">								  
+                                   <span class="btn-txt">Search</span>
+                                   <span class="circle-flex">
+                                   <span class="s-btn-icon"><img src="images/icons/general-search.png"></span>	
+                                   </span>
+                                   </span>										
+                                   </button>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                
+                       <div class="col-2 pull-left" ng-show="employment.venuesManager.access_permission==1 && (modulePermission.venuesManager=='Full Access' || modulePermission.venuesManager=='Read Only')">
+                          <h3>{{employment.venuesManager.name}}<span class="ot_tip" ng-click="toolTipToggleVenuDirectory = !toolTipToggleVenuDirectory"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleVenuDirectory">
+                                    <p> {{VenuDirectoryToolTipMessage}}</p>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span></h3>
+                          <div class="row">
+                              <div>
+                                <div class="btn-group sl-icons icon-btn">
+                                   <div class="wrap-btn">                    
+                                      <button class="button btn-orange btn-block radius" ng-click="showVenueDirectory()" type="button"> 
+                                      <span class="v-flex">
+                                      <span class="btn-txt">View</span>
+                                      <span class="circle-flex">
+                                      <span class="s-btn-icon"><i class="fa fa-eye"></i></span>   
+                                      </span>                         
+                                      </span>                             
+                                      </button>
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="button-left" style="display: none">
+                                <div class="btn-group sl-icons icon-btn">
+                                   <div class="wrap-btn">                    
+                                      <button type="button" class="button btn-orange btn-block radius"> 
+                                      <span class="v-flex">                          
+                                      <span class="btn-txt">Search</span>
+                                      <span class="circle-flex">
+                                      <span class="s-btn-icon"><img src="images/icons/general-search.png"></span>   
+                                      </span>
+                                      </span>                             
+                                      </button>
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+  
+
+               

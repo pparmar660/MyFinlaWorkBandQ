@@ -1,0 +1,87 @@
+<div class="clr"></div>
+<div class="layout" ng-controller="linkedVictimDetail" >
+    <div class="global_Load_head">
+        <div class="text_wrap">
+            <div class="icon">
+                <div class="center-icon on-icons">
+                    <div class="circle-icon">
+                        <div class="v-m">
+                            <span class="d-icon d-icon4"></span>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="text_head">
+                <h1><span>Victim:</span> {{victimData.firstname_usr + " " + victimData.lastname_usr}}</h1>
+            </div>							
+        </div>
+
+        <p>Last updated: <strong ng-bind-html="victimData.last_updated"></strong></p>							
+    </div>
+    <div class="incident_report_tab of_detail_view">
+        <div class="offender_slider_wrap">
+            <div ng-if="images.length > 0" class="carousel-demo-fullscreen">
+                <ul rn-carousel rn-carousel-controls rn-carousel-buffered class="carousel1" rn-carousel-index="imageIndex">
+                    <li id="tags-list" ng-if="images" ng-repeat="image in images track by $index">
+                        <img ng-src="{{image.imageurl}}" custom-click="imageLargeView(image);"/> 
+                    </li>
+
+                </ul>
+            </div>
+            <div ng-if="images.length == 0" class="carousel-demo-fullscreen">
+                <img src="images/profile_img_1.jpg"/> 
+            </div>
+        </div>
+
+        <div class="offender_details">
+            <div class="angTabWrapper">
+                <tabs>
+                    <pane title="Contact Details">
+                        <div>
+                            <div class="tab_content">
+                                <div class="vvl_wrap">
+                                    <div class="left">
+                                        <ul>
+                                            <li><p><span>{{FormFieldLabelData.victim[173].lable_name}}</span> <span><strong ng-repeat="vtCat in victimData.categories track by $index"><small ng-bind-html="vtCat.title_uct"></small></strong></span></p></li>
+                                            <li><p><span>Telephone:</span> <strong ng-bind-html="victimData.p_tph_usr"></strong></p></li>
+                                            <li><p><span>Mobile:</span> <strong ng-bind-html="victimData.p_mob_usr"></strong></p></li>
+                                            <li><p><span>{{FormFieldLabelData.victim[50].lable_name}}</span> <strong  ng-bind-html="victimData.email_usr"></strong></p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="left">
+                                        <ul>
+                                            <li><p><span>{{FormFieldLabelData.victim[17].lable_name}}</span> <strong ng-bind-html="victimData.address_usr"></strong></p></li>
+                                            <li><p><span>{{FormFieldLabelData.victim[18].lable_name}}</span> <strong ng-bind-html="victimData.address_2_usr"></strong></p></li>
+                                            <li><p><span>{{FormFieldLabelData.victim[19].lable_name}}</span> <strong ng-bind-html="victimData.address_3_usr"></strong></p></li>
+                                            <li><p><span>{{FormFieldLabelData.victim[20].lable_name}}</span> <strong ng-bind-html="victimData.postcode_usr"></strong></p></li>
+                                            <li ng-hide="true"><p><span>Town:</span> <strong ng-bind-html="victimData.town_usr"></strong></p></li>
+                                            <li ng-hide="true"><p><span>County:</span> <strong ng-bind-html="victimData.county_usr"></strong></p></li>
+                                            <li><p><span>{{FormFieldLabelData.victim[21].lable_name}}</span> <strong ng-bind-html="victimData.country_name"></strong></p></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pane>
+                    <pane title="Images &amp; Media">
+                        <div>
+                            <div class="tab_content">
+                                <div class="up_img_wrap">
+                                    <div class="col_4" ng-if="images" ng-repeat="image in images track by $index">
+                                        <div class="files_upload_wrap">
+                                            <div class="image">
+                                                <a href="javascript:void(0);"></a>
+                                                <img ng-src="{{image.imageurl}}" alt="docs">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pane>
+                </tabs>
+            </div>
+        </div>
+    </div>
+
+</div>

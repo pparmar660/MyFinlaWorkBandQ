@@ -1,0 +1,61 @@
+<div id="55" class="row" ng-controller="DateTimeCtrl"> <!-- date / time id is 55  -->
+    <div class="date_n_time_wrapper">
+        <div class="date_wrapper">
+            <h3>{{AllFieldLabelData[55].lable_name}}<sup>*</sup>
+             <span class="ot_tip" ng-show="AllFieldLabelData[55].question_hint" ng-click="toolTipToggledate = !toolTipToggledate"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggledate">
+                    <p>{{AllFieldLabelData[55].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+            </span>
+                
+                <span class="field-error" ng-if="req1">Required</span>
+            </h3>
+            <!--			<input readonly type="text" name="reporter" class="form-control" placeholder="8/10/2015" id="datepicker" ng-model="dt" />-->
+            <div datepicker datepicker-class="test-custom-class" date-format="dd-MM-yyyy" date-min-limit="01/01/1920" date-max-limit="{{maxDt}}">
+                <input readonly ng-model="dt" type="text" class="angular-datepicker-input form-control calender_textbox" placeholder="Date" />
+            </div>
+        </div>
+        <div class="time_wrapper">
+
+            <h3>{{AllFieldLabelData[102].lable_name}}<sup>*</sup>
+            
+             <span class="ot_tip" ng-show ="AllFieldLabelData[102].question_hint" ng-click="toolTipToggleTime = !toolTipToggleTime"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleTime">
+                    <p>{{AllFieldLabelData[102].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+            </span>
+            </h3>
+
+            <div class="left">
+                <p class="smllbl">Hour</p>
+                <div class="white_selectbox mrpa" id="ddS020" onclick="setDropDownDirection('ddS020');">
+                    <ol class="nya-bs-select" ng-model="hrSelect" data-live-search="false">
+                        <li nya-bs-option="h in hrsA">
+                            <a>
+                                <span class="label">{{h}}</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="right">
+                <p class="smllbl lbl20">Minute</p>
+                <div class="white_selectbox mrpa" id="ddS021" onclick="setDropDownDirection('ddS021');">
+                    <ol class="nya-bs-select" ng-model="minSelect" data-live-search="false">
+                        <li nya-bs-option="m in minsA">
+                            <a>
+                                <span class="label">{{m}}</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>

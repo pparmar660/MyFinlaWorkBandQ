@@ -1,0 +1,1661 @@
+{
+    "incident_tabs": {
+        "76": {
+            "config": {
+                "pk_incident_report_tabs": 76,
+                "tab_name": "Incident Details",
+                "display_title": "Incident Details",
+                "pre_text": "",
+                "custom_form": "",
+                "post_text": "",
+                "active": 1,
+                "roles_permission": "",
+                "order": 1,
+                "version": 14
+            },
+            "fieldset": {
+                "st10": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st10",
+                        "fieldset_name": "Reported By",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "30": {
+                            "fk_fieldset_id": 30,
+                            "field_id": 10,
+                            "sort_order": 2,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Has the reporter used the system before?"
+                        },
+                        "31": {
+                            "fk_fieldset_id": 31,
+                            "field_id": 10,
+                            "sort_order": 3,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "This is the person reporting the incident."
+                        },
+                        "32": {
+                            "fk_fieldset_id": 32,
+                            "field_id": 10,
+                            "sort_order": 4,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Click this if you received help from another member of security"
+                        },
+                        "33": {
+                            "fk_fieldset_id": 33,
+                            "field_id": 10,
+                            "sort_order": 5,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["31", "32"]
+                },
+                "st11": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st11",
+                        "fieldset_name": "When did it happen?",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "10": {
+                            "fk_fieldset_id": 10,
+                            "field_id": 11,
+                            "sort_order": 2,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Most incidents will be Security Incidents"
+                        },
+                        "55": {
+                            "fk_fieldset_id": 55,
+                            "field_id": 11,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["55", "10"]
+                },
+                "st1": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st1",
+                        "fieldset_name": "Location",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "48": {
+                            "fk_fieldset_id": 48,
+                            "field_id": 1,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Your location at the time of the incident"
+                        }
+                    },
+                    "field_sequence": ["48"]
+                }
+            },
+            "fieldset_sequence": ["st10", "st11", "st1"]
+        },
+        "77": {
+            "config": {
+                "pk_incident_report_tabs": 77,
+                "tab_name": "What Has Happened?",
+                "display_title": "What Has Happened?",
+                "pre_text": "",
+                "custom_form": "",
+                "post_text": "",
+                "active": 1,
+                "roles_permission": "",
+                "order": 2,
+                "version": 14
+            },
+            "fieldset": {
+                "st2": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st2",
+                        "fieldset_name": "Incident Details",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "9": {
+                            "fk_fieldset_id": 9,
+                            "field_id": 2,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "11": {
+                            "fk_fieldset_id": 11,
+                            "field_id": 2,
+                            "sort_order": 2,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "12": {
+                            "fk_fieldset_id": 12,
+                            "field_id": 2,
+                            "sort_order": 3,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "What kind of incident is this?"
+                        }
+                    },
+                    "field_sequence": ["11", "0", "12"]
+                },
+                "dy1": {
+                    "config": {
+                        "frm_quest_cat_id": 1,
+                        "frm_quest_title": "Incident Details",
+                        "frm_quest_order": 1,
+                        "frm_pre_text": null,
+                        "frm_post_text": null,
+                        "form_type": "Incident Reports",
+                        "form_tab_title": "Incident Details",
+                        "frm_quest_mandatory": 1,
+                        "frm_quest_category": "1",
+                        "frm_quest_master_cat_id": 0,
+                        "version": 14,
+                        "type": "dynamic"
+                    },
+                    "fields": {
+                        "3": {
+                            "fk_fieldset_id": 3,
+                            "field_id": 1,
+                            "sort_order": 1,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "74": {
+                            "fk_fieldset_id": 74,
+                            "field_id": 1,
+                            "sort_order": 2,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "75": {
+                            "fk_fieldset_id": 75,
+                            "field_id": 1,
+                            "sort_order": 5,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "76": {
+                            "fk_fieldset_id": 76,
+                            "field_id": 1,
+                            "sort_order": 9,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "77": {
+                            "fk_fieldset_id": 77,
+                            "field_id": 1,
+                            "sort_order": 10,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "78": {
+                            "fk_fieldset_id": 78,
+                            "field_id": 1,
+                            "sort_order": 6,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "81": {
+                            "fk_fieldset_id": 81,
+                            "field_id": 1,
+                            "sort_order": 8,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "83": {
+                            "fk_fieldset_id": 83,
+                            "field_id": 1,
+                            "sort_order": 4,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "85": {
+                            "fk_fieldset_id": 85,
+                            "field_id": 1,
+                            "sort_order": 7,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "96": {
+                            "fk_fieldset_id": 96,
+                            "field_id": 1,
+                            "sort_order": 11,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "101": {
+                            "fk_fieldset_id": 101,
+                            "field_id": 1,
+                            "sort_order": 14,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "102": {
+                            "fk_fieldset_id": 102,
+                            "field_id": 1,
+                            "sort_order": 12,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "104": {
+                            "fk_fieldset_id": 104,
+                            "field_id": 1,
+                            "sort_order": 13,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "120": {
+                            "fk_fieldset_id": 120,
+                            "field_id": 1,
+                            "sort_order": 15,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "125": {
+                            "fk_fieldset_id": 125,
+                            "field_id": 1,
+                            "sort_order": 3,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "135": {
+                            "fk_fieldset_id": 135,
+                            "field_id": 1,
+                            "sort_order": 16,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "137": {
+                            "fk_fieldset_id": 137,
+                            "field_id": 1,
+                            "sort_order": 17,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "138": {
+                            "fk_fieldset_id": 138,
+                            "field_id": 1,
+                            "sort_order": 18,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "139": {
+                            "fk_fieldset_id": 139,
+                            "field_id": 1,
+                            "sort_order": 19,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "141": {
+                            "fk_fieldset_id": 141,
+                            "field_id": 1,
+                            "sort_order": 20,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "143": {
+                            "fk_fieldset_id": 143,
+                            "field_id": 1,
+                            "sort_order": 21,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "144": {
+                            "fk_fieldset_id": 144,
+                            "field_id": 1,
+                            "sort_order": 22,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "145": {
+                            "fk_fieldset_id": 145,
+                            "field_id": 1,
+                            "sort_order": 23,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "146": {
+                            "fk_fieldset_id": 146,
+                            "field_id": 1,
+                            "sort_order": 24,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "147": {
+                            "fk_fieldset_id": 147,
+                            "field_id": 1,
+                            "sort_order": 25,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "148": {
+                            "fk_fieldset_id": 148,
+                            "field_id": 1,
+                            "sort_order": 26,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "149": {
+                            "fk_fieldset_id": 149,
+                            "field_id": 1,
+                            "sort_order": 27,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "151": {
+                            "fk_fieldset_id": 151,
+                            "field_id": 1,
+                            "sort_order": 28,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "152": {
+                            "fk_fieldset_id": 152,
+                            "field_id": 1,
+                            "sort_order": 29,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "155": {
+                            "fk_fieldset_id": 155,
+                            "field_id": 1,
+                            "sort_order": 30,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "157": {
+                            "fk_fieldset_id": 157,
+                            "field_id": 1,
+                            "sort_order": 31,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "158": {
+                            "fk_fieldset_id": 158,
+                            "field_id": 1,
+                            "sort_order": 32,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "159": {
+                            "fk_fieldset_id": 159,
+                            "field_id": 1,
+                            "sort_order": 33,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "160": {
+                            "fk_fieldset_id": 160,
+                            "field_id": 1,
+                            "sort_order": 34,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "161": {
+                            "fk_fieldset_id": 161,
+                            "field_id": 1,
+                            "sort_order": 35,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "162": {
+                            "fk_fieldset_id": 162,
+                            "field_id": 1,
+                            "sort_order": 36,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "167": {
+                            "fk_fieldset_id": 167,
+                            "field_id": 1,
+                            "sort_order": 37,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "168": {
+                            "fk_fieldset_id": 168,
+                            "field_id": 1,
+                            "sort_order": 38,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "169": {
+                            "fk_fieldset_id": 169,
+                            "field_id": 1,
+                            "sort_order": 39,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "171": {
+                            "fk_fieldset_id": 171,
+                            "field_id": 1,
+                            "sort_order": 40,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "172": {
+                            "fk_fieldset_id": 172,
+                            "field_id": 1,
+                            "sort_order": 41,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "173": {
+                            "fk_fieldset_id": 173,
+                            "field_id": 1,
+                            "sort_order": 42,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "175": {
+                            "fk_fieldset_id": 175,
+                            "field_id": 1,
+                            "sort_order": 43,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "178": {
+                            "fk_fieldset_id": 178,
+                            "field_id": 1,
+                            "sort_order": 44,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "180": {
+                            "fk_fieldset_id": 180,
+                            "field_id": 1,
+                            "sort_order": 45,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "181": {
+                            "fk_fieldset_id": 181,
+                            "field_id": 1,
+                            "sort_order": 46,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "183": {
+                            "fk_fieldset_id": 183,
+                            "field_id": 1,
+                            "sort_order": 47,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "184": {
+                            "fk_fieldset_id": 184,
+                            "field_id": 1,
+                            "sort_order": 48,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "185": {
+                            "fk_fieldset_id": 185,
+                            "field_id": 1,
+                            "sort_order": 49,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "190": {
+                            "fk_fieldset_id": 190,
+                            "field_id": 1,
+                            "sort_order": 50,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "193": {
+                            "fk_fieldset_id": 193,
+                            "field_id": 1,
+                            "sort_order": 51,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "195": {
+                            "fk_fieldset_id": 195,
+                            "field_id": 1,
+                            "sort_order": 52,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "196": {
+                            "fk_fieldset_id": 196,
+                            "field_id": 1,
+                            "sort_order": 53,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "197": {
+                            "fk_fieldset_id": 197,
+                            "field_id": 1,
+                            "sort_order": 54,
+                            "fieldset_type": 2,
+                            "version": 14
+                        }
+                    },
+                    "field_sequence": ["3"]
+                },
+                "st6": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st6",
+                        "fieldset_name": "Products/Stock & Value",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "57": {
+                            "fk_fieldset_id": 57,
+                            "field_id": 6,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["57"]
+                }
+            },
+            "fieldset_sequence": ["st2", "dy1", "st6"]
+        },
+        "78": {
+            "config": {
+                "pk_incident_report_tabs": 78,
+                "tab_name": "Who Was Involved?",
+                "display_title": "Who Was Involved?",
+                "pre_text": "",
+                "custom_form": "",
+                "post_text": "",
+                "active": 1,
+                "roles_permission": "",
+                "order": 3,
+                "version": 14
+            },
+            "fieldset": {
+                "st3": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st3",
+                        "fieldset_name": "Offenders",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "97": {
+                            "fk_fieldset_id": 97,
+                            "field_id": 3,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["210", "0", "202", "203", "204", "0", "205"]
+                },
+                "st5": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st5",
+                        "fieldset_name": "Vehicles",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "54": {
+                            "fk_fieldset_id": 54,
+                            "field_id": 5,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Enter any vehicle details you have"
+                        }
+                    },
+                    "field_sequence": ["54", "0", "206", "207", "208", "0", "209"]
+                },
+                "st4": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st4",
+                        "fieldset_name": "Victims & Witnesses",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "98": {
+                            "fk_fieldset_id": 98,
+                            "field_id": 4,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "99": {
+                            "fk_fieldset_id": 99,
+                            "field_id": 4,
+                            "sort_order": 2,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["98", "0", "212", "214", "215", "0", "213", "0", "99", "0", "217", "218", "219", "0", "220"]
+                }
+            },
+            "fieldset_sequence": ["st3", "st5", "st4"]
+        },
+        "79": {
+            "config": {
+                "pk_incident_report_tabs": 79,
+                "tab_name": "What Action Was Taken?",
+                "display_title": "What Action Was Taken?",
+                "pre_text": "",
+                "custom_form": "",
+                "post_text": "",
+                "active": 1,
+                "roles_permission": "",
+                "order": 4,
+                "version": 14
+            },
+            "fieldset": {
+                "st8": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st8",
+                        "fieldset_name": "Police & Authorities",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "18": {
+                            "fk_fieldset_id": 18,
+                            "field_id": 8,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "19": {
+                            "fk_fieldset_id": 19,
+                            "field_id": 8,
+                            "sort_order": 14,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "35": {
+                            "fk_fieldset_id": 35,
+                            "field_id": 8,
+                            "sort_order": 2,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "36": {
+                            "fk_fieldset_id": 36,
+                            "field_id": 8,
+                            "sort_order": 3,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "39": {
+                            "fk_fieldset_id": 39,
+                            "field_id": 8,
+                            "sort_order": 15,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Confirm with Crime Centre Manager about eligibility"
+                        },
+                        "40": {
+                            "fk_fieldset_id": 40,
+                            "field_id": 8,
+                            "sort_order": 16,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Confirm with Crime Centre Manager about eligibility"
+                        },
+                        "41": {
+                            "fk_fieldset_id": 41,
+                            "field_id": 8,
+                            "sort_order": 10,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "42": {
+                            "fk_fieldset_id": 42,
+                            "field_id": 8,
+                            "sort_order": 9,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "43": {
+                            "fk_fieldset_id": 43,
+                            "field_id": 8,
+                            "sort_order": 11,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "44": {
+                            "fk_fieldset_id": 44,
+                            "field_id": 8,
+                            "sort_order": 12,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "45": {
+                            "fk_fieldset_id": 45,
+                            "field_id": 8,
+                            "sort_order": 13,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "70": {
+                            "fk_fieldset_id": 70,
+                            "field_id": 8,
+                            "sort_order": 4,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "71": {
+                            "fk_fieldset_id": 71,
+                            "field_id": 8,
+                            "sort_order": 5,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "72": {
+                            "fk_fieldset_id": 72,
+                            "field_id": 8,
+                            "sort_order": 6,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "73": {
+                            "fk_fieldset_id": 73,
+                            "field_id": 8,
+                            "sort_order": 7,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "74": {
+                            "fk_fieldset_id": 74,
+                            "field_id": 8,
+                            "sort_order": 8,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["18", "0", "72", "0", "201"]
+                },
+                "st7": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st7",
+                        "fieldset_name": "Civil Recovery",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "58": {
+                            "fk_fieldset_id": 58,
+                            "field_id": 7,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "60": {
+                            "fk_fieldset_id": 60,
+                            "field_id": 7,
+                            "sort_order": 3,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["60", "0", "59"]
+                }
+            },
+            "fieldset_sequence": ["st8", "st7"]
+        },
+        "80": {
+            "config": {
+                "pk_incident_report_tabs": 80,
+                "tab_name": "Complete & Submit",
+                "display_title": "End & Submit",
+                "pre_text": "",
+                "custom_form": "",
+                "post_text": "",
+                "active": 1,
+                "roles_permission": "",
+                "order": 5,
+                "version": 14
+            },
+            "fieldset": {
+                "st13": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st13",
+                        "fieldset_name": "Images",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "100": {
+                            "fk_fieldset_id": 100,
+                            "field_id": 13,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["100"]
+                },
+                "st9": {
+                    "config": {
+                        "pk_incident_report_fieldset": "st9",
+                        "fieldset_name": "Administration",
+                        "version": 14,
+                        "type": "static"
+                    },
+                    "fields": {
+                        "20": {
+                            "fk_fieldset_id": 20,
+                            "field_id": 9,
+                            "sort_order": 1,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "21": {
+                            "fk_fieldset_id": 21,
+                            "field_id": 9,
+                            "sort_order": 3,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "22": {
+                            "fk_fieldset_id": 22,
+                            "field_id": 9,
+                            "sort_order": 4,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Would you like the incident to be verified by a Manager or Supervisor?"
+                        },
+                        "23": {
+                            "fk_fieldset_id": 23,
+                            "field_id": 9,
+                            "sort_order": 5,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Usually supervisor/Manager of the location or the reporter."
+                        },
+                        "24": {
+                            "fk_fieldset_id": 24,
+                            "field_id": 9,
+                            "sort_order": 6,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": "Can you verify that the incident occurred?"
+                        },
+                        "25": {
+                            "fk_fieldset_id": 25,
+                            "field_id": 9,
+                            "sort_order": 7,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "26": {
+                            "fk_fieldset_id": 26,
+                            "field_id": 9,
+                            "sort_order": 8,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "27": {
+                            "fk_fieldset_id": 27,
+                            "field_id": 9,
+                            "sort_order": 9,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "28": {
+                            "fk_fieldset_id": 28,
+                            "field_id": 9,
+                            "sort_order": 10,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "63": {
+                            "fk_fieldset_id": 63,
+                            "field_id": 9,
+                            "sort_order": 11,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "64": {
+                            "fk_fieldset_id": 64,
+                            "field_id": 9,
+                            "sort_order": 12,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "66": {
+                            "fk_fieldset_id": 66,
+                            "field_id": 9,
+                            "sort_order": 13,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        },
+                        "101": {
+                            "fk_fieldset_id": 101,
+                            "field_id": 9,
+                            "sort_order": 2,
+                            "fieldset_type": 1,
+                            "version": 14,
+                            "question_hint": ""
+                        }
+                    },
+                    "field_sequence": ["20", "0", "225"]
+                },
+                "dy19": {
+                    "config": {
+                        "frm_quest_cat_id": 19,
+                        "frm_quest_title": "Admin Details",
+                        "frm_quest_order": 17,
+                        "frm_pre_text": null,
+                        "frm_post_text": null,
+                        "form_type": "Incident Reports",
+                        "form_tab_title": "Admin Details",
+                        "frm_quest_mandatory": 0,
+                        "frm_quest_category": "0",
+                        "frm_quest_master_cat_id": 0,
+                        "version": 14,
+                        "type": "dynamic"
+                    },
+                    "fields": {
+                        "133": {
+                            "fk_fieldset_id": 133,
+                            "field_id": 19,
+                            "sort_order": 1,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "134": {
+                            "fk_fieldset_id": 134,
+                            "field_id": 19,
+                            "sort_order": 2,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "176": {
+                            "fk_fieldset_id": 176,
+                            "field_id": 19,
+                            "sort_order": 3,
+                            "fieldset_type": 2,
+                            "version": 14
+                        },
+                        "177": {
+                            "fk_fieldset_id": 177,
+                            "field_id": 19,
+                            "sort_order": 4,
+                            "fieldset_type": 2,
+                            "version": 14
+                        }
+                    },
+                    "field_sequence": ["133", "134", "176", "177"]
+                }
+            },
+            "fieldset_sequence": ["st13", "st9", "dy19"]
+        },
+        "incident_report_tabs_sequence": [76, 77, 78, 79, 80]
+    },
+    "outcome_category_link": [{
+            "inc_outcm_id": 2,
+            "cat_id": 8
+        }, {
+            "inc_outcm_id": 1,
+            "cat_id": 8
+        }, {
+            "inc_outcm_id": 1,
+            "cat_id": 9
+        }, {
+            "inc_outcm_id": 3,
+            "cat_id": 8
+        }],
+    "type_category_link": [{
+            "inc_type_id": 17,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 16,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 28,
+            "cat_id": 9
+        }, {
+            "inc_type_id": 21,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 24,
+            "cat_id": 9
+        }, {
+            "inc_type_id": 26,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 27,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 14,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 10,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 13,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 2,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 7,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 12,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 15,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 5,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 22,
+            "cat_id": 9
+        }, {
+            "inc_type_id": 25,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 1,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 11,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 9,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 23,
+            "cat_id": 8
+        }, {
+            "inc_type_id": 6,
+            "cat_id": 8
+        }],
+    "outcome_type_link": [{
+            "type_id": 21,
+            "outcome_id": 1,
+            "priority": 2,
+            "severity": 2,
+            "prd_stock_data": "",
+            "fieldset_id": ["st6", "st7"]
+        }, {
+            "type_id": 21,
+            "outcome_id": 3,
+            "priority": 2,
+            "severity": 2,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6", "st7"]
+        }, {
+            "type_id": 24,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": [{
+                    "stock_value_from": "500",
+                    "stock_value_to": "999999999",
+                    "priority_id": "3",
+                    "severity_id": "3"
+                }],
+            "fieldset_id": ["st3", "st4", "st5", "st7", "st8"]
+        }, {
+            "type_id": 26,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6", "st7", "st8"]
+        }, {
+            "type_id": 27,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6", "st7", "st8"]
+        }, {
+            "type_id": 14,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": [{
+                    "stock_value_from": "500",
+                    "stock_value_to": "999",
+                    "priority_id": "3",
+                    "severity_id": "2"
+                }, {
+                    "stock_value_from": "1000",
+                    "stock_value_to": "999999",
+                    "priority_id": "2",
+                    "severity_id": "3"
+                }],
+            "fieldset_id": ["st3", "st4", "st5", "st7", "st8"]
+        }, {
+            "type_id": 10,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 2,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6", "st7"]
+        }, {
+            "type_id": 13,
+            "outcome_id": 1,
+            "priority": 2,
+            "severity": 3,
+            "prd_stock_data": "",
+            "fieldset_id": ["st6", "st7"]
+        }, {
+            "type_id": 13,
+            "outcome_id": 2,
+            "priority": 3,
+            "severity": 2,
+            "prd_stock_data": "",
+            "fieldset_id": ["st6", "st7"]
+        }, {
+            "type_id": 2,
+            "outcome_id": 1,
+            "priority": 2,
+            "severity": 3,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4"]
+        }, {
+            "type_id": 2,
+            "outcome_id": 2,
+            "priority": 3,
+            "severity": 3,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4"]
+        }, {
+            "type_id": 2,
+            "outcome_id": 3,
+            "priority": 4,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4", "st7", "st8"]
+        }, {
+            "type_id": 7,
+            "outcome_id": 1,
+            "priority": 1,
+            "severity": 3,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4"]
+        }, {
+            "type_id": 7,
+            "outcome_id": 2,
+            "priority": 2,
+            "severity": 3,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6"]
+        }, {
+            "type_id": 12,
+            "outcome_id": 1,
+            "priority": 3,
+            "severity": 2,
+            "prd_stock_data": "",
+            "fieldset_id": ["st3", "st6", "st7"]
+        }, {
+            "type_id": 15,
+            "outcome_id": 3,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4", "st7", "st8"]
+        }, {
+            "type_id": 5,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": []
+        }, {
+            "type_id": 5,
+            "outcome_id": 2,
+            "priority": 4,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": []
+        }, {
+            "type_id": 5,
+            "outcome_id": 3,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4", "st7", "st8"]
+        }, {
+            "type_id": 22,
+            "outcome_id": 1,
+            "priority": 3,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "1000",
+                    "stock_value_to": "9999",
+                    "priority_id": "2",
+                    "severity_id": "3"
+                }, {
+                    "stock_value_from": "10000",
+                    "stock_value_to": "9999999",
+                    "priority_id": "1",
+                    "severity_id": "3"
+                }],
+            "fieldset_id": ["st4", "st5", "st7"]
+        }, {
+            "type_id": 25,
+            "outcome_id": 1,
+            "priority": 1,
+            "severity": 4,
+            "prd_stock_data": "",
+            "fieldset_id": ["st3", "st6", "st7"]
+        }, {
+            "type_id": 1,
+            "outcome_id": 1,
+            "priority": 0,
+            "severity": 0,
+            "prd_stock_data": [{
+                    "stock_value_from": "0",
+                    "stock_value_to": "10",
+                    "priority_id": "4",
+                    "severity_id": "1"
+                }, {
+                    "stock_value_from": "11",
+                    "stock_value_to": "499",
+                    "priority_id": "3",
+                    "severity_id": "2"
+                }, {
+                    "stock_value_from": "500",
+                    "stock_value_to": "999",
+                    "priority_id": "2",
+                    "severity_id": "3"
+                }, {
+                    "stock_value_from": "1000",
+                    "stock_value_to": "4999",
+                    "priority_id": "1",
+                    "severity_id": "3"
+                }, {
+                    "stock_value_from": "5000",
+                    "stock_value_to": "99999",
+                    "priority_id": "1",
+                    "severity_id": "4"
+                }],
+            "fieldset_id": ["st7"]
+        }, {
+            "type_id": 1,
+            "outcome_id": 2,
+            "priority": 0,
+            "severity": 0,
+            "prd_stock_data": [{
+                    "stock_value_from": "0",
+                    "stock_value_to": "10",
+                    "priority_id": "4",
+                    "severity_id": "1"
+                }, {
+                    "stock_value_from": "11",
+                    "stock_value_to": "499",
+                    "priority_id": "3",
+                    "severity_id": "2"
+                }, {
+                    "stock_value_from": "500",
+                    "stock_value_to": "999",
+                    "priority_id": "2",
+                    "severity_id": "3"
+                }, {
+                    "stock_value_from": "1000",
+                    "stock_value_to": "4999",
+                    "priority_id": "1",
+                    "severity_id": "3"
+                }, {
+                    "stock_value_from": "5000",
+                    "stock_value_to": "99999",
+                    "priority_id": "1",
+                    "severity_id": "4"
+                }],
+            "fieldset_id": []
+        }, {
+            "type_id": 1,
+            "outcome_id": 3,
+            "priority": 4,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "500",
+                    "stock_value_to": "99999",
+                    "priority_id": "2",
+                    "severity_id": "3"
+                }],
+            "fieldset_id": ["st7", "st8"]
+        }, {
+            "type_id": 11,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": "",
+            "fieldset_id": ["st6", "st7"]
+        }, {
+            "type_id": 9,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 2,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6"]
+        }, {
+            "type_id": 9,
+            "outcome_id": 3,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st5", "st6", "st7", "st8"]
+        }, {
+            "type_id": 23,
+            "outcome_id": 1,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": "",
+            "fieldset_id": ["st3", "st4", "st5", "st6", "st7"]
+        }, {
+            "type_id": 23,
+            "outcome_id": 2,
+            "priority": 4,
+            "severity": 1,
+            "prd_stock_data": "",
+            "fieldset_id": ["st4", "st6", "st7"]
+        }, {
+            "type_id": 6,
+            "outcome_id": 1,
+            "priority": 2,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4", "st7"]
+        }, {
+            "type_id": 6,
+            "outcome_id": 2,
+            "priority": 3,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "3",
+                    "severity_id": "2"
+                }],
+            "fieldset_id": ["st4"]
+        }, {
+            "type_id": 6,
+            "outcome_id": 3,
+            "priority": 3,
+            "severity": 2,
+            "prd_stock_data": [{
+                    "stock_value_from": "",
+                    "stock_value_to": "",
+                    "priority_id": "0",
+                    "severity_id": "0"
+                }],
+            "fieldset_id": ["st4", "st7"]
+        }],
+    "offender_status": {
+        "1": {
+            "id_it": 1,
+            "name_it": "Detained",
+            "icon_it": null,
+            "color_it": null,
+            "tint_it": null,
+            "active_it": 1,
+            "display_order_it": 1,
+            "civil_recovery_it": 1
+        },
+        "2": {
+            "id_it": 2,
+            "name_it": "Wanted / Able to get away",
+            "icon_it": null,
+            "color_it": null,
+            "tint_it": null,
+            "active_it": 1,
+            "display_order_it": 2,
+            "civil_recovery_it": 1
+        },
+        "3": {
+            "id_it": 3,
+            "name_it": "Intelligence / Sighting",
+            "icon_it": null,
+            "color_it": null,
+            "tint_it": null,
+            "active_it": 1,
+            "display_order_it": 3,
+            "civil_recovery_it": 0
+        },
+        "6": {
+            "id_it": 6,
+            "name_it": "Released for Safety of Others",
+            "icon_it": null,
+            "color_it": null,
+            "tint_it": null,
+            "active_it": 1,
+            "display_order_it": 0,
+            "civil_recovery_it": 1
+        },
+        "7": {
+            "id_it": 7,
+            "name_it": "No further action taken",
+            "icon_it": null,
+            "color_it": "#24FF14",
+            "tint_it": "#BAFFC3",
+            "active_it": 1,
+            "display_order_it": 0,
+            "civil_recovery_it": 0
+        }
+    },
+    "offender_status_sequence": [1, 3, 7, 6, 2],
+    "CivilRecoveryRange": [{
+            "pk_incident_civil_enforcement": 1,
+            "v_from": "0.00",
+            "v_to": "9.99",
+            "civil_recovery": "0.00",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 2,
+            "v_from": "10.00",
+            "v_to": "44.99",
+            "civil_recovery": "118.94",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 3,
+            "v_from": "45.00",
+            "v_to": "79.99",
+            "civil_recovery": "133.95",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 4,
+            "v_from": "80.00",
+            "v_to": "114.99",
+            "civil_recovery": "148.96",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 5,
+            "v_from": "115.00",
+            "v_to": "149.99",
+            "civil_recovery": "163.97",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 6,
+            "v_from": "150.00",
+            "v_to": "184.99",
+            "civil_recovery": "178.98",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 7,
+            "v_from": "185.00",
+            "v_to": "219.99",
+            "civil_recovery": "193.99",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 8,
+            "v_from": "220.00",
+            "v_to": "294.99",
+            "civil_recovery": "219.00",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 9,
+            "v_from": "295.00",
+            "v_to": "369.99",
+            "civil_recovery": "244.01",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 10,
+            "v_from": "370.00",
+            "v_to": "444.99",
+            "civil_recovery": "269.02",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 11,
+            "v_from": "445.00",
+            "v_to": "519.99",
+            "civil_recovery": "294.03",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 12,
+            "v_from": "520.00",
+            "v_to": "594.99",
+            "civil_recovery": "319.04",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 13,
+            "v_from": "595.00",
+            "v_to": "669.99",
+            "civil_recovery": "344.05",
+            "active": 1
+        }, {
+            "pk_incident_civil_enforcement": 14,
+            "v_from": "670.00",
+            "v_to": "100000000",
+            "civil_recovery": "369.06",
+            "active": 1
+        }],
+    "CivilRecoveryStatus": [{
+            "id_it": 1,
+            "name_it": "Pending",
+            "color_it": "#499524",
+            "tint_it": "#E1FFD1",
+            "mod_id": 260,
+            "mod_name_it": null,
+            "move_to": 0,
+            "active_it": 0
+        }, {
+            "id_it": 2,
+            "name_it": "Issued",
+            "color_it": "#0A81D0",
+            "tint_it": "#9DCDEC",
+            "mod_id": 260,
+            "mod_name_it": null,
+            "move_to": 0,
+            "active_it": 1
+        }, {
+            "id_it": 11,
+            "name_it": "Rejected",
+            "color_it": "#D00826",
+            "tint_it": "#EC9CA8",
+            "mod_id": 260,
+            "mod_name_it": null,
+            "move_to": 0,
+            "active_it": 0
+        }],
+    "venue_radius": 5,
+    "offender_ban_list": {
+        "0": "No Ban",
+        "1": "1 Month",
+        "3": "3 Months",
+        "6": "6 Months",
+        "12": "12 Months",
+        "24": "24 Months",
+        "36": "36 Months",
+        "48": "48 Months",
+        "60": "60 Months"
+    },
+    "police_action_taken_list": ["Select one...", "Restorative Justice", "No further Action", "Fixed Penalty", "Non Attendance", "Caution", "Arrest", "Summons To Court", "Ongoing Investigation"]
+}	

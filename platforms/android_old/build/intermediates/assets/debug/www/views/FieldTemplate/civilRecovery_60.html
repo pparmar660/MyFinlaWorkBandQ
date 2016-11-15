@@ -1,0 +1,71 @@
+<div id="60" ng-form ="civilRecForm" ng-controller="civilRecoveryCtrl">
+    <div class="control-group" ng-class="{
+                                                            true
+                                                            : 'error'
+                                                            }
+            [nextclick && civilRecForm.productData.$valid]">
+        <a class="info_icon " ng-click="closeDetail(true)" href="javascript:void(0)"><span><img src="images/icons/info_icon.png"></span></a>
+        <div class="prod_stock_pop_wrap close-parent" ng-hide="showData == false">
+            <a class="cross close info_open" ng-click="closeDetail(false)"><img src="images/icons/general-close-x.png" alt="cross" /></a>
+            <div class="icon_wrapper">
+                <div class="icon">
+                    <img src="images/icons/notification-information.png" alt="notification" />
+                </div>
+                <div class="text">Product &amp; Stock</div>
+            </div>
+            <div class="prod_content">
+                <p>Recovered Products: <span>{{productData.recProdect}} (&pound; {{productData.recProdectVal}})</span></p>
+                <p>Damaged Products: <span>{{productData.demProduct}} (&pound; {{productData.demProducVal}})</span></p>
+                <h6>Total Value: <span>{{productData.totalItem}} (&pound; {{productData.totalItemVal}})</span></h6>
+            </div>
+        </div>
+        <div class="category_btn_wrapper">
+            <h3>{{AllFieldLabelData[60].lable_name}}<sup>*</sup> 
+
+
+                <span class="ot_tip" ng-click="toolTipToggleCivilRecovery = !toolTipToggleCivilRecovery"><i class="newtip">?</i>
+
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleCivilRecovery">
+                        <p>{{AllFieldLabelData[60].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+
+                <span class="field-error" ng-hide="message == false">{{requiredMsg}}</span></h3>
+            <div class="category_btn_left">
+                <div class="btn-group icon-btn">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-orange btn-block radius" id="yesRec1" ng-click="civilRecoveryText('true')" type="button">Yes</button>
+                    </div>		
+                </div>
+            </div>
+            <div class="category_btn_left">
+                <div class="btn-group icon-btn">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-orange btn-block radius"  id="noRec1" ng-click="civilRecoveryText('false')" type="button">No</button>
+                    </div>		
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="why_not_wrap" ng-if="civilRec == 'false'">
+            <h3>{{AllFieldLabelData[61].lable_name}}<sup>*</sup> 
+                <span class="ot_tip" ng-click="toolTipToggleCivilRecoveryWhyNot = !toolTipToggleCivilRecoveryWhyNot"><i class="newtip">?</i>
+
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleCivilRecoveryWhyNot">
+                        <p>{{AllFieldLabelData[61].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+
+            </h3>
+            <textarea name="civilRecovery" id="civilRecovery" placeholder="" ng-model="productData.whyNotIssued" class="form-control" required></textarea>
+            <span class="help-inline" ng-show="nextclick && civilRecForm.civilRecovery.$error.required">Required</span>
+
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+

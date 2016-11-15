@@ -1,0 +1,66 @@
+/*      header      */
+
+#header ul.breadcrumb > li {
+    display: none;
+}
+#header ul.breadcrumb-list > li{
+    display: inline-block;
+    margin-right: 0;
+}
+
+#header ul.breadcrumb > li:first-child {
+    display: inline-block;
+}
+
+
+/*      sidePanel       */
+
+/*#mainDashboardSection .side-panel ul.main-menu > li {
+    display: none;
+}
+
+#mainDashboardSection .side-panel ul.main-menu > li:first-child,
+#mainDashboardSection .side-panel ul.main-menu > li:nth-child(2) {
+    display: block;
+}*/
+
+
+/* content area main-dashboard      */
+
+/*#content .layout > div:nth-child(2) .user-column > ul > li {
+    display: none;
+}
+
+#content .layout > div:nth-child(2) .user-column > ul > li:first-child {
+    display: inline-block;
+}
+
+#content .layout .employee_dashboard {
+    display: none;
+}
+
+#content .layout .employee_dashboard:nth-child(2) {
+    display: inline-block;
+}
+
+*/
+/*      securitySection         */
+
+/*#securitySection ul.main-menu > li {
+    display: none;
+}
+
+#securitySection ul.main-menu > li:first-child {
+    display: block;
+}
+
+*/
+/*
+#content .layout > div.security-sections:first-child {
+    display: block;
+}
+
+#content .layout > div.security-sections:first-child .pull-right {
+    display: none;
+}
+*/

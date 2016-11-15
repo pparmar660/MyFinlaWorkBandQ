@@ -1,0 +1,192 @@
+<div class="global-v-o-w v-w-v" id="212" ng-controller="victimwinessCnt" ng-show="victimListShowStatus">
+    <div id="content" class="staff_directory">
+        <div class="layout">
+            <div class="staff_heading_row">
+                <div class="heading_left">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon d-icon4"></span>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                    <div class="text"><h1>Victims</h1></div>
+                </div>
+                <div class="heading_right">
+                    <div class="left_text_box">
+                        <div class="srch-box">
+                            <input type="text" placeholder="Search Name/Incident Ref" class="search-btn" ng-model="searchText">
+                            <input type="button" value="submit" class="search-icon" ng-model="searchText"  ng-click="searchVictimAction(searchText)">
+                        </div>
+                    </div>
+                    <div class="right_btn">
+                        <div class="btn-group sl-icons icon-btn">
+                            <div class="wrap-btn">							
+                                <button type="button" class="button btn-orange btn-block radius" ng-click="addVictimAction()">	
+                                    <span class="v-flex">								  
+                                        <span class="btn-txt">Add New</span>
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                        </span>
+                                    </span>										
+                                </button>
+                            </div>							  
+                        </div>
+                    </div>
+                </div>								
+            </div>
+            <div class="security-brdcrum" id="victimListTab">
+                <div class="select-type category-list">
+                    <span class="cat">Category :</span>
+                    <ul class="vw-staff">
+                        <li ng-repeat=" category in categoryList track by $index">
+                            <div class="custom-checkbox" ng-click="categoryChangeAction($index, category)">
+                                <input type="checkbox" id="{{category.id_uct}}" ng-checked="category.selected" >
+                                <label for="{{category.id_uct}}">{{category.title_uct}}</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="staff_select_wrapper">
+                <div class="col_select">
+                    <div class="orange_select" id="ddS0011" onclick="setDropDownDirection('ddS0011');">
+                        <ol class="nya-bs-select" ng-model="selectedCountry" multiple title="All Countries" data-live-search="false" data-selected-text-format="count" ng-change="getCountry(selectedCountry)">      
+                            <li nya-bs-option="opt1 in Countries track by $index">
+                                <a>
+                                    <span class="label" >{{ opt1.name_cnt}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col_select">
+                    <div class="orange_select" id="ddS0012" onclick="setDropDownDirection('ddS0012');">
+                        <ol class="nya-bs-select" ng-model="selectedRegion" multiple title="All Regions" data-live-search="false" data-selected-text-format="count" ng-change="regionChange(selectedRegion)">      
+                            <li nya-bs-option="opt2 in Regions track by $index">
+                                <a>
+                                    <span class="label" >{{ opt2.name_rgs}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>
+
+                </div>
+                <!--class="basic-usage-demo1"-->
+                <div class="col_select">
+                    <div class="orange_select" id="ddS0013" onclick="setDropDownDirection('ddS0013');">
+                        <ol class="nya-bs-select" ng-model="selectedZone" multiple title="All Zones" data-live-search="false" data-selected-text-format="count" ng-change="zoneChange(selectedZone)">      
+                            <li nya-bs-option="opt3 in Zones track by $index">
+                                <a>
+                                    <span class="label" >{{ opt3.zone_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>
+
+                </div>
+                <div class="col_select">
+                    <div class="orange_select" id="ddS0014" onclick="setDropDownDirection('ddS0014');">
+                        <ol class="nya-bs-select" ng-model="selectedVenue" multiple title="All Venues" data-live-search="false" data-selected-text-format="count" ng-change="getVenue(selectedVenue)">      
+                            <li nya-bs-option="opt4 in Venues track by $index">
+                                <a>
+                                    <span class="label" >{{ opt4.venue_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a></li>
+                        </ol>
+                    </div>
+
+                </div>
+                <div class="vws_btn">
+                    <input type="submit" class="se_btn" value="Search" ng-click="filteroffender()">
+                </div>
+            </div>
+
+
+            <!--offenders pictute-->
+            <div class="view-pics victim-view">
+                <div id="nooffenderfoundview" ng-show="infoShow1" class="alertvalidate close-parent info">
+                    <span class="info-icon"></span>
+                    <h4>No matching Victim found.</h4>
+                    <div class="close" ng-click="infoClose()"><span class="fa fa-times"></span></div>
+                </div>
+                <ul ng-model="obj">
+                    <li ng-repeat="obj in victimeData">
+                        <div class="offenders-pic" id="{{obj.id_usr}}">
+                            <div class="off-image">
+                                <img ng-src="{{obj.file_name}}" alt="images/offenders-pic/pic08.jpg" onError="this.src='images/offenders-pic/pic08.jpg';"/>
+                                <div class="off-hover">
+                                    <div class="view-detail">
+                                        <a ng-show="{{obj.add_comm == 1}}" href="javascript:void(0)" class="off-edit" custom-click="showAddNotePopup(obj);"></a>
+                                        <a href="javascript:void(0)" class="off-view" ng-click="showVictimDetail(obj)"></a>
+                                        <a href="javascript:void(0)" class="plus-view" ng-click="selectVictim(obj)"></a>
+                                        <p>Last Update:<span>{{obj.last_updated}}</span></p>
+                                    </div>
+                                </div>	
+                            </div>
+                            <span class="off-name">{{obj.firstname_usr + " " + obj.lastname_usr}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="pagination">
+                <li ng-click="previousPageRequest()" ng-show="prevShowStatus"><a href="javascript:void(0)">Prev</a></li>
+                <li ng-click="nextPageRequest()" ng-show="nextShowStatus"><a href="javascript:void(0)">Next</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div ng-include="'views/addCommPopup.html'"></div>
+    <div class="alert_pop_wrap animation" ng-show="alertshowstatus">
+        <div class="model_wrapper getHeight">
+            <div class="model_area">
+                <div class="model_head">
+                    <div class="model_head_icon"><img src="images/icons/side-nav-comms-alerts-on.png" alt="alert" /></div>
+                    <div class="model_head_text">Confirm</div>
+                </div>
+                <div class="model_content_text">
+                    <p>{{alertMessage}}</p>
+                </div>
+                <div class="model_button">
+
+
+                    <div class="model_button_right">
+                        <div class="btn-group action-button action-nxt icon-btn">
+                            <div class="wrap-btn">							
+                                <button class="button btn-green btn-block radius" type="button" ng-click="yesAction()">
+                                    <span class="v-flex">
+                                        <span class="btn-txt">{{canclebtntitle}}</span>	
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-right"></i></span>	
+                                        </span>											
+                                    </span>
+                                </button>							                  
+                            </div>						
+                        </div>
+                    </div>
+
+
+                    <div class="model_button_left">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button class="button btn-action btn-block radius" ng-click="noAction();" type="button">	
+                                    <span class="v-flex">
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon radius"><i class="fa fa-chevron-left"></i></span>	
+                                        </span>
+                                        <span class="btn-txt">Cancel</span>
+                                    </span>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

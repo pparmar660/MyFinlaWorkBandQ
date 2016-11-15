@@ -1,0 +1,46 @@
+<div id="footer" ng-controller="footerController">
+    <div class="layout">
+		<div class="partner_client_logo mobile-footer-logo">
+            <img src="images/client_logo_new.png" alt="client logo">
+        </div>
+        <div class="mobile-only">
+            <span custom-click="toggleFooterMenu();" class="primary-trigger"><label>Menu</label><i class="fa fa-bars"></i></span>
+        </div>
+        <div class="footer-active">
+            <ul class="primary-nav">
+                <li class="active" >
+                    <a href="{{moveToPage}}">
+                        <span class="{{moduleIconClass}}"></span>
+                        <strong>{{highlightedFooter}}</strong>
+                    </a></li>
+            </ul>
+        </div>
+        <ul ng-show="isFooterMenu" class="primary-nav">
+
+            <li class="active" id="ftDashbord" ng-show="footerMenu.dashboard.access_permission == 1">
+                <a href="#/dashboard" custom-click="hideFooterMenu();"><span class="dahboard-icon"></span>
+                    <strong>{{footerMenu.dashboard.name}}</strong></a>
+            </li>
+            <li id="ftSecurity" ng-show="footerMenu.security.access_permission == 1">
+                <a href="#/security"  custom-click="hideFooterMenu();" ><span class="security-icon"></span>
+                    <strong>{{footerMenu.security.name}}</strong></a>
+            </li>
+            <li class="comms" id="ftComms" ng-show="footerMenu.commsTask.access_permission == 1">
+
+                <a href="#/commsTasks" custom-click="hideFooterMenu();" ><span class="calender-icon"></span>
+                    <strong>{{footerMenu.commsTask.name}}</strong></a>
+            </li>
+            <li id="ftEmployment" ng-show="footerMenu.employment.access_permission == 1">
+                <a href="#/employmentHome" custom-click="hideFooterMenu();" ><span class="employment-icon"></span>
+                    <strong>{{footerMenu.employment.name}}</strong></a>
+            </li>
+            <li id="ftResource" ng-show="footerMenu.resources.access_permission == 1">
+                <a href="#/resource"  custom-click="hideFooterMenu();" ><span class="resources-icon"></span>
+                    <strong>{{footerMenu.resources.name}}</strong></a>
+            </li>
+
+
+        </ul>
+
+    </div>
+</div>

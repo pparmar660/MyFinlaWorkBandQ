@@ -1,0 +1,16 @@
+<div id="20" ng-controller="additionalComment">
+    <h3>{{AllFieldLabelData[20].lable_name}} 
+
+        <span class="ot_tip" ng-show="AllFieldLabelData[20].question_hint" ng-click="toolTipToggleAdditionalComment = !toolTipToggleAdditionalComment"><i class="newtip">?</i>
+
+            <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleAdditionalComment">
+                <p>{{AllFieldLabelData[20].question_hint}}</p>
+                <span class="close"><i class="fa fa-times"></i></span>
+            </span>
+
+        </span>
+    </h3>
+    <div class="input_box_wrap row">
+        <textarea ng-model="comment"></textarea>
+    </div>
+</div>

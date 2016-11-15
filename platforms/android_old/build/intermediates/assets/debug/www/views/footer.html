@@ -1,0 +1,45 @@
+<div id="footer" ng-controller="footerController">
+    <div class="layout">
+        <div class="mobile-only">
+                <span class="primary-trigger"><label>Menu</label><i class=
+                                                                            "fa fa-bars"></i></span>
+        </div>
+        <div class="footer-active">
+            <ul class="primary-nav">
+                <li></li>
+            </ul>
+        </div>
+         <ul class="primary-nav mobie-menu">
+
+            <li class="active" id="ftDashbord" ng-show="footerMenu.dashboard.access_permission==1">
+                <a href="#/dashboard"><span class="dahboard-icon"></span>
+                    <strong>{{footerMenu.dashboard.name}}</strong></a>
+            </li>
+            <li id="ftSecurity" ng-show="footerMenu.security.access_permission==1">
+                <a href="#/security"><span class="security-icon"></span>
+                    <strong>{{footerMenu.security.name}}</strong></a>
+            </li>
+            <li class="comms" id="ftComms" ng-show="footerMenu.commsTask.access_permission==1">
+
+                <a href="#/commsTasks"><span class="calender-icon"></span>
+                    <strong>{{footerMenu.commsTask.name}}</strong></a>
+            </li>
+            <li id="ftEmployment" ng-click="goToEmployment()" ng-show="footerMenu.employment.access_permission==1">
+                <a href="#/employmentHome"><span class="employment-icon"></span>
+                    <strong>{{footerMenu.employment.name}}</strong></a>
+            </li>
+<!--            <li id="ftResource" ng-show="footerMenu.resources.access_permission==1">
+                <a href="#/resources"><span class="resources-icon"></span>
+                    <strong>{{footerMenu.resources.name}}</strong></a>
+            </li>
+            <li id="ftReporting" ng-show="footerMenu.reporting.access_permission==1">
+
+                <a href="#/reporting"><span class="reporting-icon"></span>
+                    <strong>{{footerMenu.reporting.name}}</strong></a>
+            </li>-->
+
+
+        </ul>
+        
+    </div>
+</div>

@@ -1,0 +1,31 @@
+    <div class="side-panel" ng-controller="sidePanelEmployment" id="sidePanelEmployment">
+        <div class="menu-wrapper">
+            <div class="logo">
+                <a href="{{dashboardLink}}"><img alt="logo" src="images/logo.jpg"></a>
+            </div>
+            <ul class="main-menu">
+                <li id="link_Ep1" class="active" >
+                    <a class="links" href="javascript:void(0)" ng-click="homeFunction()" ><span class=
+                    "icon icon1"></span>
+                    <p>Home</p></a>
+            </li>
+            <li id="link_Ep2">
+                <a class="links" href="javascript:void(0)" ng-click="showStaff()" ><span class="icon icon3"></span>
+                    <p>{{employmentPanel.myProfile.name}}</p></a>
+            </li>
+            <!-- here staff and venue directory side panel is hided -->
+            <li id="link_Ep3" ng-show="employmentPanel.staff.access_permission == 1 && (modulePermission.staff == 'Full Access' || modulePermission.staff == 'Read Only')">
+                <a class="links" href="javascript:void(0)" ng-click="staffDirectory()"><span class="icon icon6"></span>
+                    <p>{{employmentPanel.staff.name}}</p></a>
+            </li>
+            <li id= "link_Ep4" ng-show="employmentPanel.venuesManager.access_permission == 1 && (modulePermission.venuesManager == 'Full Access' || modulePermission.venuesManager == 'Read Only')">
+                <a class="links" href="javascript:void(0)" ng-click="venueDirectory()"><span class="icon icon19"></span>
+                    <p>{{employmentPanel.venuesManager.name}}</p></a>
+            </li>
+        </ul>
+        <div class="partner_client_logo">
+            <img src="images/client_logo_new.png" alt="client logo">
+        </div>
+    </div>
+
+</div>

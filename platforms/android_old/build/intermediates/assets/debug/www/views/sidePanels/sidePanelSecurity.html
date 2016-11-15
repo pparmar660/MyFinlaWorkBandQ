@@ -1,0 +1,127 @@
+<div id="securitySidePanelController" ng-controller="securitySidePanelController" class="side-panel">
+
+    <a href="javascript:void(0)" class="close-nav" custom-click="closeIncidentReportSlide()"><i class="fa fa-times"></i> Close</a>
+    <div class="inner-side-panel" ng-controller="incidentReportHamburger">
+        <div class="inner-side-inner">
+            <div id="id_of_div" class="divs">
+                <h3>Dashboard</h3>
+            </div>
+            <div id="id_of_div2">
+                <h3>Incident Reports</h3>
+                <div class="btn-group sl-icons icon-btn" ng-show="securityPanel.incidentReport.access_permission == 1 && modulePermission.incidentReport == 'Full Access'">
+                    <div class="wrap-btn" ng-click="addNewIncident()">
+                        <button type="button" onclick="location.href = 'dashboard.html#/createIncident'" class="button btn-orange btn-block radius">
+                            <div class="v-flex">
+                                <span class="btn-txt">Add New Incident</span>
+                                <div class="circle-flex">
+                                    <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="incidents-lists">
+                    <ul>
+                        <li ng-click="viewIncident()">View Incidents</li>
+                        <li ng-click="viewMyIncident()">View My Incidents</li>
+                        <li ng-click="viewDraftIncident()">View My Draft Incidents <span ng-show="draftCount">{{draftCount}}</span></li>
+                    </ul>
+                    <div class="srch-box">
+                        <input type="text" placeholder="Search" ng-model ="searchText" class="search-btn ng-pristine ng-valid" ng-model="searchText">
+                        <input type="button" value="submit" class="search-icon" ng-click="search()">
+                    </div>
+                    <div class="recent-searchs">
+                        <h3 ng-show="showRecent">Recent Searches</h3>
+                        <ul class="recent-searchs-list">
+                            <li ng-repeat="data in serachList" ng-click="showDetail(data)">
+                                <p><span class="left-text">ID:</span><span class="overflow-text">{{data.reference}}</span></p>
+                                <p><span class="left-text">Outcome:</span><span class="overflow-text">{{data.name_otc}}</span></p>
+                                <p><span class="left-text">Type:</span><span class="overflow-text">{{data.type}}</span></p>
+                                <p><span class="left-text">Date:</span><span class="overflow-text">{{data.date}}</span></p>
+                                <p><span class="left-text">Status:</span><span class="overflow-text">{{data.status}}</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div id="id_of_div3" class="divs">
+                <h3>Offenders  &amp; OCG's</h3>
+
+            </div>
+
+            <div id="id_of_div4" class="divs">
+                <h3>Vehicles</h3>
+
+            </div>
+
+            <div id="id_of_div5" class="divs">
+                <h3>Vicitms &amp;  Witnesses</h3>
+
+            </div>
+
+            <div id="id_of_div5" class="divs">
+                <h3>Vicitms &amp;  Witnesses</h3>
+
+            </div>
+
+            <div id="id_of_div5" class="divs">
+                <h3>Vicitms &amp;  Witnesses</h3>
+
+            </div>
+
+            <div id="id_of_div5" class="divs">
+                <h3>Vicitms &amp;  Witnesses</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="menu-wrapper">
+        <div class="logo">
+            <a href="javascript:void(0)"><img alt="logo" src="images/logo.jpg"></a>
+        </div>
+
+        <ul class="main-menu click-slide">
+            <li id="link_1" class="activate active" ><a href="#/security" ><span class="icon icon1"></span> <p>Home</p></a></li>
+              <li id="link_2" ng-show="securityPanel.incidentReport.access_permission==1 && (modulePermission.incidentReport=='Full Access' || modulePermission.incidentReport=='Read Only')"><a href="javascript:void(0)" custom-click="incidentReportSlide()"><span class="icon icon2"></span> <p>{{securityPanel.incidentReport.name}}</p></a></li>
+            <li id="link_3" ng-show="securityPanel.offender.access_permission==1 && (modulePermission.offender=='Full Access' || modulePermission.offender=='Read Only')"><a href="#/offenderView"  custom-click="showOffenderList('moveToOffenderList')"><span class="icon icon3"></span> <p>{{securityPanel.offender.name}}</p></a></li>
+            <li id="link_4" ng-show="securityPanel.vehicle.access_permission==1 && (modulePermission.vehicle=='Full Access' || modulePermission.vehicle=='Read Only')"><a href="#/vehicle" custom-click="vehicles();viewVehicle();"><span class="icon icon4"></span> <p>{{securityPanel.vehicle.name}}</p></a></li>
+            <li id="link_5" ng-show="securityPanel.victimWitness.access_permission==1 && (modulePermission.victimWitness=='Full Access' || modulePermission.victimWitness=='Read Only')"><a href="#/securityVictimwitness" custom-click="victimsWitness();viewVictimWitness();"><span class="icon icon5"></span> <p>{{securityPanel.victimWitness.name}}</p></a></li>
+            
+<!--             <li id="link_2" ng-show="securityPanel.incidentReport.access_permission==1"><a href="javascript:void(0)" custom-click="incidentReportSlide()"><span class="icon icon2"></span> <p>{{securityPanel.incidentReport.name}}</p></a></li>
+            <li  id="link_3" ng-show="securityPanel.offender.access_permission==1"><a href="#/offenderView"  custom-click="showOffenderList('moveToOffenderList')"><span class="icon icon3"></span> <p>{{securityPanel.offender.name}}</p></a></li>
+            <li id="link_4" ng-show="securityPanel.vehicle.access_permission==1"><a href="#/vehicle" custom-click="vehicles();viewVehicle();"><span class="icon icon4"></span> <p>{{securityPanel.vehicle.name}}</p></a></li>
+            <li id="link_5" ng-show="securityPanel.victimWitness.access_permission==1"><a href="#/securityVictimwitness" custom-click="victimsWitness();viewVictimWitness();"><span class="icon icon5"></span> <p>{{securityPanel.victimWitness.name}}</p></a></li>-->
+        </ul>
+        <div class="partner_client_logo">
+            <img src="images/client_logo_new.png" alt="client logo">
+        </div>
+    </div>
+</div>
+<div class="cust-overlay">&nbsp;</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

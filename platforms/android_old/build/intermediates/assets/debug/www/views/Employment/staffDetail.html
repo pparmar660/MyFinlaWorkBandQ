@@ -1,0 +1,562 @@
+<div id="staffDetail" ng-controller="staffDetail">
+    <div class="employee_wrap">
+        <div class="layout" >
+            <!-- employee heading start -->
+            <div class="employee_header staff_header">
+                <div class="icon">
+                    <div class="center-icon on-icons">
+                        <div class="circle-icon">
+                            <div class="v-m">
+                                <span class="d-icon d-icon2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text">
+                    <h1><strong>Staff Profile: </strong>{{staffProfile[0].firstname_usr}} {{staffProfile[0].lastname_usr}}  <span ng-if="staffProfile[0].level_usr_title != null">({{staffProfile[0].level_usr_title}})</span></h1>
+                    <!--                    <div class="employee_head_btn" ng-show="(employment.staffPermission.access_permission == 1 && moduleAccessInStaffDetail.staff == 'Full Access') || (staffId == userId)">-->
+
+                    <div class="employee_head_btn" ng-show="false">
+
+                        <div class="btn-group sl-icons icon-btn">
+                            <div class="wrap-btn">							
+                                <button class="button btn-orange btn-block radius" type="button" ng-click="editProfile(staffProfile[0].id_usr)">	
+                                    <span class="v-flex">								  
+                                        <span class="btn-txt">Edit</span>
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon"><i class="fa fa-edit"></i></span>			
+                                        </span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <!-- employee heading end -->
+            <div class="employee-sections">
+                <div ng-show="changePasswordTemplate" ng-include="'views/Employment/change_password.html'"> </div>
+                <p>
+                    <span ng-show ="staffProfile[0].is_online == 1" class="online"><i class="fa fa-circle"></i> Online</span>
+                    <span ng-show ="staffProfile[0].is_online == 0" class="offline"><i class="fa fa-circle"></i> Offline</span>
+
+                    Last Updated: {{staffProfile[0].last_updated}}
+                </p>
+                <!-- employee details start -->
+                <div class="employee_dteails_wrap">
+                    <div class="employee_img">
+                        <img ng-if="stafImage" ng-src="{{stafImage}}" alt="profile"/>
+                        <img ng-if="!stafImage" ng-src="https://api247.org/v1/getStaffImage/832/1" alt="profile"/>
+                    </div>
+                    <div class="employee_details employee_details-tabs">
+                        <div class="parentHorizontalTab">
+                            <ul class="tabs hor_1">
+                                <li id="personalDetailsId" class="resp-tab-active" ng-click="personalDetails()">Personal Details</li>
+                                <!--                                <li id="contactDetailsId" ng-click="contactDetails()">Contact Details</li>-->
+                                <li id="imageMediaId" ng-click="imageMedia()">Images &amp; Media</li>
+                                <li id="changePasswordId" ng-show="(staffId == userId)" ng-click="changePassword()"><span class="lock-icon"></span>Change Password</li>
+                            </ul>
+                            <div class="tab_container hor_1">
+                                <div class="tab_content">
+                                    <div class="row" ng-show="personalDetail">
+                                        <div class="left">
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Title:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5 ng-show="staffProfile[0].title_ttl">{{staffProfile[0].title_ttl}}</h5>
+                                                    <span style="color:red" ng-hide="staffProfile[0].title_ttl"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>First Name:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5 ng-show="staffProfile[0].firstname_usr">{{staffProfile[0].firstname_usr}}</h5>
+                                                    <span style="color:red" ng-hide="staffProfile[0].firstname_usr"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                            <!--                                            <div class="data_row">
+                                                                                            <div class="data_col">
+                                                                                                <h4>Middle Name:</h4>
+                                                                                            </div>
+                                                                                            <div class="data_col2">
+                                                                                                <h5 ng-show="staffProfile[0].middlename_usr">{{staffProfile[0].middlename_usr}}</h5>
+                                                                                                <span style="color:red" ng-hide="staffProfile[0].middlename_usr"> Not Supplied</span>
+                                                                                            </div>
+                                                                                        </div>-->
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Last Name:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5 ng-show="staffProfile[0].lastname_usr">{{staffProfile[0].lastname_usr}}</h5>
+                                                    <span style="color:red" ng-hide="staffProfile[0].lastname_usr"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                            <div class="data_row" ng-if="staffProfile[0].email_usr">
+                                                <div class="data_col">
+                                                    <h4>Work Email:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5 ng-show="staffProfile[0].email_usr">{{staffProfile[0].email_usr}}</h5>
+                                                    <span style="color:red" ng-hide="staffProfile[0].email_usr"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                            <div class="data_row" ng-if="staffProfile[0].mobile_usr">
+                                                <div class="data_col">
+                                                    <h4>Work Mobile:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5 ng-show="staffProfile[0].mobile_usr">{{staffProfile[0].mobile_usr}}</h5>
+                                                    <span style="color:red" ng-hide="staffProfile[0].mobile_usr"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                            <div class="data_row">
+                                                <div class="data_col">
+                                                    <h4>Home Store:</h4>
+                                                </div>
+                                                <div class="data_col2">
+                                                    <h5 ng-show="staffProfile[0].venue_usr">{{staffProfile[0].venue_usr}}</h5>
+                                                    <span style="color:red" ng-hide="staffProfile[0].venue_usr"> Not Supplied</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                        <div class="right">
+                                                                                    <div class="data_row">
+                                                                                        <div class="data_col">
+                                                                                            <h4>Job Title:</h4>
+                                                                                        </div>
+                                                                                        <div class="data_col2">
+                                                                                            <h5 ng-show="staffProfile[0].job_usr">{{staffProfile[0].job_usr}}</h5>
+                                                                                            <span style="color:red" ng-hide="staffProfile[0].job_usr"> Not Supplied</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="data_row">
+                                                                                        <div class="data_col">
+                                                                                            <h4>Date of Birth:</h4>
+                                                                                        </div>
+                                                                                        <div class="data_col2">
+                                        
+                                                                                            <h5 ng-show="staffProfile.dateofbirth">{{staffProfile.dateofbirth}}</h5>
+                                        
+                                                                                            <span style="color:red" ng-hide="staffProfile.dateofbirth"> Not Supplied</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="data_row">
+                                                                                        <div class="data_col">
+                                                                                            <h4>Nationality:</h4>
+                                                                                        </div>
+                                                                                        <div class="data_col2">
+                                                                                            <h5 ng-show="staffProfile[0].nationality_usr">{{staffProfile[0].nationality_usr}}</h5>
+                                                                                            <span style="color:red" ng-hide ="staffProfile[0].nationality_usr"> Not Supplied</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="data_row">
+                                                                                        <div class="data_col">
+                                                                                            <h4>NI/SS Number:</h4>
+                                                                                        </div>
+                                                                                        <div class="data_col2">
+                                                                                            <h5 ng-show="staffProfile[0].niss_usr"><span>{{staffProfile[0].niss_usr}}</span></h5>
+                                                                                            <span style="color:red" ng-hide ="staffProfile[0].niss_usr"> Not Supplied</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="data_row">
+                                                                                        <div class="data_col">
+                                                                                            <h4>Staff PIN:</h4>
+                                                                                        </div>
+                                                                                        <div class="data_col2">
+                                                                                            <h5 ng-show="staffProfile[0].E_pin_usr">{{staffProfile[0].E_pin_usr}}</h5>
+                                                                                            <span style="color:red" ng-hide ="staffProfile[0].E_pin_usr"> Not Supplied</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="data_row">
+                                                                                        <div class="data_col">
+                                                                                            <h4>Access Level:</h4>
+                                                                                        </div>
+                                                                                        <div class="data_col2">
+                                                                                            <h5 ng-show="staffProfile[0].level_usr_title">{{staffProfile[0].level_usr_title}}</h5>
+                                                                                            <span style="color:red" ng-hide ="staffProfile[0].level_usr_title"> Not Supplied</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>-->
+                                    </div>
+                                    <!--                                     contact detail tab
+                                                                        <div class="row" ng-show="contactDetail">
+                                                                            <div class="left">
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Telephone:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                    
+                                                                                        <h5 ng-show="staffProfile[0].telephone_usr">{{staffProfile[0].telephone_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].telephone_usr"</i> Not Supplied</span>
+                                    
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Mobile:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                    
+                                                                                        <h5 ng-show="staffProfile[0].mobile_usr">{{staffProfile[0].mobile_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].mobile_usr"</i> Not Supplied</span>
+                                    
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Work Telephone:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].work_ext_usr">{{staffProfile[0].work_ext_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].work_ext_usr"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Work Mobile:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].work_ddi_usr">{{staffProfile[0].work_ddi_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].work_ddi_usr"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="right">
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Address Line 1:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].address_usr">{{staffProfile[0].address_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].address_usr"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Address Line 2:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].address_2_usr">{{staffProfile[0].address_2_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].address_2_usr"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Address Line 3:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].address_3_usr">{{staffProfile[0].address_3_usr}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].address_3_usr"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Postcode:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].postcode_usr"><span>{{staffProfile[0].postcode_usr}}</span></h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].postcode_usr"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="data_row">
+                                                                                    <div class="data_col">
+                                                                                        <h4>Country:</h4>
+                                                                                    </div>
+                                                                                    <div class="data_col2">
+                                                                                        <h5 ng-show="staffProfile[0].country_name">{{staffProfile[0].country_name}}</h5>
+                                                                                        <span style="color:red" ng-hide ="staffProfile[0].country_name"> Not Supplied</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
+                                    <!--Image and media -->
+                                    <div class="employee_img" ng-show="imagemedias">
+                                        <img ng-src="{{stafImage}}" alt="profile" />
+                                    </div>
+                                </div>
+                                <!--contact detail tab end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- employee details ends -->
+        </div>
+<!--         employee section security start 
+        <div class="employee_dashboard" ng-show="menu.security.access_permission == 1">
+            <div class="welcome-column">
+                <a href="#/security">
+                    <div class="col-box-left">
+
+                        <div class="v-flex">
+                            <div class="center">
+                                <div class="circle-icon">
+                                    <div class="v-m">
+                                        <span class="Aligner"><span class="security-icon1"></span></span>
+                                    </div>
+                                </div>
+                                <p>Security</p>
+                            </div>
+                        </div>
+                    </div></a>
+                <div class="user-column">
+                    <ul>
+                        <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInStaffDetail.incidentReport == 'Full Access' || moduleAccessInStaffDetail.incidentReport == 'Read Only')">
+                            <div class="user-dashboard">
+                                <div class="center-icon" custom-click="incidentView('staff', staffId);">
+                                    <span class="item-circle">{{staffProfile[0].linked_incident_reports}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon1"></span>
+                                    </div>
+                                </div>
+                                <h3>Incident Reports</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="incidentAdd();" ng-hide="moduleAccessInStaffDetail.incidentReport == 'Read Only'">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">Add New</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="incidentView('staff', staffId);" ng-show="moduleAccessInStaffDetail.incidentReport == 'Read Only'">
+                                            <a href="#incidentView">
+                                                <span class="v-flex">								  
+                                                    <span class="btn-txt">View</span>
+                                                    <span class="circle-flex">
+                                                        <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInStaffDetail.offender == 'Full Access' || moduleAccessInStaffDetail.offender == 'Read Only') && moduleAccessInStaffDetail.incidentReport == 'Full Access'">
+                            <div class="user-dashboard">
+                                <div class="center-icon" custom-click="showOffender('list','staff', staffId);">
+                                    <span class="item-circle">{{staffProfile[0].linked_offenders_ocg}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon2"></span>
+                                    </div>
+                                </div>
+                                <h3>Offenders &amp; OCG's</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="showOffender('add');">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">Add New</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInStaffDetail.vehicle == 'Full Access' || moduleAccessInStaffDetail.vehicle == 'Read Only') && moduleAccessInStaffDetail.incidentReport == 'Full Access'">
+                            <div class="user-dashboard">
+                                <div class="center-icon" custom-click="showVehicle('list','staff', staffId);">
+                                    <span class="item-circle">{{staffProfile[0].linked_vehicles}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon3"></span>
+                                    </div>
+                                </div>
+                                <h3>Vehicles</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="showVehicle('add');">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">Add New</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="employment.incidentPermission.access_permission == 1 && (moduleAccessInStaffDetail.victimWitness == 'Full Access' || moduleAccessInStaffDetail.victimWitness == 'Read Only') && moduleAccessInStaffDetail.incidentReport == 'Full Access'">
+                            <div class="user-dashboard">
+                                <div class="center-icon" custom-click="showVictimWitness('list','staff', staffId);">
+                                    <span class="item-circle">{{staffProfile[0].linked_victims_witness}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon4"></span>
+                                    </div>
+                                </div>
+                                <h3>Victims &amp; Witnesses</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="showVictimWitness('add');">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">Add New</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>-->
+        <!-- employee section security ends -->
+        <!-- employee section comms start -->
+        <div class="employee_dashboard second_board" ng-show="menu.commsTask.access_permission == 1 && showCommsAndTask">
+            <div class="welcome-column">
+                <a href="#/commsTasks">
+                    <div class="col-box-left">
+
+                        <div class="v-flex">
+                            <div class="center">
+                                <div class="center-icon">
+                                    <div class="circle-icon">
+                                        <div class="v-m">
+                                            <span class="Aligner"><span class="task-icon"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Comms &amp; Tasks</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="user-column">
+                    <ul>
+                        <li ng-show="employment.inMail.access_permission == 1 && (moduleAccessInStaffDetail.inMail == 'Full Access' || moduleAccessInStaffDetail.inMail == 'Read Only')">
+                            <div class="user-dashboard">
+                                <div class="center-icon">
+                                    <span class="item-circle">{{staffProfile[0].count_inbox}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon5"></span>
+                                    </div>
+                                </div>
+                                <h3>Inbox</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="showInboxList();">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">View</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="employment.alertNotification.access_permission == 1 && (moduleAccessInStaffDetail.alertNotification == 'Full Access' || moduleAccessInStaffDetail.alertNotification == 'Read Only')">
+                            <div class="user-dashboard">
+                                <div class="center-icon">
+                                    <span class="item-circle">{{staffProfile[0].count_alerts_notification}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon6"></span>
+                                    </div>
+                                </div>
+                                <h3>Alerts &amp; Notifications</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius"  custom-click="showAlertList();">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">View</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="employment.taskCheckLists.access_permission == 1 && (moduleAccessInStaffDetail.taskChecklists == 'Full Access' || moduleAccessInStaffDetail.taskChecklists == 'Read Only')">
+                            <div class="user-dashboard">
+                                <div class="center-icon">
+                                    <span class="item-circle">{{staffProfile[0].count_tasks_checklist}}</span>
+                                    <div class="circle-icon">
+                                        <span class="d-icon d-icon7"></span>
+                                    </div>
+                                </div>
+                                <h3>Tasks & checklists</h3>
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">							
+                                        <button type="button" class="button btn-orange btn-block radius" custom-click="showCheckList();">	
+                                            <span class="v-flex">								  
+                                                <span class="btn-txt">View</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><i class="fa fa-eye"></i></span>	
+                                                </span>
+                                            </span>										
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="incident_report_btn_wrapper" ng-show="previosbutton">
+        <div class="incident_btn_wrap">
+            <div class="btn-group action-button icon-btn" ng-click="goToStaffList()">
+                <div class="incident_btn_wrap">
+                    <div class="btn-group action-button icon-btn">
+                        <div class="wrap-btn">
+                            <button class="button btn-action btn-block radius" type="button">
+                                <div class="v-flex">
+                                    <div class="circle-flex">
+                                        <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>   
+                                    </div>
+                                    <span class="btn-txt" >Back</span>
+                                </div>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="incident_report_btn_wrapper" ng-show="backbutton">
+
+        <div class="incident_btn_wrap">
+            <div class="btn-group action-button icon-btn" ng-click="goTohome()">
+                <div class="incident_btn_wrap">
+                    <div class="btn-group action-button icon-btn">
+                        <div class="wrap-btn">
+                            <button class="button btn-action btn-block radius" type="button">
+                                <div class="v-flex">
+                                    <div class="circle-flex">
+                                        <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>	
+                                    </div>
+                                    <span class="btn-txt" >Back</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

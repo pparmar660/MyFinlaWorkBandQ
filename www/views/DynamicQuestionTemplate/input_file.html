@@ -1,0 +1,59 @@
+<div class="category_btn_wrapper">
+    <h3>{{question.question_title}} <sup ng-if="question.errmessage_opt">*</sup> 
+        <span ng-show="question.question_hint" class="ot_tip" ng-click="question.showToolTip = !question.showToolTip"><i class="newtip">?</i>
+
+            <span ng-show="question.showToolTip" class="tooltip close-parent vehicle-tip">
+                <p>{{question.question_hint}}</p>
+                <span class="close"><i class="fa fa-times"></i></span>
+            </span>
+
+        </span>
+    </h3>
+    <div class="upload-box">
+        <div class="wrap-btn">							
+            <button type="button" class="button btn-orange btn-block radius" ng-click="pushFile(); subQuestion(question, '-1', '7')">
+                <span class="v-flex">		
+                    <span class="btn-txt">Upload Images &amp; Media</span>
+                    <span class="circle-flex">
+                        <span class="s-btn-icon"><i class="fa fa-upload"></i></span>
+                    </span>										
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="contact-info-detail">
+    <h3>Uploaded Images &amp; Media</h3>
+    <div class="up_img_wrap">
+        <div class="col_4" ng-click="spliceItem(img.id, $event)" ng-repeat="img in images" itemid="{{img.id}}" upload-image-preview src="{{img.dSrc}}" title="{{img.title}}">
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>
+
+ <div class="ngdialog ngdialog-theme-default" ng-if="showAction" role="alertdialog">
+        <div class="ngdialog-overlay"></div>
+        <div class="ngdialog-content" role="document">
+            <div class="ngdialog-message">
+                <h3 id="ngdialog1-aria-labelledby">Upload Files</h3>
+                <ul class="camera_links">
+                    <li ng-click="openGallery()">
+                        <button><span class="camera_img"></span> Gallery</button>
+                    </li>
+                    <li ng-click="openCamera()">
+                        <button><span class="gallery_img"></span> Camera</button>
+                    </li>
+                    <li ng-click="openVedio()">
+                        <button><span class="video_img"></span> Video</button>
+                    </li>
+                    <li ng-click="closeCameraOption()">
+                        <button><span class="close_img"></span> Close</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+

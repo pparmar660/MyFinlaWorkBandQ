@@ -1,0 +1,815 @@
+.m-button{
+    float:left;
+    width:100%;
+    padding-bottom:30px;
+}
+@media screen and (max-width: 1024px) {
+    .minSize100 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .checkboxMe2 {
+        margin-right: 10px;
+    }
+    
+    
+    .view-pics li,
+    .vehicles-wrap li{
+        width:24%;
+    }
+    .carousel-demo-fullscreen ul[rn-carousel] {
+      height:400px;
+    }
+}
+
+
+/*media query start here for commas & Tasks page*/
+@media screen and (max-width: 991px) {
+    .table-reponsive {
+        float: left;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .col_01 p {
+        margin-top: 5px;
+    }
+    .col_01 {
+        float: left;
+        width: 100%;
+        margin: 0px 0px 15px 0px;
+    }
+    .mail_main_container {
+        float: left;
+        width: 100%;
+        overflow: inherit;
+    }
+    .wid_50 {
+        width: 100%;
+    }
+    .wid_50:first-child {
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+    .wid_50:last-child {
+        margin-left: 0px;
+    }
+    .welcome-column.bottomMar {
+        margin-bottom: 40px;
+    }
+    
+    .incident-lists .table-main table tr th,
+    .incident-lists .table-main table tr td,
+    .incident-lists .table-main table tr td span,
+    .incident_lists_tabs li a{
+        font-size:13px;
+    }
+    .incident_lists_tabs li{
+        margin-right:10px;
+    }
+    .incident_lists_tabs{
+        padding:10px 15px;
+    }
+    .incident-lists .table-main table tr td{
+        padding:12px;
+    }
+    
+    
+    /*media css*/
+     .employee_dashboard .user-column li {
+        width: 48%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .employee_details h4 {
+        font-size: 14px;
+    }
+    .employee_details h5 {
+        font-size: 14px;
+    }
+    .employee_details h5 span {
+        font-size: 14px;
+    }
+    .employee_dteails_wrap span.online {
+        right: 15px;
+        bottom: 8px;
+    }
+    .staff_cols .staff_details .staff_btn {
+        width: 160px;
+        height: 65px;
+    }
+    .staff_directory .staff_heading_row .heading_left {
+        width: 40%;
+    }
+    .staff_directory .staff_heading_row .heading_right {
+        width: 60%;
+    }
+    .employee_details ul.tabs li {
+        font-size: 18px;
+        margin: 0px 30px 0px 0px;
+    }
+    .staff_directory .staff_heading_row .heading_right .left_text_box {
+        margin-top: 0px;
+    }
+    .documents_wrap .document_row .text {
+        margin-top: 0px;
+    }
+    .documents_wrap .document_row .text p span {
+        display: block;
+        margin-left: 0px;
+    }
+    /*offenders*/
+    .view-pics li,
+    .vehicles-wrap li{
+        width:32.3%;
+    }
+    .v-w-v .select-type{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .vw-staff{
+        float: none;
+        display: inline-block;
+        margin-left: 10px;
+        width: 80%;
+        text-align: left;
+        vertical-align: top;
+    }
+    .vw-staff > li{
+        margin-bottom: 10px;
+    }
+    .global-v-o-w .staff_tabs{
+        width: 100%;
+    }
+    .carousel-demo-fullscreen ul[rn-carousel] {
+      height:350px;
+    }
+}
+
+
+@media only screen and (max-width: 850px) {
+    .staff_directory .staff_details_wrap .staff_cols {
+        width: 100%;
+        margin: 10px 0px;
+        padding: 10px 0px;
+    }
+    .staff_directory .staff_details_wrap .staff_cols .access_level_wrap {
+        min-height: 100%;
+    }
+    .staff_cols .staff_details {
+        min-height: 100%;
+        margin-bottom: 40px;
+    }
+    .staff_directory .staff_heading_row .heading_left {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+   
+    .staff_directory .staff_heading_row .heading_right {
+        width: 100%;
+        text-align: center;
+    }
+    .staff_directory .staff_heading_row .heading_right .pull-right {
+        float: none !important;
+        display: inline-block;
+    }
+    .staff_directory .staff_tabs li {
+        margin-right: 30px;
+    }
+    .employee_details ul.tabs li {
+        font-size: 16px;
+        margin: 0px 15px 0px 0px;
+    }
+    .documents_wrap .left {
+        width: 100%;
+        padding-right: 0px;
+    }
+    .documents_wrap .right {
+        width: 100%;
+        padding-left: 0px;
+    }
+    .incident-lists .heading_left .text{
+        margin-left: 0px;
+    }
+    .global_Load_head .text_head{
+        margin-top: 0px;
+    }
+    .tabs li{
+        margin: 0px 5px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .employee_details .left {
+        width: 100%;
+    }
+    .employee_details .right {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .button-left {
+        width: 100%;
+        margin-bottom: 10px;
+      
+    }
+    .button-right {
+        width: 100%;
+          margin-bottom: 10px;
+    }
+    .employee_dashboard .emp_btn_left {
+        margin-bottom: 40px;
+    }
+    .employee_dashboard .emp_btn_right {
+        margin-bottom: 40px;
+    }
+
+    #content h1{
+        font-size: 25px;
+    }
+    .incident_head_select_box div.fancy-select div.trigger{
+        font-size: 32px;
+    }
+    .v-number{
+        font-size: 22px;
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    
+    .indicent-lft,
+    .indicent-map,.incident-right{
+        width:100%;
+    }
+    
+    /*offenders*/
+    .view-pics li,
+    .vehicles-wrap li{
+        width:49%;
+    }
+    
+    .off-image > img{
+        width:100%;
+    }
+      .incident_report_tab .tab_content{
+        padding-right: 0px;
+    }
+    .o_d_t_wrap .left{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width:767px) {
+     .m-button .model_button_right,
+     .m-button .model_button_left {
+        display: inline-block;      
+        width: 50%;
+        padding:0 15px;
+    }
+    .o_d_t_wrap .left{
+        width: 49%;
+    }
+    .model_button_margin{
+        margin:0;
+    }
+    
+    .m-button .wd-f{
+        float: none;
+        margin-top: 21px;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+    
+@media screen and (max-width: 767px) {
+    /*global buttons css*/
+    
+    .model_button .btn-group {
+        width: 100%;
+    }
+   
+    .model_button {
+        text-align: center;
+        float:left;
+        width:100%;
+    }
+   
+    
+    .modal-change .action-button button{
+        width:100%;
+    }
+    
+    .model_button .icon-btn .btn-txt {
+        font-size: inherit;
+    }
+    .backSendDiv .model_button:after {
+        border: 0;
+    }
+    /*global buttons css end*/
+    
+
+    ul.primary-nav li {
+        width: 100%;
+    }
+    ul.primary-nav li.comms {
+        width: 100%;
+    }
+ 
+    .replyBtnDiv {
+        margin-bottom: 5px;
+    }
+    .senderInfo {
+        border-top: 1px solid #777777;
+        padding-top: 5px;
+        width: 100%;
+    }
+    .getHeight {
+        margin-top: 30px !important;   
+    }
+    ul.primary-nav li a {
+        padding-right:10px;
+        padding-left:10px;
+    }
+    
+    .senderDetails p span {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .senderDetails p {
+        padding: 0px;
+    }
+    .messageDiv h2:after {
+        width: 25px;
+        height: 25px;
+        margin-top: 2px;
+    }
+    .messageDiv h2 {
+        padding-right: 35px;
+    }
+    .atchmt {
+        max-width: 120px;
+        max-height: 80px;
+    }
+    .attachmentDiv p {
+        font-size: 13px;
+    }
+    
+    .AOCtabs {
+        padding: 5px 10px;
+    }
+    .AOCtabs ul.aoculli {
+        width: 100%;
+    }
+    .AOCtabs ul.aoculli li {
+        width: 100%;
+        margin-right: 0px;
+    }
+    .AOCtabs ul.aoculli li span {
+        width: 100%;
+    }
+    .AOCtabs ul.aoculli li span a {
+        display: block;
+    }
+    .AOCtabs ul.aoculli li span.redInfo {
+        margin-top: -26px;
+        width: auto !important;
+        float: right;
+    }
+    .AOC_Content ul,
+    .AOC_Content_01 ul {
+        margin-bottom: 0px;
+    }
+
+    .asignList .bell {
+        font-size: 16px;
+        margin-top: 2px;
+        margin-left: 10px;
+    }
+    .asignList .asignDivContent p {
+        font-size: 14px;
+    }
+    .AOCtabs div.fancy-select {
+        width: 100%;
+        min-width: 1px;
+    }
+    div.fancy-select ul.options {
+        min-width: 100%;
+        left: -10px;
+        right: -10px;
+    }
+    div.fancy-select ul.options li {
+        white-space: normal;
+    }
+    .icon-btn .btn-txt {
+        padding: 10px 5px;
+    }
+    
+    
+    
+    /*offenders pages*/
+    
+    .incident-lists .heading_left, 
+    .incident-lists .heading_right{
+        width:100%;
+        text-align:center;
+    }
+    
+    .incident-lists .heading_right .left_text_box,
+    .incident-lists .heading_right .right_btn{
+        width:100%;
+        margin:10px 0;
+    }
+    
+    .incident_lists_tabs li,
+    .incident_lists_wrapper .col_select{
+        display:block;
+        width:100%;
+        margin:10px 0;
+    }
+    
+    .incident-lists .table-main{
+        overflow-x:scroll;
+    }
+    
+    .incident-lists .table-main table{
+        min-width:768px;
+    }
+    
+    /*offenders css*/
+    .offenders-filter li{
+        width:100%;
+        margin-right:0;
+    }
+    .offenders-view{
+        text-align:center;
+    }
+    
+    .filter-icon{        
+         float: right;
+         position:static;
+         margin-top: 13px;
+    }
+    
+    .global-v-o-w .staff_directory .staff_select_wrapper{
+        padding-bottom:0;
+    }
+    
+    .o-filter-o{
+        margin-top:0;
+    }
+    
+    
+    /*employees css*/
+
+    .employee_head_btn {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+    .employee_header .icon {
+        float: left;
+        margin-top: -14px;
+        margin-right: 5px;
+    }
+  
+ 
+    .employee_dteails_wrap {
+        padding-bottom: 40px;
+    }
+    .staff_directory .staff_select_wrapper .col_select {
+        width: 50%;
+        margin: 0px;
+        padding: 5px;
+    }
+    
+    
+    .employee_dashboard .col-box-left {
+        width: 100%;
+        position: relative;
+        border-radius: 10px 10px 0px 0px;
+    }
+    
+    
+     .employee_header .icon {
+        margin-top: -5px;
+    }
+    
+     .employee_dashboard .user-column li {
+        width: 48%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    
+    .employee_dashboard .user-column {
+        padding-left: 10px;
+    }
+    
+    .employee_dashboard .user-dashboard h3{
+        font-size:inherit;
+    }
+    
+    .ls_btn{
+        width: 100%;
+        margin: 10px 0px;
+    }
+
+    .notification h5{
+        padding: 7px 50px;
+    }
+    .staff_select_wrapper .ls_btn{
+        width: 49.5%;
+    }
+    .filter_ico .col_select{
+        width: 50% !important;
+    }
+    .report-eighteen .report-left{
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 0px;
+    }
+    .report-eighteen .report-right{
+        width: 100%;
+    }
+    .staff_header .text{
+        margin-top: 0px;
+    }
+    .vw-staff{
+        width: 100%;
+        margin: 0px;
+        margin-top: 10px;
+        padding: 0px;
+    }
+    .a_row{
+        margin: 15px 0px;
+    }
+    .row_cross{
+        right: 2px;
+        top: -35px;
+    }
+    
+}
+
+@media only screen and (max-width: 600px) {
+    
+    
+    
+    /*global heading center*/
+    .staff_header{
+        text-align:center;
+    }
+    
+    .staff_header .icon{
+        float:none;
+        display:inline-block;
+    }
+    
+    .staff_header .text{
+        width:100%;
+        padding-left:0;
+        margin-left: 0px;
+        text-align: center;
+    }
+    #content .staff_header .text h1{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .m-button .model_button_right,
+    .m-button .model_button_left{
+         max-width: 100%;
+        margin:10px 0;
+         width: 100%;
+    }
+    .employee_head_btn{
+        float: none;
+    }
+    .employee_dteails_wrap .employee_img{
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .employee_details{
+        width: 100%;
+
+    }
+    .carousel-demo-fullscreen ul[rn-carousel] {
+      height:300px;
+    }
+    
+    .up_img_wrap .col_4 {
+        width: 48%;
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 568px) {
+   /*offenders*/
+    .view-pics li,
+    .vehicles-wrap li{
+        width:100%;
+        margin: 5px 0px 0px;
+    }
+    .off-name,
+    .v-name{
+        font-size: 14px;
+        height: auto;
+    }
+    #header{
+        min-height: 100px;
+    }
+    
+    .circle-icon{
+    	height: 66px;
+    	width: 66px;
+    }
+    .breadcrumb li{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .carousel-demo-fullscreen ul[rn-carousel] {
+      height:250px;
+    }
+    .a_row{
+        margin: 5px 0px;
+    }
+    .row_cross{
+        top: 5px;
+    }
+    .addmr_wrap{
+        padding: 0px;
+    }
+    .contact-info-detail .left {
+        padding: 0px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .contact-info-detail .right {
+        padding: 0px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width: 479px) {
+    .task_details ul li {
+        width: 100%;
+        padding-right: 0px;
+    }
+    
+    /*employees css*/
+    
+    .employee_dashboard .user-column li{
+        width:100%;
+    }
+    
+    .employee_details .data_col {
+        width: 36%;
+    }
+    .employee_details .data_col2 {
+        width: 63%;
+    }
+    .employee_header .icon {
+        float: left;
+        margin-top: -4px;
+        margin-right: 5px;
+    }
+    .staff_directory .staff_heading_row .heading_right .left_text_box {
+        width: 100%;
+    }
+    .staff_directory .staff_heading_row .heading_right .right_btn {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .staff_directory .staff_select_wrapper .col_select {
+        width: 100%;
+        margin: 0px;
+        padding: 5px;
+    }
+    .staff_directory .staff_tabs li {
+        margin: 5px 0 0;
+        width: 100%;
+    }
+    .staff_cols .staff_details .staff_text_detail h3 {
+        font-size: 18px;
+    }
+    .staff_cols .staff_details .staff_text_detail h4 {
+        font-size: 18px;
+    }
+    .staff_cols .staff_details .staff_text_detail h5 {
+        font-size: 16px;
+    }
+    .employee_wrap .security-sections h3 {
+        font-size: 20px;
+    }
+    .staff_header {
+        text-align: center;
+    }
+    .staff_header .icon {
+        display: inline-block;
+        float: none;
+    }
+    .staff_header .text {
+        width: 100%;
+        text-align: center;
+    }
+    .staff_header .text h1 {
+        text-align: center;
+    }
+    .staff_header .text h2 {
+        text-align: center;
+    }
+    .employee_head_btn {
+        width: 100%;
+    }
+    .documents_wrap .document_row .icon {
+        width: 60px;
+        text-align: center;
+        margin: auto;
+        position: relative;
+        height: auto;
+    }
+    .documents_wrap .document_row .text {
+        width: 100%;
+        text-align: center;
+        padding: 0px;
+        margin-top: 10px;
+    }
+    .documents_wrap .document_row .text h3 {
+        font-size: 16px;
+    }
+    
+        .emp_btn_left {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+    }
+    .emp_btn_right {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+    }
+    .employee_wrap .security-sections h3 span {
+        right: -10px;
+    }
+    .staff_cols .staff_details .staff_head .staff_image {
+        width: 80px;
+        height: 80px;
+    }
+    .staff_cols .staff_details .staff_head .staff_text {
+        padding-left: 95px;
+    }
+    .employee_details h4 {
+        font-size: 13px;
+    }
+    .employee_details h5 {
+        font-size: 13px;
+    }
+    .staff_directory .staff_heading_row .heading_left .icon{width: 28%;}
+    .staff_directory .staff_heading_row .heading_left .text{padding-left: 0px;}
+    .staff_directory .staff_heading_row .heading_left .text h1{
+        text-align: center;
+    }
+
+    .staff_select_wrapper .ls_btn{
+        width: 97%;
+        margin: 5px 1.5%;
+    }
+    .filter_ico .col_select{
+        width: 100% !important;
+    }
+    .combine-btn .yes_left, .combine-btn .no_right{
+        width: 100%;
+        margin: 10px 0px;
+    }
+    .carousel-demo-fullscreen ul[rn-carousel] {
+      height:200px;
+    }
+    
+    .documents_wrap{
+    	display: flex !important;
+    	flex-wrap:wrap !important;
+    }
+    
+    .documents_wrap .document_row{
+    	margin:0px 0px 20px 0px !important;
+    }
+    
+    .resources_document_wrapper{
+    	padding:5px !important;
+    }
+    
+    ul.documents_menu{
+    	text-align: center;
+    }
+    
+    .staff_select_wrapper{
+    	display: none;
+    }
+    
+    .filter_hide_button{
+    	display: none!important;
+    }
+    
+    .filter_show_button{
+    	display: block!important;
+    }
+
+}

@@ -1,0 +1,281 @@
+.clr{clear: both;}
+.login_wrapper{
+	width: 100%;
+	height: auto;
+	margin: auto;
+}
+
+.login_inner{
+	margin-top: 0px;
+}
+
+.login_container{
+	width: 450px;	
+	margin: auto;
+	text-align: center; 
+}
+.login_logo{
+	width: 40%;
+	margin: auto;
+	margin-top: 120px;
+	display: inline-block;
+
+}
+.login_logo img{
+	max-width: 100%;
+}
+.login_profile_icon{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-radius: 100px;
+	border: 8px solid #ffffff;
+	padding-top: 16px;
+	margin-top: 50px;
+
+}
+.login_profile_icon img{max-width: 80%;}
+.login_profile_heading h1{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+	font: 28px Arial;
+	text-align: center;
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+.login_form-wrap{
+	width: 320px;
+	height: auto;
+	margin: auto;
+}
+.login_form-wrap .input-style{
+	width: 100%;
+	height: auto;
+	margin-top: 15px;
+}
+
+.login_form-wrap .form-control{
+	width: 100%;
+	height: 50px;
+	margin: 0px auto;
+	border-radius: 5px;
+	padding: 10px;
+	border: none;
+	font: 13px Arial;
+	outline: none;
+	box-shadow: 1px 2px 2px #333333;
+}
+.login_form-wrap .forgot_link{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	text-align: right;
+	margin-top: 5px;
+}
+.login_form-wrap .forgot_link a{
+	color: #9b9a98;
+	font: 11px Arial;
+	font-style: italic;
+}
+.login_form-wrap .forgot_link a:hover{
+	text-decoration: underline;
+}
+.login_form-wrap .login_btn_wrap{
+	width: 100%;
+	height: auto;
+	margin: 30px auto 0px;
+}
+.login_form-wrap .login_btn_wrap .btn{
+	width: 100%;
+	height: 50px;
+	margin: auto;
+	box-shadow: 1px 1px 4px #333333;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	outline: none;
+	font: 14px Arial;
+	margin-bottom: 10px;
+}
+.login_form-wrap .login_btn_wrap .btn-login{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85c42d+0,62b205+100 */
+	background: #85c42d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #85c42d 0%, #62b205 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #85c42d 0%,#62b205 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #85c42d 0%,#62b205 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#85c42d', endColorstr='#62b205',GradientType=0 ); /* IE6-9 */
+}
+.login_form-wrap .login_btn_wrap .btn-deactive{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#484745+0,757575+100 */
+	background: #484745; /* Old browsers */
+	background: -moz-linear-gradient(top, #484745 0%, #757575 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #484745 0%,#757575 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #484745 0%,#757575 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#484745', endColorstr='#757575',GradientType=0 ); /* IE6-9 */
+}
+.loading_location{
+	width: 100px;
+	height: auto;
+	margin: 20px auto;
+	text-align: center;
+	position: relative;
+}
+.login_loading_icon{
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	padding-top: 16px;
+	position: absolute;
+	z-index: 100;
+	top: -10px;
+
+}
+.login_loading_icon img{max-width: 80%;}
+.login_error_icon{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-radius: 100px;
+	border: 8px solid #757472;
+	padding-top: 16px;
+	margin-top: 50px;
+
+}
+.login_profile_icon img{max-width: 80%;}
+.loading_location .perc{display: none !important;}
+.keypad_wrapper .login_logo{
+	width: 25%;
+}
+.keypad_wrapper .login_logo +.login_logo{
+	width: 34%
+}
+.keypad_wrapper .keyboard_wrap{
+	width: 280px;
+	height: auto;
+	margin: auto;
+	position: relative;
+}
+.keypad_wrapper .keyboard_wrap .keypad_key{
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	border: 5px solid #ffffff;
+	font-size: 30px;
+	border-radius: 100%;
+	text-align: center;
+	font-weight: 700;
+	padding-top: 11px;
+	margin: 5px;
+}
+/*.keypad_wrapper .keyboard_wrap .keypad_key:active{
+    background: #dddddd;
+	color: #333333;
+}*/
+.keypad_wrapper .keyboard_wrap .keypad_key.key_hover,
+.keypad_wrapper .keyboard_wrap .keypad_key.ng-click-active{
+	background: #dddddd;
+	color: #333333;
+}
+.keypad_wrapper .keyboard_wrap .key_cancel{
+	position: absolute;
+	bottom: 30px;
+	left: 50px;
+	color: #ffffff;
+	font: 12px Arial;
+}
+.keypad_wrapper .keyboard_wrap .key_delete{
+	position: absolute;
+	bottom: 30px;
+	right: 50px;
+	color: #ffffff;
+	font: 12px Arial;
+}
+.keypad_wrapper ul.keypress{
+	width: 100%;
+	height: auto;
+	margin: 10px auto;
+	text-align: center;;
+}
+.keypad_wrapper ul.keypress li.circle{
+	width: 19px;
+	height: 19px;
+	display: inline-block;
+	border: 2px solid #ffffff;
+	border-radius: 19px;
+	margin: 5px 8px;
+}
+.keypad_wrapper ul.keypress li.circle span{
+	background: #76BF00;
+	width: 11px;
+	height: 11px;
+	border-radius: 13px;
+	display: block;
+	margin: 2px;
+}
+.forgot_wrapper .login_logo{
+	width: 25%;
+}
+.forgot_wrapper .login_logo +.login_logo{
+	width: 34%
+}
+.forgot_wrapper .login_form-wrap .login_btn_wrap{
+	margin-top: 20px;
+}
+.forgot_wrapper h1.forgot_green{
+	color: #28dc01;
+	margin-bottom: 10px;
+}
+.forgot_wrapper h2{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	display: block;
+	font: 28px Arial;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 24px;
+}
+.forgot_wrapper .login_ag{
+	width: 200px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+.login_ag .s-btn-icon{
+	border-radius: 5px;
+	line-height: 42px;
+}
+.login_ag .icon-btn .btn-txt{font-size: 18px;}
+.login_form-wrap .error-strip{
+	padding: 5px 10px 5px 15px;
+}
+.login_form-wrap .error-strip h4{
+    font-size: 12px;
+    padding: 15px 15px 15px  50px;
+    text-align: left;
+}
+.login_form-wrap .error-strip .error-icon{
+	height: 35px;
+	width: 35px;
+}
+.tx_erorr{
+	border:1px solid #991918 !important;
+}
+.login_form-wrap .error-strip .close{
+	top:13px;
+}
+@media only screen and (max-width: 568px){
+.login_container .login_logo{margin-top: 10px;}
+.login_container .login_logo{width: 25%;}
+.login_container .login_logo +.login_logo{width: 34%}
+.login_form-wrap .login_btn_wrap{margin-bottom: 10px;}
+.login_inner{margin-top: 0px;}
+}
+@media only screen and (max-width: 479px){
+.login_container{width: 100%;}
+}
+@media only screen and (max-width: 350px){
+.login_form-wrap{width: 80%;}
+.keypad_wrapper .keyboard_wrap{width: 90%;}
+}

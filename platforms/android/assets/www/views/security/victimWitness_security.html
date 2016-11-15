@@ -1,0 +1,20 @@
+
+ <div id="securityVictimwitness"> 
+    <div ng-include="'views/sidePanels/sidePanelSecurity.html'"></div>
+    <div ng-show="isVictimWitnessList" ng-include="'views/security/List_VictimWitness.html'"> </div>
+    <div ng-show="isVictimWitnessDetail" ng-include="'views/security/Details_VictimWitness.html'"> </div>
+    <div ng-show="isVictimWitnessAdd" ng-include="'views/security/AddNew_VictimWitness.html'"> </div>
+    <div ng-show="internetConnection">
+        <div class="layout">
+            <div class="loading_details">
+                <div class="no_connection">
+                    <div class="no_internet"><img src="images/no_internet.gif" alt="no internet"></div>
+                    <h1>No Internet <br> Connection</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

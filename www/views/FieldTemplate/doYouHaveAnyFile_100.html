@@ -1,0 +1,67 @@
+<div id="100" ng-controller="doYouHaveAnyFileController as du">
+    <div class="category_btn_wrapper">
+        <h3>{{AllFieldLabelData[100].lable_name}} 
+            <span class="ot_tip" ng-show ="AllFieldLabelData[100].question_hint" ng-click="toolTipToggleDoYouHave = !toolTipToggleDoYouHave"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleDoYouHave">
+                    <p> {{AllFieldLabelData[100].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+
+            </span></h3>
+        <div class="category_btn_left" ng-click="showHideUpload(1)">
+            <div class="btn-group icon-btn file_type_btn">
+                <div class="wrap-btn" ng-click="pushFile()">
+                    <!-- call upload button click handler -->
+                    <input type="file" class="hidden_file" style="display: none;" />
+                    <button class="button btn-orange btn-block radius" type="button" ng-class="{active : uploadStart}">
+                        <span class="v-flex">
+                            <span class="btn-txt">Upload</span>
+                            <span class="circle-flex">
+                                <span class="s-btn-icon"><i class="fa fa-upload"></i></span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="category_btn_left" ng-click="showHideUpload(0)">
+            <div class="btn-group icon-btn">
+                <div class="wrap-btn">
+                    <button class="button btn-orange btn-block radius" type="button" ng-class="{active : noUpload}">No</button>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="why_not_wrap up_img_wrap" ng-hide="showUpload != 1" ng-if="items.length > 0">
+        <h3>Uploaded Files? <span>?</span></h3>
+        <div class="col_4" ng-click="spliceItem(item, $event)" ng-repeat="item in items" itemid="{{item.id}}" upload-image-preview src="{{item.dSrc}}" title="{{item.title}}">
+
+        </div>
+        <div class="clr"></div>
+    </div>
+
+    <div class="ngdialog ngdialog-theme-default" ng-if="showAction" role="alertdialog">
+        <div class="ngdialog-overlay"></div>
+        <div class="ngdialog-content" role="document">
+            <div class="ngdialog-message">
+                <h3 id="ngdialog1-aria-labelledby">Upload Images</h3>
+                <ul class="camera_links">
+                    <li ng-click="action(1)">
+                        <button><span class="camera_img"></span> Gallery</button>
+                    </li>
+                    <li ng-click="action(2)">
+                        <button><span class="gallery_img"></span> Camera</button>
+                    </li>
+                    <li ng-click="action(3)">
+                        <button><span class="video_img"></span> Video</button>
+                    </li>
+                    <li ng-click="action(4)">
+                        <button><span class="close_img"></span> Close</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

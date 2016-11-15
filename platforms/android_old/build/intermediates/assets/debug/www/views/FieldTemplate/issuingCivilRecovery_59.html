@@ -1,0 +1,191 @@
+<div id="59" ng-form ="issuingCivilRecForm" ng-controller="issuingCivilRecovery">
+    <!--    <div class="control-group" ng-class="{
+                                                                true
+                                                                : 'error'
+                                                                }
+            [issuingCivilRecForm.result.$valid]">-->
+    <a class="info_icon" ng-click="closeDetail(true)" href="javascript:void(0)" ><img src="images/icons/info_icon.png"></a>
+    <div class="prod_stock_pop_wrap close-parent" ng-hide="showData == false">
+        <a class="cross info_open" ng-click="closeDetail(false)"><img src="images/icons/general-close-x.png" alt="cross" /></a>
+        <div class="icon_wrapper">
+            <div class="icon">
+                <img src="images/icons/notification-information.png" alt="notification" />
+            </div>
+            <div class="text">Product &amp; Stock</div>
+        </div>
+        <div class="prod_content">
+            <p>Recovered Products: <span>{{productData.recProdect}} (&pound; {{productData.recProdectVal}})</span></p>
+            <p>Damaged Products: <span>{{productData.demProduct}} (&pound; {{productData.demProducVal}})</span></p>
+            <h6>Total Value: <span>{{productData.totalItem}} (&pound; {{productData.totalItemVal}})</span></h6>
+        </div>
+    </div>
+    <h3>{{AllFieldLabelData[112].lable_name}}</h3>
+    <div class="is_civil_recovery" ng-repeat="result in offenderData" ng-if="result.civil_recovery_it == '1'">
+        <div class="left-col">
+            <div class="col_1">
+                <div class="image_wrap">
+                    <img class="offender" ng-src="{{result.image}}" alt="images/offenders-pic/pic08.jpg" onError="this.src='images/offenders-pic/pic08.jpg';">
+                    <!--<img ng-src="{{offenderPath}}{{result.id_usr}}/1" alt="offender" />-->
+                    <span>{{result.firstname_usr}} {{result.lastname_usr}}</span>
+                    <div class="address-block">
+                        <p><span>Address Details</span></p>
+                        <p>{{result.address_usr}}</p>
+                        <p>{{result.address_1_usr}}</p>
+                        <p>{{result.address_2_usr}}</p>
+                        <p>{{result.address_3_usr}}</p>
+                        <p>{{result.postcode_usr}}</p>
+                        <p>{{result.name_cnt}}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-col">
+            <div class="col_1">
+                <div class="input_box_wrap">
+                    <p>Product stock &amp; Value:</p>
+                    <input float-value type="text" name="stockValue" ng-model="result.productStockValue" ng-change="stockValue(result.productStockValue, result)" class="form-control" placeholder="&pound; Enter Value" />
+
+                    <p>Civil Recovery:</p>
+                    <input type="text" name="recovery" ng-model="result.recovery" class="form-control" placeholder="&pound; 0.00" readonly/>
+                </div>
+            </div>
+            <div class="col_1">
+                <div class="input_box_wrap">
+                    <p>Civil Recovery Status:</p>
+                    <div class="white_selectbox mrpa" id="ddS030" onclick="setDropDownDirection('ddS030');">
+
+                        <ol class="nya-bs-select" ng-model="result.civilRecoveryStatusValue" ng-change="getData(result.civilRecoveryStatusValue, $index)" data-live-search="false">
+                            <li nya-bs-option="recoveryStatus in civilRecoveryData">
+                                <a>
+                                    <span class="label" >{{recoveryStatus.name_it}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                    <p>Civil Recovery Number:</p>
+                    <input type="text" name="recoveryNo" ng-model="result.recoveryNo" class="form-control" placeholder="Enter Number" />
+                </div>
+            </div>
+            <div class="col_4">
+                <div class="input_box_wrap">
+                    <p>Civil Recovery Note:</p>
+                    <textarea name="recoveryNote" ng-model="result.recoveryNote" placeholder="Add Note"></textarea>
+                </div>
+            </div>
+            <div class="offender-details-col-2">
+                <h4>Offender Details Required:<sup> *</sup></h4>
+                <div class="half-width">
+                    <div class="input_box_wrap">
+                        <p>Gender: </p>
+                        <div class="white_selectbox mrpa">
+                            <ol class="nya-bs-select"  data-live-search="false" ng-model="result.sex_usr">
+                                <li nya-bs-option="value in genderList">
+                                    <a>
+                                        <span class="label" >{{value}}</span>
+                                        <span class="fa fa-check check-mark"></span>
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="input_box_wrap is-select-date">
+
+                        <p>Date of Birth:</p>
+                        <div datepicker datepicker-class="test-custom-class" date-format="dd-MM-yyyy" date-min-limit="01/01/1920">
+
+                            <input ng-model="result.dob_usr" type="text" class="angular-datepicker-input form-control calender_textbox" placeholder="DD-MM-YYYY" readonly/>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="half-width-right">
+                    <div class="input_box_wrap">
+                        <p>Residential Status:</p>
+                        <div class="white_selectbox mrpa">
+                            <ol class="nya-bs-select"  data-live-search="false" ng-model="result.residence">
+                                <li nya-bs-option="(key, value) in residentTialStatus">
+                                    <a>
+                                        <span class="label" >{{value}}</span>
+                                        <span class="fa fa-check check-mark"></span>
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="input_box_wrap">
+                        <p>Mobile/Telephone Number</p>
+
+
+                        <input type="text"  ng-model="result.p_mob_usr" placeholder="Enter Number"   ng-trim="true" class="form-control"/>
+                        <!--                            <span class="angular-error" data-ng-if="issuingCivilRecForm.mobileNumber_{{$index}}.$dirty && issuingCivilRecForm.mobileNumber_{{$index}}.$invalid">-->
+                        <span class="angular-error" ng-show="result.mobileError"> UK telephone numbers should contain 10 or 11 digits and should start with a zero.</span>
+
+                        <!--                            </span>-->
+
+                    </div>
+                </div>                    
+            </div>
+            <div class="offender-details-right-col-2 offender-details-col-2">
+                <h4>Form of Identity Used:<sup> *</sup></h4>
+                <div ng-repeat="product in result.productList" class="offender-product-details">
+                    <div class="half-width">
+                        <div class="input_box_wrap">
+                            <p>Identification:</p>
+                            <div class="white_selectbox mrpa">
+                                <ol class="nya-bs-select"  data-live-search="false" ng-model="product.form_identity_usr" >
+                                    <li nya-bs-option="(key, value) in identityForm track by $index">
+                                        <a>
+                                            <span class="label" >{{value.val}}</span>
+                                            <span class="fa fa-check check-mark"></span>
+                                        </a>
+                                    </li>
+
+
+                                </ol>
+
+
+                            </div>
+                            <li class="identity-other" ng-show="product.form_identity_usr.val == 'Other' ? true : false">
+                                <label>Other Form of Identity:</label>
+                                <div class="textbox_wrap dob-box">
+                                    <div class="hf_container">
+                                        <input type="text" ng-model="product.form_identity_other" class="form-control ng-pristine ng-valid" name="ref_number">
+                                    </div>
+                                </div>
+
+                            </li>
+                        </div>
+
+                    </div>
+                    <div class="half-width-right">											
+                        <div class="input_box_wrap">
+                            <p>Reference No.</p>
+                            <input type="text" name="name" class="form-control" ng-model="product.form_identity_refernce" placeholder="Please Enter" />
+                        </div>	
+
+                    </div>
+                    <div class="close-icon" ng-click="remove($parent.$index, $index)">
+                        <span><img alt="" src="images/close-icon1.png"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="clr" ></div>
+            <div class="add-another-o-btn">
+                <div class="btn-group sl-icons icon-btn">
+                    <div class="wrap-btn" ng-click="addAnotherProduct($index)">
+                        <button class="button btn-orange btn-block radius" type="button" ><span class="v-flex"><span class="btn-txt">Add Another</span> <span class="circle-flex"><span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+
+

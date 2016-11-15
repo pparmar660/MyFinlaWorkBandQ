@@ -1,0 +1,26 @@
+<div class="side-panel">
+    <div class="menu-wrapper">
+        <div class="logo">
+            <a href="#/dashboard"><img alt="logo" src="images/logo.jpg"></a>
+        </div>
+        <ul class="main-menu">
+            <li class="active"><a href="#/dashboard" class="links"><span class="icon icon1"></span> <p>Dashboard</p></a></li>
+
+            <li ng-show="menu.security.access_permission == 1"><a href="#/security" class="links"><span class="icon icon15"></span> <p>{{menu.security.name}}</p></a></li>
+            <li ng-show="menu.commsTask.access_permission == 1"><a href="#/commsTasks" class="links"><span class="icon icon16"></span> <p>{{menu.commsTask.name}}</p></a></li>
+            <li ng-show="menu.employment.access_permission == 1"><a href="#/employmentHome" class="links"><span class="icon icon3"></span> <p>{{menu.employment.name}}</p></a></li>
+
+
+            <li ng-show="menu.resources.access_permission == 1" id="ftResource" >
+                <a href="#/resource"><span class="icon resources-icon"></span>
+                    <p>Resources</p></a>
+
+            </li>
+            <!--            <li><a href="#/resources" class="links"><span class="icon icon17"></span> <p>Resources</p></a></li>
+                        <li><a href="#/reporting" class="links"><span class="icon icon18"></span> <p>Reporting</p></a></li> -->
+        </ul>
+        <div class="partner_client_logo">
+            <img src="images/client_logo_new.png" alt="client logo">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div id="12" ng-controller="ReportTypeCtrl" class="type_wrapper">
+
+    <h3>{{AllFieldLabelData[12].lable_name}}<sup>*</sup>
+
+        <span class="ot_tip" ng-show="AllFieldLabelData[12].question_hint" ng-click="toolTipToggleType = !toolTipToggleType"><i class="newtip">?</i>
+            <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleType">
+                <p>{{AllFieldLabelData[12].question_hint}}</p>
+                <span class="close"><i class="fa fa-times"></i></span>
+            </span>
+
+        </span>
+
+
+        <span class="field-error" ng-if="req1">Required</span> </h3>
+    <strong ng-bind="derivedMsg"></strong>
+    <div class="row">
+        <div class="col-4" ng-repeat="t in ts" ng-click="changeOutcome(t)">
+            <div class="btn-group action-button icon-btn">
+                <div class="wrap-btn">
+                    <button class="button btn-orange btn-block radius" ng-class="{active : t.activeClass}" type="button">
+                        <span class="v-flex">
+                            <span class="circle-flex">
+                                <span class="indicate-icon"><img ng-src="{{iconBaseUrl + t.app_icon_it}}"></span>
+                            </span>
+                            <span class="btn-txt">{{t.name_it}}</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+</div>

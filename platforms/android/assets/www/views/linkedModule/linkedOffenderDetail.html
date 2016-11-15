@@ -1,0 +1,202 @@
+<div  ng-controller="linkedOffenderDetail">
+    <div ng-model="offender">
+        <div class="clr"></div>
+        <div class="global_Load_head">
+            <div class="text_wrap">
+                <div class="icon">
+                    <div class="center-icon on-icons">
+                        <div class="circle-icon">
+                            <div class="v-m">
+                                <span class="d-icon d-icon2"></span>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+                <div class="text_head">
+                    <h1><span>Offender:</span> {{offender.firstname_usr + " " + offender.middlename_usr + " " + offender.lastname_usr}} <strong >{{offenderStatus}}</strong> </h1>
+                </div>								
+            </div>
+
+            <p>Last updated: {{offenderLastUpdate}}</p>							
+        </div>
+        <div class="incident_report_tab of_detail_view">
+            <div class="offender_slider_wrap">
+                <div ng-if="images.length > 0" class="carousel-demo-fullscreen">
+                    <ul rn-carousel rn-carousel-controls rn-carousel-buffered class="carousel1" rn-carousel-index="imageIndex">
+                        <li id="tags-list" ng-repeat="image in images track by $index" ng-class="'id-' + {{$index}}">
+                            <img  ng-src="{{image.imageurl}}"  custom-click="imageLargeView(image);"/> 
+                        </li>
+
+                    </ul>
+                </div>
+                <div ng-if="images.length == 0" class="carousel-demo-fullscreen">
+                    <img src="images/profile_img_1.jpg"/> 
+                </div>
+            </div>
+            <div class="offender_details">
+                <div class="angTabWrapper">
+                    <tabs>
+                        <pane title="Characteristics">
+                            <div>
+                                <div class="tab_content">
+                                    <ul class="o_d_l">
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[7].lable_name}}</span> <strong ng-bind-html="offender.sex_usr"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[31].lable_name}}</span> <strong ng-bind-html="offender.ethnicity"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[76].lable_name}}</span> <strong ng-bind-html="offender.facial_hair_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[69].lable_name}}</span> <strong ng-bind-html="offender.height_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[74].lable_name}}</span> <strong ng-bind-html="offender.hair_color_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[71].lable_name}}</span> <strong ng-bind-html="offender.weight_title">,</strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[129].lable_name}}</span> <strong ng-bind-html="offender.glasses_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[77].lable_name}}</span> <strong ng-bind-html="offender.eye_color_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[135].lable_name}}</span> <strong ng-bind-html="offender.piercing_usr_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[136].lable_name}}</span> <strong ng-bind-html="offender.tattoo_usr_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[137].lable_name}}</span> <strong ng-bind-html="offender.scar_usr_title"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[80].lable_name}}</span> <strong ng-bind-html="offender.clothing_usr"></strong></p>
+                                        </li>
+                                        <li>
+                                            <p><span>{{FormFieldLabelData.offender[81].lable_name}}</span> <strong ng-bind-html="offender.char_notes_usr"></strong></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </pane>
+                        <pane title="Personal Details">
+                            <div>
+                                <div class="tab_content">
+                                    <div class="contact-info-detail">
+                                        <div class="left">
+                                            <ul class="o_d_l">
+                                                <li><p><span>{{FormFieldLabelData.offender[1].lable_name}}</span> <strong ng-bind-html="offender.title_name"></strong></p></li>
+                                            </ul>
+                                        </div>                                          
+                                        <div class="right">
+                                            <ul class="o_d_l">
+                                                <li><p><span>{{FormFieldLabelData.offender[8].lable_name}}</span> <strong ng-bind-html="offender.dob_usr"></strong></p></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clr"></div>
+                                        <h3>{{FormFieldLabelData.offender[142].lable_name}}</h3>
+                                        <div ng-if="offenderDetail.form_identity" ng-repeat="off in offenderDetail.form_identity track by $index">
+
+                                            <div class="left">
+                                                <ul class="o_d_l">
+                                                    <li><p><span>ID:</span> <strong>{{off.idDis}}</strong></p></li>
+                                                </ul>
+                                            </div>
+                                            <div class="right">
+                                                <ul class="o_d_l">
+                                                    <li ><p><span>Reference No:</span> <strong>{{off.form_identity_refernce}}</strong></p></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </pane>
+                        <pane title="Contact Details">
+                            <div>
+                                <div class="tab_content">
+                                    <div class="contact-info-detail">
+                                        <div class="right">
+                                            <ul class="o_d_l">
+
+                                                <li ng-hide="true">
+                                                    <p><span>Work Ext:</span> <strong ng-bind-html="offender.work_ext_usr"></strong></p>
+                                                </li>
+                                                <li ng-hide="true">
+                                                    <p><span>Work DDI:</span> <strong ng-bind-html="offender.work_ddi_usr"></strong></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="left">
+                                            <ul class="o_d_l">
+                                                <li>
+                                                    <p><span>Personal Phone:</span> <strong ng-bind-html="offender.p_tph_usr"></strong></p>
+                                                </li>
+                                                <li>
+                                                    <p><span>Personal Mobile:</span> <strong ng-bind-html="offender.p_mob_usr"></strong></p>
+                                                </li>
+                                                <li>
+                                                    <p><span>{{FormFieldLabelData.offender[50].lable_name}}</span> <strong ng-bind-html="offender.p_mail_usr"></strong></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>                                            
+                                    <div class="contact-info-detail">
+                                        <h3>Address</h3>
+                                        <div class="left">
+
+                                            <ul class="o_d_l">
+                                                <li>
+                                                    <p><span>{{FormFieldLabelData.offender[17].lable_name}}</span> <strong ng-bind-html="offender.address_usr"></strong></p>
+                                                </li>
+                                                <li>
+                                                    <p><span>{{FormFieldLabelData.offender[18].lable_name}}</span> <strong ng-bind-html="offender.address_2_usr"></strong></p>
+                                                </li>
+
+                                                <li>
+                                                    <p><span>{{FormFieldLabelData.offender[19].lable_name}}</span> <strong ng-bind-html="offender.address_3_usr"></strong></p>
+                                                </li>
+                                                <li>
+                                                    <p><span>{{FormFieldLabelData.offender[20].lable_name}}</span> <strong ng-bind-html="offender.postcode_usr"></strong></p>
+                                                </li> 
+                                                <li>
+                                                    <p><span>{{FormFieldLabelData.offender[21].lable_name}}</span> <strong ng-bind-html="offender.name_cnt"></strong></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </pane>
+                        <pane title="Images &amp; Media">
+                            <div>
+                                <div class="tab_content">
+                                    <div class="contact-info-detail">
+                                        <div class="up_img_wrap">
+                                            <div class="col_4" ng-repeat="imgs in images| startFrom : 0">
+                                                <div class="files_upload_wrap">
+                                                    <div class="image">
+                                                        <img ng-src="{{imgs.imageurl}}" alt="img">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="clr"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </pane>
+                    </tabs>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+

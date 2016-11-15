@@ -1,0 +1,116 @@
+<div id="72" ng-form="officerForm" class="responding_ofc_wrapper" ng-controller="secIncidentReportCtrl2">
+    <div class="control-group" ng-class="{
+                                                            true
+                                                            : 'error'
+                                                            }
+                              [nextclick && officerForm.policeInfo.$valid]">
+    <h3>{{AllFieldLabelData[109].lable_name}}</h3>
+     <div class="col_2">
+
+        <input type="text" id="logNumber" name="logNumber" placeholder="{{AllFieldLabelData[35].lable_name}}" ng-model ="policeInfo.logNumber" class="form-control" ng-maxlength="50"/>
+        <span class="angular-error" data-ng-if="officerForm.logNumber.$dirty && officerForm.logNumber.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.logNumber.$error.maxlength)">max length is 50</span>
+        </span> 
+    </div>
+    <div class="col_2">
+
+        <input type="text" id="crimeRefNo" name="crimeRefNo" placeholder="{{AllFieldLabelData[36].lable_name}}" ng-model ="policeInfo.crimeRefNo" class="form-control" ng-maxlength="50"/>
+        <span class="angular-error" data-ng-if="officerForm.crimeRefNo.$dirty && officerForm.crimeRefNo.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.crimeRefNo.$error.maxlength)">max length is 50</span>
+        </span> 
+    </div>
+    <div class="clr"></div>
+    
+     <h3>{{AllFieldLabelData[110].lable_name}}</h3>
+    <div class="col_2">
+        <div class="white-select-wrap">
+
+    <div class="white_selectbox mrpa" id="ddS050" onclick="setDropDownDirection('ddS050');">
+    <ol class="nya-bs-select" ng-model="policeInfo.selectedRespondingOfficer"  ng-change="getData(policeInfo.selectedRespondingOfficer)" data-live-search="true">
+        <li nya-bs-option="report in secIncidentReports">
+            <a>
+                <span class="label" >{{report.name_pat}}</span>
+                <span class="fa fa-check check-mark"></span>
+            </a></li>
+    </ol>
+    </div>
+        </div>
+    </div>
+    <div class="col_2">
+
+        <input type="text" id="respondingOfficerName" name="respondingOfficerName" placeholder="{{AllFieldLabelData[42].lable_name}}" ng-model="policeInfo.respondingOfficerName" class="form-control" ng-maxlength="50"/>
+        <span class="angular-error" data-ng-if="officerForm.respondingOfficerName.$dirty && officerForm.respondingOfficerName.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.respondingOfficerName.$error.maxlength)">max length is 50</span></span>  
+    </div>
+    <div class="col_2">
+
+        <input type="text" name="respondingOfficerCallerNumber" placeholder="{{AllFieldLabelData[41].lable_name}}" ng-model="policeInfo.respondingOfficerCallerNumber" class="form-control" ng-maxlength="50" />
+        <span class="angular-error" data-ng-if="officerForm.respondingOfficerCallerNumber.$dirty && officerForm.respondingOfficerCallerNumber.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.respondingOfficerCallerNumber.$error.maxlength)">max length is 50</span>
+        </span>  
+
+    </div>
+    <div class="col_2">
+
+        <input type="email" id="respondingOfficerEmailAdd" name="respondingOfficerEmailAdd" placeholder="{{AllFieldLabelData[44].lable_name}}" ng-model ="policeInfo.respondingOfficerEmailAdd" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" class="form-control" />
+        <span class="angular-error" data-ng-if="officerForm.respondingOfficerEmailAdd.$dirty && officerForm.respondingOfficerEmailAdd.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.respondingOfficerEmailAdd.$error.pattern)">Invalid email</span>
+         </span> 
+    </div>
+    <div class="col_2">
+
+        <input type="tel" id="respondingOfficerTelephone" name="respondingOfficerTelephone" placeholder="{{AllFieldLabelData[45].lable_name}}" ng-model ="policeInfo.respondingOfficerTelephone" class="form-control" ng-pattern="/^[0][0-9].{8,9}$/" ng-trim="true"/>
+        <span class="angular-error" data-ng-if="officerForm.respondingOfficerTelephone.$dirty && officerForm.respondingOfficerTelephone.$invalid">
+             <span class="angular-error" data-ng-if="(nextclick && officerForm.respondingOfficerTelephone.$error.pattern)"> UK telephone numbers should contain 10 or 11 digits and should start with a zero.</span>
+        </span>
+    </div>
+    <div class="clr"></div>
+    <h3>Officer in Charge:</h3>
+    <div class="col_2">
+        <div class="white-select-wrap">
+
+    <div class="white_selectbox mrpa" id="ddS051" onclick="setDropDownDirection('ddS051');">
+    <ol class="nya-bs-select" ng-model="policeInfo.selectedOfficerInCharge" data-live-search="true">
+        <li nya-bs-option="report in secIncidentReports">
+            <a>
+                <span class="label" >{{report.name_pat}}</span>
+                <span class="fa fa-check check-mark"></span>
+            </a></li>
+    </ol>
+    </div>
+        </div>
+    </div>
+    <div class="col_2">
+
+        <input type="text" id="officeInChargeName" name="officeInChargeName" placeholder="{{AllFieldLabelData[70].lable_name}}" ng-model="policeInfo.officeInChargeName" class="form-control" ng-maxlength="50"/>
+        <span class="angular-error" data-ng-if="officerForm.officeInChargeName.$dirty && officerForm.officeInChargeName.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.officeInChargeName.$error.maxlength)">max length is 50</span></span>  
+    </div>
+    <div class="col_2">
+
+        <input type="text" name="officerInChargeCollarNumber" placeholder="{{AllFieldLabelData[71].lable_name}}" ng-model="policeInfo.officerInChargeCollarNumber" class="form-control" ng-maxlength="50" />
+        <span class="angular-error" data-ng-if="officerForm.officerInChargeCollarNumber.$dirty && officerForm.officerInChargeCollarNumber.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.officerInChargeCollarNumber.$error.maxlength)">max length is 50</span>
+        </span>  
+
+    </div>
+    <div class="col_2">
+
+        <input type="email" id="officerInChargeEmailAdd" name="officerInChargeEmailAdd" placeholder="{{AllFieldLabelData[73].lable_name}}" ng-model ="policeInfo.officerInChargeEmailAdd" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" class="form-control" />
+        <span class="angular-error" data-ng-if="officerForm.officerInChargeEmailAdd.$dirty && officerForm.officerInChargeEmailAdd.$invalid">
+            <span class="angular-error" data-ng-if="(nextclick && officerForm.officerInChargeEmailAdd.$error.pattern)">Invalid email</span>
+         </span> 
+    </div>
+    <div class="col_2">
+
+        <input type="tel" id="officerInChargeTelephone" name="officerInChargeTelephone" placeholder="{{AllFieldLabelData[74].lable_name}}" ng-model ="policeInfo.officerInChargeTelephone" class="form-control" ng-pattern="/^[0][0-9].{8,9}$/" ng-trim="true"/>
+        <span class="angular-error" data-ng-if="officerForm.officerInChargeTelephone.$dirty && officerForm.officerInChargeTelephone.$invalid">
+             <span class="angular-error" data-ng-if="(nextclick && officerForm.officerInChargeTelephone.$error.pattern)"> UK telephone numbers should contain 10 or 11 digits and should start with a zero.</span>
+        </span>
+    </div>
+    <div class="clr"></div>
+    
+</div>
+
+</div>
+

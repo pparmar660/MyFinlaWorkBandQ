@@ -1,0 +1,56 @@
+<div id="18" ng-form="policeInfoForm" ng-controller="secIncidentReportCtrl1">
+    <div class="control-group" ng-class="{
+                                                            true
+                                                            : 'error'
+                                                            }
+            [nextclick && policeInfoForm.policeData.$valid]">
+
+        <div class="category_btn_wrapper">
+
+            <h3>{{AllFieldLabelData[18].lable_name}} <sup>*</sup> 
+
+                <span class="ot_tip" ng-show="AllFieldLabelData[18].question_hint" ng-click="toolTipTogglePoliceInform = !toolTipTogglePoliceInform"><i class="newtip">?</i>
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipTogglePoliceInform">
+                        <p>{{AllFieldLabelData[18].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+                </span>
+
+                <span class="field-error" ng-show="message == true">{{requiredMsg}}</span>
+            </h3>
+            <div class="category_btn_left">
+                <div class="btn-group icon-btn">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-orange btn-block radius" id="yesInfo" ng-click="policeInform('yes')" type="button">Yes</button>
+                    </div>		
+                </div>
+            </div>
+            <div class="category_btn_left">
+                <div class="btn-group icon-btn">	
+                    <div class="wrap-btn">							
+                        <button class="button btn-orange btn-block radius" id="noInfo" ng-click="policeInform('no')" type="button">No</button>
+                    </div>		
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="why_not_wrap" ng-show="hasInformedPolice == false">
+
+            <h3>{{AllFieldLabelData[19].lable_name}} <sup>*</sup>
+
+
+                <span class="ot_tip" ng-show="AllFieldLabelData[19].question_hint" ng-click="toolTipToggleWhyNotPolice = !toolTipToggleWhyNotPolice"><i class="newtip">?</i>
+                    <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleWhyNotPolice">
+                        <p>{{AllFieldLabelData[19].question_hint}}</p>
+                        <span class="close"><i class="fa fa-times"></i></span>
+                    </span>
+
+            </h3>
+            <textarea name="whyNot" id="whyNot" placeholder="" ng-model="whyNotDesc" class="form-control" required/></textarea>
+            <span class="help-inline" ng-show="nextclick && policeInfoForm.whyNot.$error.required">Required</span>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+

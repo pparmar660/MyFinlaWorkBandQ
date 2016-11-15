@@ -1,0 +1,70 @@
+<td>
+    <div class="select_box">
+    <div class="orange_select">
+    <ol class="nya-bs-select" name="incidentWhere" id="incidentWhere" ng-model="item.incident_where" ng-change="incidentItem(item)" data-live-search="false" required>
+        <li nya-bs-option="product in swasAreaDropdownValue">
+            <a>
+                <span class="label" >{{product}}</span>
+                <span class="fa fa-check check-mark"></span>
+        </a></li>
+    </ol>
+        <span class="help-inline" ng-show="submitted && productForm.incidentWhere.$error.required"></span>
+    </div>
+    
+</div>
+</td>
+<td ng-if="!isStockLoad">
+    <div class="textbox_wrap">
+        <input type="text" name="incidentBrand" id="incidentBrand" ng-model="item.incident_brand" ng-change="incidentItem(item)" class="form-control" required/>
+        <span class="help-inline" ng-show="submitted && productForm.incidentBrand.$error.required"></span>
+    </div>
+</td>
+<td>
+    <div class="textbox_wrap">
+        <input type="text" name="name" ng-model="item.incident_code" class="form-control" />
+    </div>
+</td>
+<td>
+    <div class="textbox_wrap">
+        <input type="text" name="name" ng-model="item.incident_name" class="form-control" />
+    </div>
+</td>
+<td>
+    <div class="textbox_wrap">
+        <input float-value name="unitValue" ng-model="item.incident_unitValue" class="form-control" required/>
+        <span class="help-inline" ng-show="submitted && productForm.unitValue.$error.required"></span>
+
+    </div>
+</td>
+<td>
+    <div class="textbox_wrap">
+        <input is-number name="quantity"  ng-init="" ng-model="item.incident_quantity" ng-change="incidentItem(item)" class="form-control" required/>
+        <span class="help-inline" ng-show="submitted && productForm.quantity.$error.required"></span>
+    </div>
+</td>
+<td>
+    <div class="textbox_wrap">
+        <div class="col_3">
+            <div class="custom-checkbox">
+                <input type="checkbox" id={{item.id}} ng-model="item.incident_checkbox"></input>
+                <label for={{item.id}}></label>
+            </div>
+        </div>
+        <div class="col_3" ng-if="item.incident_checkbox">
+            <strong>Quantity</strong>
+            <input is-number quantity-check id="recoverdQuentity" name="recoverdQuentity" ng-model="item.incident_recoverd_quantity" ng-keyup="keyPress(item)" class="form-control"/>
+        </div>
+        <div class="col_3" ng-if="item.incident_checkbox">
+            <strong>Damaged</strong>
+            <input is-number id="recoverdDamaged" name="recoverdDamaged" ng-model="item.incident_recoverd_damaged" ng-keyup="damagedproduct(item)" class="form-control"/>
+        </div>
+    </div>
+</td>
+<td>
+    <div class="textbox_wrap" >
+        <input type="text" name="name" ng-model="item.subTotal"  class="form-control" readonly/>
+    </div>
+</td>
+<td>
+    <div class="action_wrap" ng-click="deleteProduct(item)"><a href="javascript:void(0)"><img src="images/cross_table.png" alt="cross"></a></div>
+</td>

@@ -1,0 +1,152 @@
+<div id="201" class="offender_wrapper" ng-controller="secIncidentReportCtrl3">
+
+    <h3>{{AllFieldLabelData[86].lable_name}} 
+
+        <span class="ot_tip" ng-show="AllFieldLabelData[86].question_hint" ng-click="toolTipToggleActionTaken = !toolTipToggleActionTaken"><i class="newtip">?</i>
+            <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleActionTaken">
+                <p>{{AllFieldLabelData[86].question_hint}}</p>
+                <span class="close"><i class="fa fa-times"></i></span>
+            </span>
+
+        </span>
+    </h3>
+
+    <div class="row">
+        <div class="col_4" ng-repeat="offender in selectedOffenderData track by $index">
+            <div class="offender_person_wrapper">
+                <div class="offender_image">
+                    <img class="offender" ng-src="{{offender.image}}" alt="images/offenders-pic/pic08.jpg" onError="this.src='images/offenders-pic/pic08.jpg';">
+                    <!--                    <img ng-src="{{offenderPath}}{{offender.id_usr}}/1" alt="offender">-->
+                    <div class="name"><p>{{offender.firstname_usr}} {{offender.lastname_usr}}</p></div>
+                </div>
+
+                <div class="offender_btn_wrap">
+                    <p>{{AllFieldLabelData[111].lable_name}}</p>
+                    <div class="white_selectbox" id="ddS023" onclick="setDropDownDirection('ddS023');">
+                        <ol class="nya-bs-select" ng-model="mySelectedValues[offender.id_usr]" data-live-search="false">
+                            <li nya-bs-option="action in actionTaken">
+                                <a><span class="label" >{{action}}</span><span class="fa fa-check check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div ng-if="mySelectedValues[offender.id_usr] == 'Arrest' || mySelectedValues[offender.id_usr] == 'Summons To Court' || mySelectedValues[offender.id_usr] == 'Ongoing Investigation'" class="sentenced_wrap">
+                        <div class="sr_bt_wrap">
+                            <p>{{AllFieldLabelData[87].lable_name}}</p>
+                            <div class="sr_bt_ico">
+                                <input type="radio" name="{{offender.id_usr}}" ng-model="offender.sentenced" id="radio" value="true">
+                                <label for="radio">Yes</label>
+                            </div>
+
+                            <div class="sr_bt_ico">
+                                <input type="radio" name="{{offender.id_usr}}" ng-model="offender.sentenced" id="radio1" value="false">
+                                <label for="radio1">No</label>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                        <div ng-if="offender.sentenced == 'true'" class="tm_sl_wrap">
+                            <p>{{AllFieldLabelData[68].lable_name}}</p>
+                            <div class="col_3" id="ddS025" onclick="setDropDownDirection('ddS025');">
+                                <p>Years</p>
+                                <ol class="nya-bs-select" ng-model="offender.year">
+                                    <li class="nya-bs-option" value="{{year}}" ng-repeat="year in years">
+                                        <a>{{year}}
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nya-bs-option" value="0"><a>0</a></li>
+                                    <li class="nya-bs-option" value="1"><a>1</a></li>
+                                    <li class="nya-bs-option" value="2"><a>2</a></li>
+                                    <li class="nya-bs-option" value="3"><a>3</a></li>
+                                    <li class="nya-bs-option" value="4"><a>4</a></li>
+                                    <li class="nya-bs-option" value="5"><a>5</a></li>
+                                    <li class="nya-bs-option" value="6"><a>6</a></li>
+                                    <li class="nya-bs-option" value="7"><a>7</a></li>
+                                    <li class="nya-bs-option" value="8"><a>8</a></li>
+                                    <li class="nya-bs-option" value="9"><a>9</a></li>
+                                    <li class="nya-bs-option" value="10"><a>10</a></li>
+                                    <li class="nya-bs-option" value="11"><a>11</a></li>
+                                    <li class="nya-bs-option" value="12"><a>12</a></li>
+                                    <li class="nya-bs-option" value="13"><a>13</a></li>
+                                    <li class="nya-bs-option" value="14"><a>14</a></li>
+                                </ol>
+                                <!--                                <ol class="nya-bs-select" ng-model="offender.year" data-live-search="false">
+                                                                    <li nya-bs-option="year in years">
+                                                                        <a><span class="label" >{{year}}</span><span class="fa fa-check check-mark"></span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ol>-->
+
+                            </div>
+                            <div class="col_3" id="ddS026" onclick="setDropDownDirection('ddS026');">
+                                <p>Months</p>
+                                <ol class="nya-bs-select" ng-model="offender.month">
+                                    <li class="nya-bs-option" value="0"><a>0</a></li>
+                                    <li class="nya-bs-option" value="1"><a>1</a></li>
+                                    <li class="nya-bs-option" value="2"><a>2</a></li>
+                                    <li class="nya-bs-option" value="3"><a>3</a></li>
+                                    <li class="nya-bs-option" value="4"><a>4</a></li>
+                                    <li class="nya-bs-option" value="5"><a>5</a></li>
+                                    <li class="nya-bs-option" value="6"><a>6</a></li>
+                                    <li class="nya-bs-option" value="7"><a>7</a></li>
+                                    <li class="nya-bs-option" value="8"><a>8</a></li>
+                                    <li class="nya-bs-option" value="9"><a>9</a></li>
+                                    <li class="nya-bs-option" value="10"><a>10</a></li>
+                                    <li class="nya-bs-option" value="11"><a>11</a></li>
+                                </ol>
+                            </div>
+                            <div class="col_3" id="ddS027" onclick="setDropDownDirection('ddS027');">
+                                <p>Days</p>
+                                <ol class="nya-bs-select" ng-model="offender.day">
+                                    <li class="nya-bs-option" value="0"><a>0</a></li>
+                                    <li class="nya-bs-option" value="1"><a>1</a></li>
+                                    <li class="nya-bs-option" value="2"><a>2</a></li>
+                                    <li class="nya-bs-option" value="3"><a>3</a></li>
+                                    <li class="nya-bs-option" value="4"><a>4</a></li>
+                                    <li class="nya-bs-option" value="5"><a>5</a></li>
+                                    <li class="nya-bs-option" value="6"><a>6</a></li>
+                                    <li class="nya-bs-option" value="7"><a>7</a></li>
+                                    <li class="nya-bs-option" value="8"><a>8</a></li>
+                                    <li class="nya-bs-option" value="9"><a>9</a></li>
+                                    <li class="nya-bs-option" value="10"><a>10</a></li>
+                                    <li class="nya-bs-option" value="11"><a>11</a></li>
+                                    <li class="nya-bs-option" value="12"><a>12</a></li>
+                                    <li class="nya-bs-option" value="13"><a>13</a></li>
+                                    <li class="nya-bs-option" value="14"><a>14</a></li>
+                                    <li class="nya-bs-option" value="15"><a>15</a></li>
+                                    <li class="nya-bs-option" value="16"><a>16</a></li>
+                                    <li class="nya-bs-option" value="17"><a>17</a></li>
+                                    <li class="nya-bs-option" value="18"><a>18</a></li>
+                                    <li class="nya-bs-option" value="19"><a>19</a></li>
+                                    <li class="nya-bs-option" value="20"><a>20</a></li>
+                                    <li class="nya-bs-option" value="21"><a>21</a></li>
+                                    <li class="nya-bs-option" value="22"><a>22</a></li>
+                                    <li class="nya-bs-option" value="23"><a>23</a></li>
+                                    <li class="nya-bs-option" value="24"><a>24</a></li>
+                                    <li class="nya-bs-option" value="25"><a>25</a></li>
+                                    <li class="nya-bs-option" value="26"><a>26</a></li>
+                                    <li class="nya-bs-option" value="27"><a>27</a></li>
+                                    <li class="nya-bs-option" value="28"><a>28</a></li>
+                                    <li class="nya-bs-option" value="29"><a>29</a></li>
+                                    <li class="nya-bs-option" value="30"><a>30</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="offender_btn_wrap">
+                            <textarea name="result" placeholder="{{AllFieldLabelData[88].lable_name}}" ng-model="offender.actionTakenMsg" ></textarea>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>

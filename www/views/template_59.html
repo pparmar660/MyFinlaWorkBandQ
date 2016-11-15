@@ -1,0 +1,66 @@
+<div class="incident_report_wrapper" ng-controller="issuingCivilRecovery">
+    <a class="info_icon" href="javascript:void(0)"><span><img src="images/icons/info_icon.png"></span></a>
+    <div class="prod_stock_pop_wrap close-parent">
+        <a class="cross close info_open" href="javascript:void(0);"><img src="images/icons/general-close-x.png" alt="cross" /></a>
+        <div class="icon_wrapper">
+            <div class="icon">
+                <img src="images/icons/notification-information.png" alt="notification" />
+            </div>
+            <div class="text">Product &amp; Stock</div>
+        </div>
+        <div class="prod_content">
+            <p>Recovered Products: <span>{{productData.total_product}} (&pound; {{productData.total_price}})</span></p>
+            <p>Damaged Products: <span>{{productData.single_product}} (&pound; {{productData.price}})</span></p>
+            <h6>Total Value: <span>{{productData.total_product}} (&pound; {{productData.total_price}})</span></h6>
+        </div>
+    </div>
+    <h3>Issuing Civil Recovery: <span>?</span></h3>
+    <div class="is_civil_recovery" ng-repeat="result in offenderData">
+        <div class="col_1">
+            <div class="image_wrap">
+                <img ng-src="{{result.pic}}" alt="offender" />
+                <p>{{result.name}}</p>
+            </div>
+        </div>
+        <div class="col_1">
+            <div class="input_box_wrap">
+                <p>Product stock &amp; Value:</p>
+                <input type="text" name="stockValue" ng-model="recoveryStatus.stockValue" class="form-control" placeholder="&pound; Enter Value" />
+               
+                <p>Civil Recovery:</p>
+                <input type="text" name="recovery" ng-model="recoveryStatus.recovery" class="form-control" placeholder="&pound; 0.00" />
+            </div>
+        </div>
+        <div class="col_1">
+            <div class="input_box_wrap">
+                <p>Civil Recovery Status:</p>
+                <div class="select_box_white">
+<!--                    <select class="basic-usage-demo1">
+                        <option value="Select Status">Select Status</option>
+                    </select>-->
+                     <ui-select ng-model="recoveryStatus.civilRecoveryStatus" ng-change="getData(recovery.civilRecoveryStatus)" theme="selectize" ng-disabled="disabled" style="width: 100%;">
+                            <ui-select-match  placeholder="--Select Status--" value='{{$select.selected.id_it}}'>{{$select.selected.name_it}}</ui-select-match>
+                            <ui-select-choices  repeat="recoveryStatus in civilRecoveryData | filter: $select.search" >
+                                <div ng-bind-html="recoveryStatus.name_it | highlight: $select.search"></div>
+                            </ui-select-choices>
+                    </ui-select>
+                </div>
+                <p>Civil Recovery Number:</p>
+                <input type="text" name="recoveryNo" ng-model="recoveryStatus.recoveryNo" class="form-control" placeholder="Enter Number" />
+             </div>
+        </div>
+        <div class="col_4">
+            <div class="input_box_wrap">
+                <p>Civil Recovery Note:</p>
+                <textarea name="recoveryNote" ng-model="recoveryStatus.recoveryNote" placeholder="Add Note"></textarea>
+            </div>
+        </div>
+        <div class="clr"></div>
+        
+    </div>
+    
+</div>
+
+
+<script type="text/javascript" src="js/ui.js"></script>	
+

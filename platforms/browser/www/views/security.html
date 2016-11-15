@@ -1,0 +1,218 @@
+<div ng-include="'views/sidePanels/sidePanelSecurity.html'"></div>
+<div id="securitySection">
+            
+            <div class="employee_wrap">
+    <div class="layout">
+        <div class="staff_header">
+            <div class="icon">
+                <div class="center-icon on-icons">
+                    <div class="circle-icon">
+                        <div class="v-m">
+                            <span class="d-icon d-icon20"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                <h1>Hi {{userName}}. Welcome to the Security section.</h1>
+                <h2>Please select from the resources below:</h2>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="security-sections setLeft">
+            <div class="row">
+                <div class="col-2 pull-left"  ng-show="securityMenu.incidentReport.access_permission==1 && (modulePermission.incidentReport=='Full Access' || modulePermission.incidentReport=='Read Only')">
+                    <h3>{{securityMenu.incidentReport.name}} 
+                        <span class="ot_tip" ng-show="incidentReportToolTipMessage" ng-click="toolTipToggleIncidenreport = !toolTipToggleIncidenreport"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleIncidenreport">
+                                    <p>{{incidentReportToolTipMessage}}</p>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span> </h3>
+                    <div class="row">
+                        <div class="button-left">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">
+
+                                      <button class="button btn-orange btn-block radius" type="button" custom-click="handleDashBoardMenu('incident_view')"><a href="#incidentView"><span class="v-flex">
+                                            <span class="btn-txt">View</span> <span class="circle-flex"><span class="s-btn-icon"><i class="fa fa-eye"></i></span></span>
+                                            </span></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-right">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn" ng-hide="modulePermission.incidentReport=='Read Only'">
+
+                                    <button class="button btn-orange btn-block radius" type="button" custom-click="handleDashBoardMenu('incident')"><a href="javascript:void(0)" custom-click="addIncidentMainCtrl()"><span class="v-flex"><span class="btn-txt">Add
+                                                New</span> <span class="circle-flex"><span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span></span>
+                                            </span></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2 pull-left" ng-show="securityMenu.offender.access_permission==1 && (modulePermission.offender=='Full Access' || modulePermission.offender=='Read Only') && modulePermission.incidentReport=='Full Access'">
+
+                    <h3>{{securityMenu.offender.name}}
+                     <span class="ot_tip" ng-show="ofenderOcgToolTipMessage" ng-click="toolTipToggleoffenderOcg = !toolTipToggleoffenderOcg"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleoffenderOcg">
+                                    <p>{{ofenderOcgToolTipMessage}}</p>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span></h3>
+                    <div class="row">
+                        <div class="button-left">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn" >
+
+                                    <button class="button btn-orange btn-block radius" type="button" custom-click="offenderListView();"> <a href="#offenderView"><span class="v-flex">
+                                           <span class="btn-txt">View</span> <span class= "circle-flex"><span class="s-btn-icon"><i class="fa fa-eye"></i></span></span></span></a></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-right">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn" ng-hide="modulePermission.offender=='Read Only'">
+                                    <button class="button btn-orange btn-block radius" type="button" custom-click="addNewOffender();"><a href="#offenderView"><span class="v-flex"><span class="btn-txt">Add New</span> 
+                                    <span class="circle-flex"><span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span></span></span></a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+       
+
+
+       
+                <div class="col-2 pull-left" ng-show="securityMenu.vehicle.access_permission==1 && (modulePermission.vehicle=='Full Access' || modulePermission.vehicle=='Read Only') && modulePermission.incidentReport=='Full Access'">
+                    <h3>{{securityMenu.vehicle.name}} 
+                         <span class="ot_tip" ng-show="vechicleToolTipMessage" ng-click="toolTipToggleVechile = !toolTipToggleVechile"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleVechile">
+                                    <span>{{vechicleToolTipMessage}}</span>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span></h3>
+                    <div class="row">
+                        <div class="button-left">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">
+                                    <button class= "button btn-orange btn-block radius" type="button" custom-click="viewVehicle();">
+                                        <a href="#vehicle">
+                                        <span class= "v-flex"><span class="btn-txt">View</span> 
+                                            <span class="circle-flex"><span class="s-btn-icon"><i class="fa fa-eye"></i></span></span></span>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-right">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn" ng-hide="modulePermission.vehicle=='Read Only'">
+                                    <button class="button btn-orange btn-block radius" type="button" custom-click="addNewVehicle();">
+                                         <a href="#vehicle">
+                                        <span class="v-flex"><span class="btn-txt">Add New</span> <span class="circle-flex"><span class="s-btn-icon">
+                                                    <img alt="" src="images/icons/general-add.png"></span></span></span>
+                                         </a>
+                                    </button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 pull-left" ng-show="securityMenu.victimWitness.access_permission==1 && (modulePermission.victimWitness=='Full Access' || modulePermission.victimWitness=='Read Only') && modulePermission.incidentReport=='Full Access'">
+                    <h3>{{securityMenu.victimWitness.name}}
+                        <span class="ot_tip" ng-show="victimWitnessToolTipMessage" ng-click="toolTipToggleVictimWitness = !toolTipToggleVictimWitness"><i class="newtip">?</i>
+                                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleVictimWitness">
+                                    <p>{{victimWitnessToolTipMessage}}</p>
+                                    <span class="close"><i class="fa fa-times"></i></span>
+                                </span>
+
+                            </span></h3>
+                    <div class="row">
+                        <div class="button-left">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn">
+                                    <button class= "button btn-orange btn-block radius" type="button" custom-click="viewVictimWitness()">
+                                        <a href="#securityVictimwitness">
+                                            <span class="v-flex"><span class="btn-txt">View</span>
+                                                <span class= "circle-flex"><span class="s-btn-icon"><i class="fa fa-eye"></i></span></span></span>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-right">
+                            <div class="btn-group sl-icons icon-btn">
+                                <div class="wrap-btn" ng-hide="modulePermission.victimWitness=='Read Only'">
+                                    <button class="button btn-orange btn-block radius" type="button" custom-click="addNewVictimWitness()">
+                                        <a href="#securityVictimwitness">
+                                            <span class="v-flex"><span class="btn-txt">Add New</span> <span class="circle-flex">
+                                            <span class= "s-btn-icon"><img alt="" src="images/icons/general-add.png"></span></span></span>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+   
+<script>
+
+    // app lock start---
+    var isPinscreenVisible = false;
+    resetCheckUserInteractionTimer(1);
+    // app lock end-------
+
+    var header = $('#header').outerHeight() + 30; //get header height and gave same amount of padding from top of content section
+    $(".securityContent").css("padding-top", header);
+
+
+            var isPinscreenVisible = false;
+                    resetCheckUserInteractionTimer(1);
+                    // app lock end-------
+    setTimeout( 
+                    function action() {
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'scripts/ui.js';
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'scripts/custom.js';
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                     //   clearInterval(inter);
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'scripts/owl.carousel.min.js';
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                       // clearInterval(inter);
+                    },3000);
+
+
+</script>
+        </div>
+
+    

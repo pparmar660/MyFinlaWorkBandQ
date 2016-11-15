@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_a45adb11860e65681fb13d49378ca0f534802e4c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_51e2d4f9d973d734e0181f6b38828cc26f2b5a24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.0_3ce9b41d18b45d40a632dd780c6a3facb153477a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_8bf2f2cae28f7df10987bc9a133752482ea3e648.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_f1a9815688e4ef315a3c813c7eaf1f1db3299c88.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.0_9a68567804e2d86b3e0b153636b4e7819fbb6bba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.0_efcdb1e838b9d771b7e33c569b2b0797908ae560.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_cac569d277a05e3b94632f6820fb85b41dd28d28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.0_6d71e48ea3b1b1f9cd1c95e024e4c5fe88c97270.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.0_e212176f881aa7b65bae8fe2e20e84bdc1add365.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/libs/gcm.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a6d7bce795a14c7f86111756c4ceb44b79de14aa">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/gcm_a8f6eca6c2b1ecc70991e326ca959dfe34172437.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="cbc1731526f4878690efde9cf1fec214200cb23a">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-unspecified-debug_daf17bcc375dedef3f0cc0918ad5ca106a288126.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.0_017c9f7be8d22e74edbd48f743cacba3e21b1a43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vinove/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.0/support-annotations-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/support-annotations-24.2.0_cc7430a58e064404033d852fe31a220d7a21eb3a.jar" />
+    </item>
+
+</items>

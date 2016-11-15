@@ -1,0 +1,74 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.maginsoft.mfilechooser": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "com.vliesaputra.deviceinformation": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-fabric-plugin": {
+            "FABRIC_API_KEY": "d24db941d809dfe574b5967d20234dc592f84ade",
+            "FABRIC_API_SECRET": "7cf265e6811ceaab7ff370c90843d62397173008e4d03edb925b1823e09d26b6",
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-open": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-browsersync": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-filepath": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-spinner-dialog": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        },
+        "cordova-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.zincdigital.bandq"
+        }
+    },
+    "dependent_plugins": {}
+}

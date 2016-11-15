@@ -1,0 +1,32 @@
+<div id="11" ng-controller="OutcomeCtrl">
+    <div class="category_btn_wrapper">
+
+        <h3>{{AllFieldLabelData[11].lable_name}}<sup>*</sup>
+
+            <span class="ot_tip" ng-click="toolTipToggleOutcome = !toolTipToggleOutcome"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleOutcome">
+                    <p>{{AllFieldLabelData[11].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+
+            </span>
+            <span class="field-error" ng-if="req1">Required</span>
+
+
+        </h3>
+        <div class="category_btn_left" ng-repeat="o in outs" ng-click="changeOutcome(o)">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" ng-class="{active : o.activeClass}" type="button">{{o.name_otc}}</button>
+                </div>		
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="outcome_info_wrap" ng-if="derivedMsg.length > 1">
+        <div class="info-circle">?</div>
+        <div class="info-text">
+            <p ng-bind="derivedMsg"></p>
+        </div>
+    </div>
+</div>

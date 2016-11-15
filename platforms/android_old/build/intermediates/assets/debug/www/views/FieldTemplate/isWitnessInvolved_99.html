@@ -1,0 +1,42 @@
+<div id="99" ng-controller="isWintnessInvolvedCntrl">
+    <div class="category_btn_wrapper">
+        <h3>{{AllFieldLabelData[99].lable_name}}<sup>*</sup>
+         <span class="ot_tip" ng-click="toolTipToggleIsWitnessInvolved = !toolTipToggleIsWitnessInvolved"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleIsWitnessInvolved">
+                    <p>{{AllFieldLabelData[99].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+             </span>
+         <span class="field-error" ng-show="yesnorequired">Required</span></h3>
+
+        <div class="category_btn_left">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" id="wityesBtn" type="button" ng-click="yesAction()">Yes</button>
+                </div>		
+            </div>
+        </div>
+        <div class="category_btn_left">
+            <div class="btn-group icon-btn">	
+                <div class="wrap-btn">							
+                    <button class="button btn-orange btn-block radius" id="witnoBtn" type="button" ng-click="noAction()">No</button>
+                </div>		
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="victim_wrap witness_wrap" ng-show="whoIstheWitnessShowStatus">
+        <h3>{{AllFieldLabelData[46].lable_name}}<sup>*</sup>
+         <span class="ot_tip" ng-click="toolTipToggleWhoIsWitness = !toolTipToggleWhoIsWitness"><i class="newtip">?</i>
+                <span class="tooltip close-parent vehicle-tip" ng-show="toolTipToggleWhoIsWitness">
+                    <p>{{AllFieldLabelData[46].question_hint}}</p>
+                    <span class="close"><i class="fa fa-times"></i></span>
+                </span>
+             </span>
+         <span class="field-error" ng-show="whorequired">Required</span></h3>
+        <div class="victim_btn_wrap" id="btw_{{cat.id_uct}}" ng-repeat="cat in categorty">
+            <button class="button btn-orange btn-block radius"  ng-model="cat" type="button" ng-click="catagoryClick(cat)">{{cat.title_uct}}</button>
+        </div>
+
+    </div>
+</div>

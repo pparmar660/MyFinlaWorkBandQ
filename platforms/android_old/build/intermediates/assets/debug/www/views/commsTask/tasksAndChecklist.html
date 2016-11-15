@@ -1,0 +1,264 @@
+
+<div ng-include="'views/sidePanels/sidePanelCommsTask.html'"></div>
+<div id="taskAndCheckList" class="staff_directory" ng-show="isTaskAndCheckListMain">
+    <div class="layout">
+        <div class="staff_heading_row task-and-check-list">
+            <div class="heading_left commLeft">
+                <div class="icon">
+                    <div class="center-icon on-icons smallIcons">
+                        <div class="circle-icon">
+                            <div class="v-m">
+                                <span class="d-icon d-icon12"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text"><h1>Tasks &amp; Checklists</h1></div>
+            </div>
+            <div class="heading_right">
+                <div class="left_text_box pull-right">
+                    <div class="srch-box">
+                        <input type="text" placeholder="Search" class="search-btn" ng-model="searchText">
+                        <input type="button" value="submit" class="search-icon" ng-click="taskSearch()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="task_sub_head">
+                <div class="left">
+                    <h3>{{taskOwner}}'s Tasks</h3>
+                </div>
+                <div class="right">
+                    <div class="orange_select">
+                        <ol class="nya-bs-select" ng-model="selectedVenue" title="Select Venue" ng-change="getVenue(selectedVenue)">      
+                            <li nya-bs-option="venue in venueList track by $index">
+                                <a>
+                                    <span class="label" >{{ venue.venue_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="content" ng-show="isNoInterStrip">
+            <div class="layout">
+                <div class="no_internet_strip">
+                    <div class="error-strip close-parent">
+                        <span class="no-internet-icon"></span>
+                        <h4>No Internet Connection</h4>		
+                        <div class="close" ng-click="closeNoInternetStrip();"><span class="fa fa-times"></span></div>			
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="security-sections padModelBtn">
+            <div class="wid_50 full-width">                
+                <div class="half-width padd-right">
+                    <div class="welcome-column  pad10px bottomMar">
+                        <div class="row">
+                            <div class="assignOverCommMainDiv">
+                                <div class="AOCtabs">
+                                    <ul class="aoculli">
+                                        <li><span  id="myTaskTab" class="active"><a href="javascript:void(0)" ng-click="getAllTask();">My Tasks</a></span><span class="redInfo">{{taskCount.my_tasks}}</span></li>
+                                        <li><span id="overdueTaskTab"><a href="javascript:void(0)" ng-click="getOverdueTask();">Overdue</a></span><span class="redInfo">{{taskCount.overdue}}</span></li>
+                                        <li><span id="completedTaskTab"><a href="javascript:void(0)" ng-click="getCompletedTask();">Completed</a></span><span class="redInfo">{{taskCount.completed}}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="AOC_ContentDiv">
+                                    <div ng-if="tasks.length>0" class="AOC_Content displayBLock">
+                                        <ul>
+                                            <li ng-repeat="task in tasks track by $index">
+                                                <div  class="asignList {{task.disabledClass}}" ng-click="getTaskDetails(task.task_id);">
+
+                                                    <label class="msgstatus_icon"><span><img ng-src="{{task.icon}}" alt="{{task.type}}"></span></label>
+                                                    <div class="asignDivContent">
+                                                        <p class="text">{{task.task_refernce}}: {{task.content}}</p>
+                                                        <p><span>Assigned To:&nbsp;{{task.assigned_to}}</span></p>
+                                                        <p><span>Date Required:&nbsp;{{task.date}}</span></p>
+                                                    </div>
+                                                </div> 
+                                               
+                                            </li>
+
+                                            <li>&nbsp;</li>
+                                    </div>
+                                    <div ng-if="tasks.length==0" style="padding:20px;">
+                                            {{errorMsg}}    
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="half-width padd-left">
+                    <div class="message_popup_wrap" ng-show="isTaskDetails">
+                        <h2>{{taskDetails.title}} <span class="fr" ng-show="isAddComms"><a href="javascript:void(0)" ng-click="showAddNotePopup(taskDetails);"><img src="images/icons/comms_icon.png" alt="comma icon"></a></span></h2>
+                        <div class="msg_data_tbl">
+                            <ul>
+                                <li>
+                                    <p>Ref: {{taskDetails.overview.ref}}</p>
+                                    <p>Created: {{taskDetails.overview.created}}</p>
+                                    <p>Status: {{taskDetails.overview.status}}</p>
+                                </li>
+                                <li>
+                                    <p>Assigned to: {{taskDetails.overview.assigned_to}}</p>
+                                    <p>Date Required: {{taskDetails.overview.date_required}}</p>
+                                    <p>Linked: {{taskDetails.overview.linked}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="msg_content" style="height:200px;overflow: auto;">
+                            <h3>{{taskDetails.title}}</h3>
+                            <p>{{taskDetails.task_details}}</p>
+                            <div class="tof_wrap" ng-show="isOnlineForm">
+                                <h4>{{formName}}</h4>
+                                <div class="textfield_wrap">
+                                    <span ng-if="inputModel.field_type == 'input'">
+                                        <input type="text" name="inputField" ng-model="inputModel.answer" class="form-control" placeholder="{{inputModel.placeholder}}"/>
+                                    </span>
+                                </div>
+                                <div class="textfield_wrap">
+                                    <span ng-if="textAriaModel.field_type == 'textarea'">
+                                        <textarea class="form-control" ng-model="textAriaModel.answer" placeholder="{{textAriaModel.placeholder}}"></textarea>
+                                    </span> 
+                                </div>
+                                <div class="textfield_wrap">
+                                    <span ng-if="selectBox.field_type == 'select'">
+                                        <div class="white_selectbox br10">
+                                            <ol class="nya-bs-select" ng-model="selectBox.answer" multiple  title="{{selectBox.label}}" data-selected-text-format="count" data-live-search="false" ng-change="optionChange(selectBox.answer)">
+                                                <li nya-bs-option="t in selectBox.options track by $index">
+                                                    <a>
+                                                        <span class="label">{{t.text}}</span>
+                                                        <span class="fa fa-check check-mark"></span>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                            
+                                        </div>
+                                    </span>
+
+                                </div>
+                                <div class="textfield_wrap">
+                                    <span ng-if="chkModel.field_type == 'checkbox'">
+                                        <p>{{chkModel.label}}:</p>
+                                        <div class="custom-checkbox" ng-repeat="chk in chkModel.options">
+                                            <input type="checkbox" name="selection" ng-checked="selection.indexOf(chk.keyval) > -1" ng-click="toggleSelection(chk.keyval)" value="{{chk.keyval}}" id="chk_{{chk.keyval}}" />
+                                            <label for="chk_{{chk.keyval}}">{{chk.text}}</label>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="textfield_wrap">
+                                    <span ng-if="radioModel.field_type == 'radio'">
+                                        <p>{{radioModel.label}}:</p>
+                                        <div class="custom-radio" ng-repeat="radio in radioModel.options">
+                                            <input type="radio" ng-model="radioModel.answer" name="name" value="{{radio.keyval}}" id="radio_{{radio.keyval}}" ng-change="getRadioAnswer(radio.keyval)"/>
+                                            <label for="radio_{{radio.keyval}}">{{radio.text}}</label>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="incident_notes_wrap" ng-show="isAddComms">
+                                <div class="btn-group sl-icons icon-btn">
+                                    <div class="wrap-btn">                          
+                                        <button class="button btn-orange btn-block radius" type="button" ng-click="showAddNotePopup(taskDetails);"> 
+                                            <span class="v-flex">                                 
+                                                <span class="btn-txt">Notes &amp; Comms</span>
+                                                <span class="circle-flex">
+                                                    <span class="s-btn-icon"><img src="images/icons/comms_icon.png" alt="comms" /></span>
+                                                </span>
+                                            </span>
+                                        </button>
+                                    </div>                                
+                                </div>
+
+
+                                <div ng-repeat="comm in commsNote">
+                                    <div class="notes_wrap" ng-class-even="'next_line'">
+                                        <div class="notes_wrap_img">
+                                            <img ng-src="{{staffImage}}" alt="news" /> <!--images/news_1.png-->
+                                        </div>
+                                        <div class="notes_wrap_content">
+                                            <div class="notes_wrap_text">
+                                                <h3>{{comm.note_title}}</h3> <!--Derek Gent at Nov 11, 2015 11:09--> 
+                                                <p>{{comm.message}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg_footer" ng-show="isCompletedTask">
+                            <h5>Task Completed: {{taskDetails.overview.date_completed}}</h5>
+                        </div>
+                        <div class="msg_footer" ng-hide="isCompletedTask">
+                            <h3>Have you completed this task?</h3>
+                            <div class="msg_btn">
+                                <div class="yes_btn" ng-hide="isTaskMandatory">
+                                    <div class="btn-group action-button icon-btn">  
+                                        <div class="wrap-btn">                         
+                                            <button class="button btn-red btn-block radius" type="button" custom-click="formStatus('no');"> 
+                                                <div class="v-flex">
+                                                    <div class="circle-flex">
+                                                        <span class="s-btn-icon radius"><img src="images/icons/general-close-x.png" alt="cross" /></span>  
+                                                    </div>
+                                                    <span class="btn-txt radius">No</span>
+                                                </div>                                          
+                                            </button> 
+                                        </div>                           
+                                    </div>
+                                </div>
+                                <div class="progress_btn">
+                                    <div class="btn-group square-icons icon-btn">   
+                                        <div class="wrap-btn">                          
+                                            <button class="button btn-action btn-block radius" type="button" custom-click="formStatus('inprogress');">       
+                                                <div class="v-flex">                           
+                                                    <span class="btn-txt">In Progress</span>
+                                                    <div class="circle-flex">
+                                                        <span class="s-btn-icon radius"><img src="images/icons/tasks-white.png" alt="images" /></span>    
+                                                    </div>                                      
+                                                </div>
+                                            </button>
+                                        </div>          
+                                    </div>
+                                </div>
+                                <div class="yes_btn">
+                                    <div class="btn-group square-icons icon-btn">   
+                                        <div class="wrap-btn">                          
+                                            <button class="button btn-orange active btn-block radius" type="button" custom-click="formStatus('completed');">       
+                                                <div class="v-flex">                                        
+                                                    <span class="btn-txt">Yes</span>
+                                                    <div class="circle-flex">
+                                                        <span class="s-btn-icon radius">
+                                                            <img src="images/icons/tick-white.png" alt="images" />
+                                                        </span>    
+                                                    </div>                                      
+                                                </div>
+                                            </button>
+                                        </div>          
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+
+        </div>
+        <div ng-include="'views/addCommPopup.html'"></div> 
+
+    </div>
+</div>
+
+<div ng-show="internetConnection">
+    <div class="layout">
+        <div class="loading_details">
+            <div class="no_connection">
+                <div class="no_internet"><img src="images/no_internet.gif" alt="no internet"></div>
+                <h1>No Internet <br> Connection</h1>
+            </div>
+        </div>
+    </div>
+</div>

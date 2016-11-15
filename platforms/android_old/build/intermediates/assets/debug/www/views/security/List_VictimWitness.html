@@ -1,0 +1,196 @@
+<div class="global-v-o-w v-w-v" id="List_VictimWitness" ng-controller="List_VictimWitnessCtrl">
+    <div id="content" class="staff_directory">
+        <div class="layout">
+            <div class="staff_heading_row">
+                <div class="heading_left">
+                    <div class="icon">
+                        <div class="center-icon on-icons">
+                            <div class="circle-icon">
+                                <div class="v-m">
+                                    <span class="d-icon d-icon4"></span>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                    <div class="text"><h1>Victims &amp; Witnesses</h1></div>
+                </div>
+                <div class="heading_right">
+                    <div class="left_text_box">
+                        <div class="srch-box" >
+                            <input type="text" placeholder="Search" class="search-btn" ng-model="searchText">
+                            <input type="button" value="submit" class="search-icon" ng-model="searchText"  ng-click="searchwitnessAction()">
+                        </div>
+                    </div>
+                    <div class="right_btn" ng-hide="modulePermission.victimWitness == 'Read Only'">
+                        <div class="btn-group sl-icons icon-btn">
+                            <div class="wrap-btn">							
+                                <button type="button" class="button btn-orange btn-block radius" ng-click="addWitnessAction()">	
+                                    <span class="v-flex">								  
+                                        <span class="btn-txt">Add New</span>
+                                        <span class="circle-flex">
+                                            <span class="s-btn-icon"><img alt="" src="images/icons/general-add.png"></span>	
+                                        </span>
+                                    </span>										
+                                </button>
+                            </div>							  
+                        </div>
+                    </div>
+                </div>								
+            </div>
+            <div id="content" ng-show="isNoInterStrip">
+                <div class="layout">
+                    <div class="no_internet_strip">
+                        <div class="error-strip close-parent">
+                            <span class="no-internet-icon"></span>
+                            <h4>No Internet Connection</h4>		
+                            <div class="close" ng-click="closeNoInternetStrip();"><span class="fa fa-times"></span></div>			
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="security-brdcrum" id="witnessListTab">
+                <ul class="staff_tabs ">
+                    <li><span>{{victimWitnessCount.victim}}</span><a class="active" id="onlyVictims" href="javascript:void(0)" ng-click="onlyVictims()">Victims</a></li>								
+                    <li><span>{{victimWitnessCount.witness}}</span><a id="onlyWitness" href="javascript:void(0)" ng-click="onlyWitness()"> Witnesses</a></li>								
+                </ul>
+                <div  id="wictimvitnessCatagory">
+                    <div class="select-type">
+                        <span class="cat">Category :</span>
+                        <ul class="vw-staff">
+                            <li ng-repeat="category in ListCatagory track by $index">
+                                <div class="custom-checkbox" >
+                                    <input type="checkbox" id="{{category.id_uct}}" ng-checked="category.selected" ng-click="categoryChangeAction($index, category)">
+                                    <label for="{{category.id_uct}}">{{category.title_uct}}</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff_select_wrapper">
+                <div class="col_select">
+                    <div class="orange_select">
+                        <ol class="nya-bs-select" ng-model="selectedCountry" multiple title="All Countries" data-live-search="false" data-selected-text-format="count" ng-change="getCountry(selectedCountry)">      
+                            <li nya-bs-option="opt1 in Countries">
+                                <a>
+                                    <span class="label" >{{ opt1.name_cnt}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col_select">
+                    <div class="orange_select">
+                        <ol class="nya-bs-select" ng-model="selectedRegion" multiple title="All Regions" data-live-search="false" data-selected-text-format="count" ng-change="regionChange(selectedRegion)">      
+                            <li nya-bs-option="opt2 in Regions">
+                                <a>
+                                    <span class="label" >{{ opt2.name_rgs}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+                <!--class="basic-usage-demo1"-->
+                <div class="col_select">
+                    <div class="orange_select">
+                        <ol class="nya-bs-select" ng-model="selectedZone" multiple title="All Zones" data-live-search="false" data-selected-text-format="count" ng-change="zoneChange(selectedZone)">      
+                            <li nya-bs-option="opt3 in Zones">
+                                <a>
+                                    <span class="label" >{{ opt3.zone_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+
+                <div class="col_select">
+                    <div class="orange_select">
+                        <ol class="nya-bs-select" ng-model="selectedVenue" multiple title="All Venues" data-live-search="false" data-selected-text-format="count" ng-change="getVenue(selectedVenue)">      
+                            <li nya-bs-option="opt4 in Venues">
+                                <a>
+                                    <span class="label" >{{ opt4.venue_name}}</span>
+                                    <span class="fa fa-check check-mark"></span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="vws_btn">
+                    <input type="submit" class="se_btn" value="Search" ng-click="searchFromLocation();">
+                </div>
+            </div>
+
+
+            <!--offenders pictute-->
+            <div class="view-pics witness-view">
+                <div class="view-pics offenders-view">
+                    <div id="nooffenderfoundview" ng-show="infoShow1" class="alertvalidate close-parent info">
+                        <span class="info-icon"></span>
+                        <h4>{{noMatchFoundMsg}}</h4>
+                        <div class="close" ng-click="infoClose()"><span class="fa fa-times"></span></div>
+                    </div>
+                    <ul ng-model="obj">
+                        <li ng-repeat="obj in VictimWitnessData">
+                            <div class="offenders-pic" id="{{obj.id_usr}}">
+                                <div class="off-image">
+                                    <img ng-src="{{obj.file_name}}" alt="images/offenders-pic/pic08.jpg" onError="this.src='images/offenders-pic/pic08.jpg';"/>
+                                    <div class="off-hover">
+                                        <div class="view-detail">
+                                            <a ng-show="{{obj.add_comm==1}}" href="javascript:void(0)" class="off-edit" custom-click="showAddNotePopup(obj);"></a>
+                                            <a href="javascript:void(0)" class="off-view" ng-click="showWitnessDetail(obj)"></a>
+                                            <!--                                            <a href="javascript:void(0)" class="plus-view" ng-click="selectWitness(obj)"></a>-->
+                                            <p>Last Updated:&nbsp;<span>{{obj.last_updated}}</span></p>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <span class="off-name">{{obj.firstname_usr + " " + obj.lastname_usr}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="incident_report_btn_wrapper">
+                    <div class="incident_btn_wrap fr" ng-show="nextShowStatus">
+                        <div class="btn-group action-button action-nxt icon-btn">
+                            <div class="wrap-btn">							
+                                <button class="button btn-action btn-block radius" type="button" ng-click="nextPageRequest()">
+                                    <div class="v-flex">
+                                        <span class="btn-txt">Next</span>	
+                                        <div class="circle-flex">
+                                            <span class="s-btn-icon"><i class="fa fa-chevron-right"></i></span>	
+                                        </div>											
+                                    </div>
+                                </button>							                  
+                            </div>						
+                        </div>
+                    </div>
+
+                    <div class="incident_btn_wrap last_btn fl" ng-show="prevShowStatus">
+                        <div class="btn-group action-button icon-btn">	
+                            <div class="wrap-btn">							
+                                <button class="button btn-action btn-block radius" type="button" ng-click="previousPageRequest()">	
+                                    <div class="v-flex">
+                                        <div class="circle-flex">
+                                            <span class="s-btn-icon"><i class="fa fa-chevron-left"></i></span>	
+                                        </div>
+                                        <span class="btn-txt">Previous</span>
+                                    </div>											
+                                </button>	
+                            </div>							  
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div ng-include="'views/addCommPopup.html'"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_navigation_drawer.png",
+        "source": "/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/res/drawable-xxhdpi/ic_navigation_drawer.png"
+    }
+]

@@ -1,0 +1,15 @@
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/classes/debug
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-95e95e7522f28b9203a5cb99ae1fd86e12976452.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/support-annotations-24.2.0-cc7430a58e064404033d852fe31a220d7a21eb3a.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0-ca84390eed07aa18d2df85fa51161a94420abb27.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0-2792fe151986449be7836626a11c84a03063b741.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/gcm-a8f6eca6c2b1ecc70991e326ca959dfe34172437.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0-0220d5ec97cad6df48812407fde75366dd40a5ce.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0-4556c6031bea190db55e913f16672a8f8289172c.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-8bda3d4b509e105e0a77c123f7dc783422aed3ba.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-7dbd6407240c1feb9ece679f5cb88706e354af07.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-eed3ddd10ad67549eedcdc9ea99c80c34b60211e.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/internal_impl-24.2.0-8b974af3b6937795d3ea11c12111e0562b721cec.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-954bb4f9fcc43724532d7772fdb2cac7d384d5ff.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-1a1cb23853fbe860424fba0fb586708170e73c6d.jar
+/home/vinove/Desktop/BandQBranches/BandQ/platforms/android/build/intermediates/pre-dexed/debug/classes-1ae18fddf51c09227fa53f675cf2d6e04ff8dbcf.jar

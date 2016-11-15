@@ -1,0 +1,33 @@
+<div class="side-panel" ng-controller="commsAndTaskSidePanel">
+        <div class="menu-wrapper active">
+            <div class="logo">
+                <a href="javascript:void(0)"><img alt="logo" src="images/logo.jpg"></a>
+            </div>
+            <ul class="main-menu">
+                <li class="{{homeClass}}" ng-click="viewCommsTaskHome()">
+                    <a class="links" href="#/commsTasks"><span class="icon icon1"></span>
+                    <p>Home</p></a>
+                </li>
+                <li class="{{inboxClass}}" ng-click="viewCommsTask()" ng-show="sideCommsMenu.inMail.access_permission==1 && (modulePermission.inMail=='Full Access' || modulePermission.inMail=='Read Only')">
+                    <a class="links" href="#/inboxView" ><span class=
+                    "icon icon201"></span>
+                    <p>{{sideCommsMenu.inMail.name}}</p></a>
+                </li>
+                <li class="{{alertAndNotificationClass}}" ng-click="viewCommsTaskNotification()" ng-show="sideCommsMenu.alertNotification.access_permission==1 && (modulePermission.alertNotification=='Full Access' || modulePermission.alertNotification=='Read Only')">
+                    <a class="links" href="#/inboxView"><span class=
+                    "icon icon202"></span>
+                    <p>{{sideCommsMenu.alertNotification.name}}</p></a>
+                </li>
+                <li class="{{commsClass}}" ng-click="viewCommsTaskComms()" ng-show="sideCommsMenu.comms.access_permission==1 && (modulePermission.comms=='Full Access' || modulePermission.comms=='Read Only')">
+                    <a class="links" href="#/inboxView"><span class=
+                    "icon icon203"></span>
+                    <p>{{sideCommsMenu.comms.name}}</p></a>
+                </li>
+                <li class="{{taskAndCheckListClass}}" ng-click="viewCommsTaskChecklist()" ng-show="sideCommsMenu.taskCheckLists.access_permission==1 && (modulePermission.taskChecklists=='Full Access' || modulePermission.taskChecklists=='Read Only')">
+                    <a class="links" href="#/taskAndCheckList"><span class=
+                    "icon icon204"></span>
+                    <p>{{sideCommsMenu.taskCheckLists.name}}</p></a>
+                </li>
+            </ul>
+        </div>
+    </div>
